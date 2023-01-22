@@ -1,0 +1,4 @@
+.btn.btn-outline-secondary.cate {border: 1px solid #cd2e34 !important;color: white;background-color: #d74c4c;}
+.btn.btn-outline-secondary.search-con {border: 1px solid #cd2e34 !important;background-color: #cd2e34 !important;color: white;border-radius: 0px 4px 4px 0px !important;}
+.navbar-light .navbar-nav .nav-link.active {color:  #cd2e34 !important;}
+.navbar-expand-lg .navbar-nav .nav-link {font-weight: 500;}

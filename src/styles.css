@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+.app-layout {min-height: 100vh;}
+
+/* standard buttons starts here */
+
+.btn-primary {color: #fff;background-color: #cd2e34 !important;border-color: #cd2e34 !important;width: 250px;margin-top: 8px;transition: all;height: 50px;}
+.btn-primary:hover {color: #fff;background-color: #212529 !important;border-color: #212529 !important;letter-spacing: 2px;}
+
+/* standard buttons ends here */
