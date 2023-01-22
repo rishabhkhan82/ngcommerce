@@ -1,0 +1,12 @@
+.login {background-color: #f6f6f6;min-height: 800px;position: relative; }
+.login .d-flex {min-height: 800px;}
+.login .d-flex .left-div {width: 50%;}
+.login .d-flex .left-div .tagline-div {width: 380px;margin-left: auto;margin-right: auto;text-align: center; }
+.login .d-flex .left-div .tagline-div img {width: 100px;display: block;margin-left: auto;margin-right: auto;}
+.login .d-flex .left-div .tagline-div h4 {line-height: 35px;}
+.login .right-div {width: 50%;background-image: url("https://www.globalblue.com/business/images/article926851.ece/alternates/LANDSCAPE2_970/TFS_Article_2019_970x643.jpg"); /* The image used */background-color: #cccccc;background-position: center;background-repeat: no-repeat;background-size: cover;}
+.login .overlay { width: 100%;height: 100%;background-color: rgba(255, 0, 10, 0.3); }
+.login .right-cont {width: 340px;position: absolute;min-height: 700px;background: white;left: -100px;top: 50px;border-radius: 4px;}
+.login .right-cont a {color: rgba(255, 0, 10, 1) !important;}
+.login .right-cont .h-50 {height: 50px !important;}
+.login .right-cont .input-group-text {height: 50px;}

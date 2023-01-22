@@ -1,0 +1,14 @@
+.dashboard { background-color: #f6f6f6;}
+.dashboard .dash-back-user-img {width: 67px;height: 67px;object-fit: cover;border-radius: 50%;}
+.dashboard .welcom-div {background-color: #f0f0f0;padding: 12px 15px;border-radius: 8px;max-height: 46px;}
+.dashboard .right-img {max-width: 86px;}
+.dash-cont {min-height: 800px;margin-top: -46px;background-color: white;border-radius: 8px;}
+.dash-cont h3 {padding: 36px 44px;}
+.dash-cont .dash-menus {background-image: linear-gradient(to right, #28313B , #485461);}
+.dash-cont .dash-menu-link.active {padding: 10px 30px;color: white;text-decoration: none;border-bottom: 2px solid #cd2e34;background-color: #cd2e34;}
+.dash-cont .dash-menu-link {padding: 10px 30px;color: white;text-decoration: none;border-bottom: 2px solid transparent;background-color: transparent;}
+.dash-cont .dash-in-box {height: 80px;height: 80px;background-color: whitesmoke;border-radius: 8px;border: 1px solid #e7e4e4;}
+.dash-cont .dash-in-box .in {height: 80px;}
+.dash-cont .dash-in-box .in .circle {border: 2px solid darkred;border-radius: 50%;width: 50px;height: 50px;}
+.dash-cont .dash-in-box .in .circle i {font-size: 17px;color: black;}
+.dash-cont .dashboard {border-top: 3px solid #cd2e34;border-radius: 8px 8px 0px 0px;}

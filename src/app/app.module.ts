@@ -6,7 +6,6 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './common-pages/home/home.component';
 import { AboutComponent } from './common-pages/about/about.component';
 import { ContactComponent } from './common-pages/contact/contact.component';
-import { ProductListingComponent } from './product/product-listing/product-listing.component';
 import { ProductIndividualComponent } from './product/product-individual/product-individual.component';
 import { ProductSearchComponent } from './product/product-search/product-search.component';
 import { RatingsComponent } from './ratings/ratings.component';
@@ -23,6 +22,14 @@ import { AddressComponent } from './user-type/user/address/address.component';
 import { UserNotificationComponent } from './user-type/user/user-notification/user-notification.component';
 import { HeaderComponent } from './common-pages/header/header.component';
 import { FooterComponent } from './common-pages/footer/footer.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { AdminLoginComponent } from './auth/admin-login/admin-login.component';
+import { AdminProfileComponent } from './user-type/admin/admin-profile/admin-profile.component';
+import { AdminProductsComponent } from './user-type/admin/admin-products/admin-products.component';
+import { AddProductComponent } from './user-type/admin/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,6 @@ import { FooterComponent } from './common-pages/footer/footer.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ProductListingComponent,
     ProductIndividualComponent,
     ProductSearchComponent,
     RatingsComponent,
@@ -47,7 +53,16 @@ import { FooterComponent } from './common-pages/footer/footer.component';
     AddressComponent,
     UserNotificationComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent,
+    AdminLoginComponent,
+    AdminProfileComponent,
+    AdminNotificationComponent,
+    AdminProductsComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule

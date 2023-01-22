@@ -1,3 +1,5 @@
+/* new pick starts here */
+
 .card-cont {position: relative;overflow: hidden;padding: 18px 18px 26px;border-style: solid;border-width: 1px;border-color: rgb(231, 231, 231);border-radius: 20px;box-shadow: rgb(62 56 56 / 24%) 1px 1px 22px 0px;}
 .image-11 {position: absolute;inset: 26px -14px 0% auto;max-width: 100%;vertical-align: middle;display: inline-block;}
 .image-10 {display: block;margin-right: auto;margin-left: auto;padding: 0px;max-width: 100%;vertical-align: middle;}
@@ -15,4 +17,5 @@
 .discount.custom.other {margin-left: 2px;}
 .button {width: 65%;border-radius: 0px;background-color: rgb(255, 22, 22);text-align: center;}
 .w-button {display: inline-block;border-radius: 0px;line-height: 34px;width: 70%;margin-top: 0px;}
-.form-select {height: 50px;width: 250px;}
+
+/* new pick ends here */
