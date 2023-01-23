@@ -18,7 +18,6 @@ import { UserDashboardComponent } from './user-type/user/user-dashboard/user-das
 import { UserProfileComponent } from './user-type/user/user-profile/user-profile.component';
 import { MyOrdersComponent } from './user-type/user/my-orders/my-orders.component';
 import { WishlistComponent } from './user-type/user/wishlist/wishlist.component';
-import { AddressComponent } from './user-type/user/address/address.component';
 import { UserNotificationComponent } from './user-type/user/user-notification/user-notification.component';
 import { HeaderComponent } from './common-pages/header/header.component';
 import { FooterComponent } from './common-pages/footer/footer.component';
@@ -50,7 +49,6 @@ import { AddProductComponent } from './user-type/admin/add-product/add-product.c
     UserProfileComponent,
     MyOrdersComponent,
     WishlistComponent,
-    AddressComponent,
     UserNotificationComponent,
     HeaderComponent,
     FooterComponent,

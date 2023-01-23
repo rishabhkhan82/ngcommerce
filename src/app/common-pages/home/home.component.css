@@ -2,7 +2,7 @@
 
 .banner {background-image: url("https://www.globalblue.com/business/images/article926851.ece/alternates/LANDSCAPE2_970/TFS_Article_2019_970x643.jpg");background-color: #cccccc; height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover; }
 .ban-heading {height: 500px;}
-.ban-heading h1 {font-size: 70px;max-width: 500px;}
+.ban-heading h1 {font-size: 70px;max-width: 500px;font-family: 'DM Serif Display', serif;}
 .ban-heading p {max-width: 400px;}
 .ban-cont {background-image: linear-gradient(53deg, white 30%, transparent);}
 
@@ -10,11 +10,12 @@
 
 /* is trending starts here */
 
-.trending h2 {min-width: 227px;max-width: 227px;text-align: center;}
+.trending h2 {min-width: 227px;max-width: 227px;text-align: center;font-family: 'DM Serif Display', serif;}
 .trending .card {border: 0px !important;}
 .trending .card img {height: 173px;object-fit: cover;object-position: center;}
 .trending hr.divider {color: #c3c3c3eb !important;}
 .text-color {color: #cd2e34 !important;}
+.trending h5 {font-family: 'DM Serif Display', serif;}
 
 /* is trending ends here */
 
@@ -22,6 +23,7 @@
 
 .category .cont {width: 100px;height: 100px;margin-left: auto;margin-right: auto;border-radius: 50%;border: 2px solid #b9b9b9;text-align: center;display: flex;justify-content: center;align-items: center;}
 .category .cont i {font-size: 40px;}
+.category h2 {font-family: 'DM Serif Display', serif;}
 
 /* catergory ends here */
 
@@ -44,6 +46,7 @@
 .discount.custom.other {margin-left: 2px;}
 .button {width: 65%;border-radius: 0px;background-color: rgb(255, 22, 22);text-align: center;}
 .w-button {display: inline-block;border-radius: 0px;line-height: 34px;width: 70%;margin-top: 0px;}
+.new-pick h2 {font-family: 'DM Serif Display', serif;}
 
 /* new pick ends here */
 
@@ -51,13 +54,14 @@
 
 .shop-in-easy-steps img.left {max-width: 500px;display: block;margin-left: auto;border-right: 1px solid;padding: 50px;}
 .shop-in-easy-steps img.right {max-width: 500px;padding: 0px 50px;}
+.shop-in-easy-steps h2 {font-family: 'DM Serif Display', serif;}
 
 /* shop in steps ends here */
 
 /* news letter starts here */
 
 .newsletter {background-color: rgb(246, 246, 246);}
-.heading-5 {max-width: 500px;margin-right: auto;margin-left: auto;text-align: center;}
+.heading-5 {max-width: 500px;margin-right: auto;margin-left: auto;text-align: center;font-family: 'DM Serif Display', serif;}
 .paragraph-5 {max-width: 506px;margin-right: auto;margin-left: auto;text-align: center;margin-bottom: 30px;color: rgba(20, 19, 19, 0.74);}
 .text-field {min-height: 55px;padding-right: 20px;padding-left: 20px;}
 .w-input, .w-select {display: block;width: 100%;height: 38px;padding: 8px 12px;margin-bottom: 10px;font-size: 14px;line-height: 1.428571429;color: #333333;vertical-align: middle;background-color: #ffffff;border: 1px solid #cccccc;}

@@ -1,0 +1,22 @@
+/* new pick starts here */
+
+.card-cont {position: relative;overflow: hidden;padding: 18px 18px 26px;border-style: solid;border-width: 1px;border-color: rgb(231, 231, 231);border-radius: 20px;box-shadow: rgb(62 56 56 / 24%) 1px 1px 22px 0px;}
+.image-11 {position: absolute;inset: 26px -14px 0% auto;max-width: 100%;vertical-align: middle;display: inline-block;}
+.image-10 {display: block;margin-right: auto;margin-left: auto;padding: 0px;max-width: 100%;vertical-align: middle;}
+.product-heading {margin-bottom: 4px;font-size: 12px;line-height: 24px;margin-top: 10px;}
+.div-block-15 {display: block;}
+.card-cont img {max-width: 100%;vertical-align: middle;display: inline-block;}
+.text-block-8 {position: relative;left: 2px;top: 3px;display: inline-block;color: rgb(5, 114, 72);}
+.div-block-17 {display: flex;}
+.discount.italic {font-style: italic;}
+.discount {margin-top: 2px;margin-bottom: 10px;padding-top: 7px;padding-bottom: 7px;border-top: 0px solid rgba(255, 22, 22, 0.2);border-bottom: 0px solid rgba(255, 22, 22, 0.2);color: rgb(20, 19, 19);font-size: 24px;font-style: normal;font-weight: 600;}
+.discount.custom {position: relative;top: 1px;display: flex;margin-left: 5px;font-size: 11px !important;font-weight: 400;line-height: 37px;}
+.discount.custom.other.overline {color: rgb(0, 0, 0);font-style: italic;text-decoration: line-through;}
+.discount.custom.other {margin-left: 2px;}
+.discount.custom {position: relative;top: 1px;display: flex;margin-left: 5px;font-size: 13px;font-weight: 400;}
+.discount.custom.other {margin-left: 2px;}
+.button {width: 65%;border-radius: 0px;background-color: rgb(255, 22, 22);text-align: center;}
+.w-button {display: inline-block;border-radius: 0px;line-height: 34px;width: 70%;margin-top: 0px;}
+h4 {font-family: 'DM Serif Display', serif;}
+
+/* new pick ends here */
