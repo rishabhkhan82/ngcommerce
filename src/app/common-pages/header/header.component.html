@@ -8,13 +8,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-between w-100 mb-2 mb-lg-0 border-start ps-2">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home <i class="fa-solid fa-house ms-2 text-dark"></i></a>
+            <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home <i class="fa-solid fa-house ms-2 text-dark"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About <i class="fa-solid fa-circle-info text-dark ms-2"></i></a>
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">About <i class="fa-solid fa-circle-info text-dark ms-2"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact <i class="fa-brands fa-rocketchat text-dark ms-2"></i></a>
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact <i class="fa-brands fa-rocketchat text-dark ms-2"></i></a>
           </li>
           <li>
             <div class="input-group" style="width: 400px;">
@@ -34,7 +34,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
+            <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active"><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa-solid fa-user me-2 text-dark"></i> Sign Up</a>

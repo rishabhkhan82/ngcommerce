@@ -9,4 +9,12 @@
 .btn-primary {color: #fff;background-color: #cd2e34 !important;border-color: #cd2e34 !important;width: 250px;margin-top: 8px;transition: all;height: 50px;}
 .btn-primary:hover {color: #fff;background-color: #212529 !important;border-color: #212529 !important;letter-spacing: 2px;}
 
+.btn-dark {color: #fff;background-color: #212529 !important;letter-spacing: 2px;border-color: #212529 !important;width: 250px;margin-top: 8px;transition: all;height: 50px;}
+.btn-dark:hover {color: #fff;background-color: #cd2e34 !important;border-color: #cd2e34 !important;letter-spacing: 0px;}
+
 /* standard buttons ends here */
+
+/* standard link starts here */
+
+
+/* standard link ends here */

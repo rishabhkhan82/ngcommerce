@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CartComponent } from './cart/cart.component';
-import { HomeComponent } from './common-pages/home/home.component';
-import { AboutComponent } from './common-pages/about/about.component';
-import { ContactComponent } from './common-pages/contact/contact.component';
 import { ProductIndividualComponent } from './product/product-individual/product-individual.component';
 import { ProductSearchComponent } from './product/product-search/product-search.component';
 import { RatingsComponent } from './ratings/ratings.component';
@@ -29,14 +25,11 @@ import { AdminLoginComponent } from './auth/admin-login/admin-login.component';
 import { AdminProfileComponent } from './user-type/admin/admin-profile/admin-profile.component';
 import { AdminProductsComponent } from './user-type/admin/admin-products/admin-products.component';
 import { AddProductComponent } from './user-type/admin/add-product/add-product.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent,
     ProductIndividualComponent,
     ProductSearchComponent,
     RatingsComponent,
@@ -60,10 +53,11 @@ import { AddProductComponent } from './user-type/admin/add-product/add-product.c
     AdminProfileComponent,
     AdminNotificationComponent,
     AdminProductsComponent,
-    AddProductComponent
+    AddProductComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
