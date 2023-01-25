@@ -5,6 +5,9 @@ import { AboutComponent } from "./common-pages/about/about.component";
 import { ContactComponent } from "./common-pages/contact/contact.component";
 import { HomeComponent } from "./common-pages/home/home.component";
 import { PageNotFoundComponent } from "./common-pages/page-not-found/page-not-found.component";
+import { CommonModule } from "@angular/common";
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 const routes : Routes = [
     {path: '', component: HomeComponent},
@@ -20,10 +23,11 @@ const routes : Routes = [
         ContactComponent,
         AboutComponent,
         PageNotFoundComponent,
-
     ],
     imports: [
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        CommonModule,
+        CarouselModule
     ],
     exports: [
         RouterModule

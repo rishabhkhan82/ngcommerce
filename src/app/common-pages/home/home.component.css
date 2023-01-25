@@ -11,8 +11,9 @@
 /* is trending starts here */
 
 .trending h2 {min-width: 227px;max-width: 227px;text-align: center;font-family: 'DM Serif Display', serif;}
-.trending .card {border: 0px !important;}
-.trending .card img {height: 173px;object-fit: cover;object-position: center;}
+.trending .card {border: 1px solid #e9e9e9 !important;transition: all 0.3s;}
+.trending .card:hover {border: 1px solid #d74c4c !important;transform: scale(1.05);}
+.trending .card img {height: 176px;object-fit: cover;object-position: center;}
 .trending hr.divider {color: #c3c3c3eb !important;}
 .text-color {color: #cd2e34 !important;}
 .trending h5 {font-family: 'DM Serif Display', serif;}
@@ -29,7 +30,8 @@
 
 /* new pick starts here */
 
-.card-cont {position: relative;overflow: hidden;padding: 18px 18px 26px;border-style: solid;border-width: 1px;border-color: rgb(231, 231, 231);border-radius: 20px;box-shadow: rgb(62 56 56 / 24%) 1px 1px 22px 0px;}
+.card-cont {position: relative;overflow: hidden;padding: 18px 18px 26px;border-style: solid;border-width: 1px;border-color: rgb(231, 231, 231);border-radius: 20px;box-shadow: rgb(62 56 56 / 24%) 1px 1px 22px 0px;transition: all 0.3s;}
+.card-cont:hover {border: 1px solid #d74c4c !important;}
 .image-11 {position: absolute;inset: 26px -14px 0% auto;max-width: 100%;vertical-align: middle;display: inline-block;}
 .image-10 {display: block;margin-right: auto;margin-left: auto;padding: 0px;max-width: 100%;vertical-align: middle;}
 .product-heading {margin-bottom: 4px;font-size: 12px;line-height: 24px;margin-top: 10px;}
