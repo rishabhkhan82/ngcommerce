@@ -7,15 +7,17 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+    
   customOptions: OwlOptions = {
-    loop: false,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
     dots: false,
-    smartSpeed: 1200,
+    navSpeed: 700,
     autoplay: true,
-    // navText: ['', ''],
+    smartSpeed: 1600,
+    navText: ['', ''],
     responsive: {
       0: {
         items: 1
@@ -31,5 +33,6 @@ export class HomeComponent {
       }
     },
     nav: false
-}
+  }
+    
 }

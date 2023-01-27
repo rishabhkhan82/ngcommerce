@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngcommerce';
+
+  constructor() {
+    console.log('App Module Loaded');
+  }
 }

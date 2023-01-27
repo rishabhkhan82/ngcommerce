@@ -9,8 +9,7 @@ import { HeaderComponent } from './common-pages/header/header.component';
 import { FooterComponent } from './common-pages/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth-module/auth-module.module';
-import { AdminModule } from './user-type/admin/admin.module';
-import { UserModule } from './user-type/user/user.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { UserModule } from './user-type/user/user.module';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    AdminModule,
-    UserModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

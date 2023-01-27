@@ -5,6 +5,18 @@ import { UserDashboardComponent } from "./user-dashboard/user-dashboard.componen
 import { UserNotificationComponent } from "./user-notification/user-notification.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { WishlistComponent } from "./wishlist/wishlist.component";
+import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { RouterModule, Routes } from "@angular/router";
+
+const routes : Routes = [
+  { path: '', component : UserLayoutComponent, children: [
+      { path: '', component: UserDashboardComponent},
+      { path: 'profile', component: UserProfileComponent},
+      { path: 'orders', component: MyOrdersComponent},
+      { path: 'wishlist', component: WishlistComponent},
+      { path: 'notifications', component: UserNotificationComponent },
+  ], }
+];
 
 @NgModule({
   declarations: [
@@ -13,9 +25,11 @@ import { WishlistComponent } from "./wishlist/wishlist.component";
     MyOrdersComponent,
     WishlistComponent,
     UserNotificationComponent,
+    UserLayoutComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     UserDashboardComponent,
@@ -33,5 +47,7 @@ import { WishlistComponent } from "./wishlist/wishlist.component";
 })
 
 export class UserModule {
-
+    constructor() {
+      console.log('user module lazily loaded');
+    }
 }

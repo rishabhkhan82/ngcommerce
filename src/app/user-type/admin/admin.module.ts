@@ -1,12 +1,25 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AddProductComponent } from "./add-product/add-product.component";
-import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
-import { AdminNotificationComponent } from "./admin-notification/admin-notification.component";
-import { AdminProductsComponent } from "./admin-products/admin-products.component";
-import { AdminProfileComponent } from "./admin-profile/admin-profile.component";
-import { OrderDetailComponent } from "./order-detail/order-detail.component";
-import { UserDetailComponent } from "./user-detail/user-detail.component";
+import { RouterModule, Routes } from "@angular/router";
+import { AddProductComponent } from "./admin-layout/add-product/add-product.component";
+import { AdminDashboardComponent } from "./admin-layout/admin-dashboard/admin-dashboard.component";
+import { AdminNotificationComponent } from "./admin-layout/admin-notification/admin-notification.component";
+import { AdminProductsComponent } from "./admin-layout/admin-products/admin-products.component";
+import { AdminProfileComponent } from "./admin-layout/admin-profile/admin-profile.component";
+import { OrderDetailComponent } from "./admin-layout/order-detail/order-detail.component";
+import { UserDetailComponent } from "./admin-layout/user-detail/user-detail.component";
+import { AdminLayoutComponent } from './admin-layout/admin-layout/admin-layout.component';
+
+const routes : Routes = [
+  { path: '', component : AdminLayoutComponent, children: [
+      { path: '', component: AdminDashboardComponent},
+      { path: 'profile', component: AdminProfileComponent},
+      { path: 'orders', component: OrderDetailComponent},
+      { path: 'users', component: UserDetailComponent},
+      { path: 'products', component: AdminProductsComponent},
+      { path: 'notifications', component: AdminNotificationComponent },
+  ], }
+];
 
 @NgModule({
   declarations: [
@@ -17,9 +30,11 @@ import { UserDetailComponent } from "./user-detail/user-detail.component";
     AdminProfileComponent,
     AdminProductsComponent,
     AddProductComponent,
+    AdminLayoutComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
   ],
   exports: [
     AdminDashboardComponent,
@@ -39,5 +54,7 @@ import { UserDetailComponent } from "./user-detail/user-detail.component";
 })
 
 export class AdminModule {
-
+  constructor() {
+    console.log('Admin Module Lazily Loaded');
+  }
 }

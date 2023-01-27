@@ -1,0 +1,29 @@
+<div class="dashboard py-5">
+</div>
+<div class="container mb-2 pb-5">
+  <div class="dash-cont shadow">
+    <div class="dashboard">
+      <div class="d-flex  w-100 justify-content-between" style="padding: 20px 32px;">
+        <div class="left d-flex flex-row align-items-center">
+          <img src="/assets/images/user.jpg" alt="no-img" class="dash-back-user-img shadow-sm">
+          <div class="welcom-div ms-3 shadow-sm">
+            <h6 class="mb-1">Hi Rishabh! | Welcome to admin dashboard</h6>
+          </div>
+        </div>
+        <div class="right">
+          <!-- <img src="/assets/images/dashboard-right.svg" alt="no-img" class="right-img img-fluid"> -->
+        </div>
+      </div>
+    </div>
+    <div class="dash-menus bg-dark d-flex flex-row">
+        <a routerLink="/admin" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}" alt="no-link" class="dash-menu-link">Dashboard</a>
+        <a routerLink="/admin/profile" routerLinkActive="active" alt="no-link" class="dash-menu-link">Profile</a>
+        <a routerLink="/admin/orders" routerLinkActive="active" alt="no-link" class="dash-menu-link">Orders</a>
+        <a routerLink="/admin/users" routerLinkActive="active" alt="no-link" class="dash-menu-link">Users</a>
+        <a routerLink="/admin/products" routerLinkActive="active" alt="no-link" class="dash-menu-link">Products</a>
+        <a routerLink="/admin/notifications" routerLinkActive="active" alt="no-link" class="dash-menu-link">Notifications</a>
+        <a routerLink="/" alt="no-link" class="dash-menu-link">Logout</a>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
