@@ -8,7 +8,6 @@ import { PaymentComponent } from './payment/payment.component';
 import { HeaderComponent } from './common-pages/header/header.component';
 import { FooterComponent } from './common-pages/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from './auth/auth-module/auth-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     BrowserAnimationsModule
   ],
   providers: [],

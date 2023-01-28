@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class PreloadingServiceService implements PreloadingStrategy {
+export class CustomPreloadingService implements PreloadingStrategy {
 
   preload(route: Route, fn: () => Observable<any>): Observable<any> {
     if(route.data && route.data['preload']) {
@@ -17,10 +16,5 @@ export class PreloadingServiceService implements PreloadingStrategy {
     }
   }
 
-
   constructor() { }
 }
-function of(arg0: null): Observable<any> {
-  throw new Error('Function not implemented.');
-}
-
