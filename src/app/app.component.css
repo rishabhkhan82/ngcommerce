@@ -1,0 +1,55 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48,;
+}
+
+.material-symbols-outlined {
+    color: #3A2D2C;
+  }
+
+  .rumi {
+    transition: all 0.3s;
+    
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 2px 2px 9px lightgrey;
+    padding: 30px 20px;
+
+  }
+
+  .dataloc {
+    transition: all 0.3s;
+    
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 2px 2px 9px lightgrey;
+    padding: 30px 20px;
+  }
+
+  .getup{
+    bottom: 0px;
+  }
+
+  .getdown {
+    bottom: -340px;
+  }
+
+  .getuptwo{
+    bottom: 0px;
+  }
+
+  .getdowntwo {
+    bottom: -340px;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+.rumi::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .rumi {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }

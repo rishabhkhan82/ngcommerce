@@ -1,3 +1,10 @@
 .product-img {max-height: 200px;}
 .pro-file {width: 100%;height: 200px;}
 h4 {font-family: 'DM Serif Display', serif;}
+.add-product-form input::placeholder,textarea::placeholder,label,select {color: grey !important;}
+.add-product-form input,textarea,label,select {color: grey !important;}
+.h-50 {height: 50px !important;}
+.h-27 {height: 27px !important;}
+.h-204 {height: 204px !important;}
+.btn-danger:hover {color: #fff;background-color: #212529 !important;border-color: #212529 !important;letter-spacing: 2px;}
+.btn-loader {position: absolute;right: 15px;top: 15px;}

@@ -9,6 +9,8 @@ import { AdminProfileComponent } from "./admin-layout/admin-profile/admin-profil
 import { OrderDetailComponent } from "./admin-layout/order-detail/order-detail.component";
 import { UserDetailComponent } from "./admin-layout/user-detail/user-detail.component";
 import { AdminLayoutComponent } from './admin-layout/admin-layout/admin-layout.component';
+import { ReactiveFormsModule } from "@angular/forms";
+
 
 const routes : Routes = [
   { path: '', component : AdminLayoutComponent, children: [
@@ -18,6 +20,7 @@ const routes : Routes = [
       { path: 'users', component: UserDetailComponent},
       { path: 'products', component: AdminProductsComponent},
       { path: 'notifications', component: AdminNotificationComponent },
+      { path: 'add-product', component: AddProductComponent },
   ], }
 ];
 
@@ -35,6 +38,7 @@ const routes : Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   exports: [
     AdminDashboardComponent,

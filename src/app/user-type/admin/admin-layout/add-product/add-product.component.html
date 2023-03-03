@@ -1,4 +1,4 @@
-<div class="profile py-5">
+<div class="profile pt-4 pb-5 px-4">
     <div class="container">
       <div class="row"> 
         <div class="col-sm-12">
@@ -7,13 +7,16 @@
             <div class="bg-light px-4 py-5 mt-4 rounded shadow-sm border">
               <div class="row">
                 <div class="col-sm-12">
-                  <form action="">
+                  <form [formGroup]="addProduct" (ngSubmit)="onAddProduct()" class="add-product-form">
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-4">
-                                <label for="filing" class="pro-file text-center d-flex justify-content-center align-items-center rounded shadow-sm border"><div class="fw-bold">Add Product Image</div></label>
-                                <input type="file" id="filing" class="d-none">
+                                <label for="filing" class="pro-file rounded-0 text-center d-flex justify-content-center align-items-center rounded shadow-sm border"><div class="fw-bold">Add Product Image</div></label>
+                                <input type="file" id="filing" class="d-none" formControlName="productimage">
+                                <p class="form-error text-danger mt-2 pb-3" *ngIf="!addProduct?.get('productimage')?.valid && addProduct?.get('productimage')?.touched || submitted && addProduct?.get('productimage')?.invalid">
+                                  product image is required
+                                </p>
                             </div>
                             <div class="col-sm-4">
                                 <img src="/assets/images/banner.jpg" alt="no-img" class="product-img img-fluid mb-5">
@@ -21,46 +24,140 @@
                         </div>
                       </div>
                       <div class="col-sm-8">
-                        <div class="input-group mb-5 shadow-sm" style="height: 50px;">
-                          <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Product Title" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-50">
+                          <div>
+                            <input formControlName="title" type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Product Name" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;height: 50px;">
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('title')?.valid && addProduct?.get('title')?.touched || submitted && addProduct?.get('title')?.invalid">
+                              <small>Product Name is Required</small>
+                            </p>
+                          </div>
                         </div>
                       </div>
                       <div class="col-sm-4">
-                        <div class="input-group mb-5 shadow-sm" style="height: 50px;">
-                          <input type="number" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Product Price" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-50">
+                          <div>
+                            <input formControlName="price" type="number" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Product Price ( ₹ )" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;height: 50px;">
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('price')?.valid && addProduct?.get('price')?.touched || submitted && addProduct?.get('price')?.invalid">
+                              <small>Product Price is Required</small>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-sm-4">
-                        <div class="input-group mb-5 shadow-sm" style="height: 50px;">
-                          <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Has Discount Select Yes or No" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
+                      <div class="col-sm-3">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-50">
+                          <div>
+                            <select formControlName="category"  class="form-control rounded-0 border-0 shadow-none" id="" style="background-color: white;height: 50px;">
+                              <option selected value="">Select Category</option>
+                              <option *ngFor="let item of category" [value]="item.value">
+                                {{item.value}}
+                              </option>
+                            </select>
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('category')?.valid && addProduct?.get('category')?.touched || submitted && addProduct?.get('category')?.invalid">
+                              <small>Category is Required</small>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-sm-4">
-                        <div class="input-group mb-5 shadow-sm" style="height: 50px;">
-                          <input type="number" class="form-control rounded-0 border-0 shadow-none" placeholder="Discount In Percentage" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
+                      <div class="col-sm-3">
+                        <div class="input-group mb-5 shadow-sm h-50">
+                            <select formControlName="hasdiscount"  class="form-control rounded-0 border-0 shadow-none" id="" style="background-color: white;" (change)="onChangeDiscount($event)">
+                              <option *ngFor="let item of hasdiscount" [value]="item.value">
+                                {{item.value}}
+                              </option>
+                            </select>
                         </div>
                       </div>
-                      <div class="col-sm-4">
-                        <div class="input-group mb-5 shadow-sm" style="height: 50px;">
-                          <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Select Product's Available Sizes" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
+                      <div class="col-sm-3">
+                        <div class="input-group mb-5 shadow-sm h-50">
+                          <input formControlName="discoujntpercentage" type="number" class="form-control rounded-0 border-0 shadow-none" placeholder="Discount In Percentage" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <!-- <div class="input-group mb-5 shadow-sm" style="height: 50px;">
+                          <select formControlName="size"  class="form-control rounded-0 border-0 shadow-none" id="" style="background-color: white;">
+                            <option selected value="">Select Size</option>
+                            <option *ngFor="let item of size" [value]="item.value">
+                              {{item.value}}
+                            </option>
+                          </select>
+                        </div> -->
+                        <label for="">Select Size</label>
+
+                        <div class="d-flex flex-row">
+                          <div class="input-group mb-5 h-27" *ngFor="let item of sizeArray; index as i">
+                            <input id="{{item}}" type="checkbox" [value]="item" name="size" (change)="onChangeSize($event)">
+                            <label for="{{item}}" class="ms-1">{{item}}</label>
+                          </div>
+                         
+
+                        </div>
+                        <!-- <label for="">Select Size</label>
+                        <div class="d-flex flex-row">
+                          <div *ngFor="let item of size; let i=index" class="me-2">
+                            <label>
+                              <input formControlName="size" type="checkbox" [value]="item.value" (change)="onCheckboxChange($event)" />
+                              {{item.value}}
+                            </label>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
+                          <div>
+                            <textarea formControlName="desone" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 1"></textarea>
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('desone')?.valid && addProduct?.get('desone')?.touched || submitted && addProduct?.get('desone')?.invalid">
+                              <small>Description Para 1 is Required</small>
+                            </p>
+                          </div>
                         </div>
                       </div>
                       <div class="col-sm-6">
-                        <textarea name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm mb-5" placeholder="Description Para 1"></textarea>
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
+                          <div>
+                            <textarea formControlName="destwo" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 2"></textarea>
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('destwo')?.valid && addProduct?.get('destwo')?.touched || submitted && addProduct?.get('destwo')?.invalid">
+                              <small>Description Para 2 is Required</small>
+                            </p>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-sm-6">
-                        <textarea name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm mb-5" placeholder="Description Para 2"></textarea>
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
+                          <div>
+                            <textarea formControlName="desthree" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 3"></textarea>
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('desthree')?.valid && addProduct?.get('desthree')?.touched || submitted && addProduct?.get('desthree')?.invalid">
+                              <small>Description Para 3 is Required</small>
+                            </p>
+                          </div>
+                        </div>
                       </div>
                       <div class="col-sm-6">
-                        <textarea name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm mb-5" placeholder="Description Para 3"></textarea>
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
+                          <div>
+                            <textarea formControlName="desfour" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 4"></textarea>
+                          </div>
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('desfour')?.valid && addProduct?.get('desfour')?.touched || submitted && addProduct?.get('desfour')?.invalid">
+                              <small>Description Para 4 is Required</small>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                      <div class="col-sm-6">
-                        <textarea name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm mb-5" placeholder="Description Para 4"></textarea>
-                      </div>
-                      
                       <div class="col-sm-4">
                         <div class="">
-                          <button class="btn btn-danger w-100 mt-0 rounded-0" style="height: 50px;">Add product</button>
+                          <button type="submit" class="btn btn-danger w-100 mt-0 rounded-0 h-50 position-relative">Add product <i *ngIf="loader" class="fa fa-spinner fa-spin btn-loader"></i></button>
                         </div>
                       </div>
                     </div>
