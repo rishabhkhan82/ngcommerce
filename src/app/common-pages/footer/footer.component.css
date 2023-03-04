@@ -9,3 +9,13 @@
 .text-block-9 {padding-top: 4px;padding-bottom: 4px;color: rgb(111, 111, 111);}
 .heading-7.custome {max-width: 502px;margin-top: 16px;color: rgba(255, 255, 255, 0.52);font-size: 12px;font-style: normal;}
 .heading-7 {max-width: 224px;margin-top: 0px;margin-right: auto;margin-left: auto;border-bottom: 0px solid rgb(85, 85, 85);color: rgb(255, 255, 255);font-size: 24px;font-style: italic;text-align: center;text-decoration: none;line-height: 18px;margin-bottom: 20px;}
+
+@media (max-width: 576px)
+{
+    .w-layout-grid {
+        display: flex;
+        grid-auto-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: 16px;
+    }
+}
