@@ -10,12 +10,18 @@ export class ProductService {
 
   apiKey = firebaseConfig.databaseURL;
 
-  constructor(private http : HttpClient) {
+  constructor(
+    private http : HttpClient
+    ) {
 
   }
 
   onAddProduct(productData:{}) {
     return this.http.post<productAdding>(`${this.apiKey}/products.json`, productData); 
+  }
+
+  onGetProduct() {
+    return this.http.get<productAdding>(`${this.apiKey}/products.json`)
   }
 
 }
