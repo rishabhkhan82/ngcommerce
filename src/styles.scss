@@ -1,5 +1,11 @@
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 
+@import 'ngx-toastr/toastr';
+
+.toast-title {font-weight: normal !important;}
+
+.toast-container {position: fixed !important; }
+
 body {background-color: #212529;}
 
 /* You can add global styles to this file, and also import other style files */

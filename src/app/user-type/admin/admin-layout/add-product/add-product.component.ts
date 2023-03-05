@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/appServices/product.service';
 import { productAdding } from './add-product.model';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 interface Categories {
   value: string;
@@ -50,7 +51,7 @@ export class AddProductComponent implements OnInit {
     'xl'
   ];
 
-  constructor(public prodService: ProductService,private router: Router) {
+  constructor(public prodService: ProductService,private router: Router,private toastr: ToastrService) {
 
   }
 
@@ -121,8 +122,8 @@ export class AddProductComponent implements OnInit {
         (res) => {
           // console.log(res);
           this.loader = false;
+          this.toastr.success('', 'You are Logged in successfully!');
           this.router.navigate(['/admin']);
-          
         }
       );
 
@@ -131,6 +132,11 @@ export class AddProductComponent implements OnInit {
     }
     else {
       this.submitted=true;
+      this.toastr.error('', 'Please fill in the form to login!', {
+        timeOut: 4000,
+        progressBar: true,
+        progressAnimation: 'increasing',
+      });
     }
   }
 
