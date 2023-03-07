@@ -10,12 +10,17 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-7 ps-0">
           <div class="px-3">
-            <h4 class="mb-4">Half sleeve men's t-shirt(black and white color)</h4>
+            <div class="clearfix">
+              <h4 class="mb-4">{{item.title}}</h4>
+              <h4 class="mb-4 text-danger">${{item.price}}.00</h4>
+            </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatum neque eum veniam perferendis dolores, voluptatem dicta, quasi magni architecto tenetur odit fugiat reiciendis. Odio quia officia pariatur atque! Dolorem.
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatum neque eum veniam perferendis dolores, voluptatem dicta, quasi magni architecto tenetur odit fugiat reiciendis. Odio quia officia pariatur atque! Dolorem. -->
+              {{item.desone}}
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatum neque eum veniam perferendis dolores, voluptatem dicta, quasi magni architecto tenetur odit fugiat reiciendis. Odio quia officia pariatur atque! Dolorem.
+              {{item.destwo}}
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatum neque eum veniam perferendis dolores, voluptatem dicta, quasi magni architecto tenetur odit fugiat reiciendis. Odio quia officia pariatur atque! Dolorem. -->
             </p>
             <div>
               <button class="btn btn-primary bg-secondary border-secondary" style="height: 50px;">Add to cart</button>
@@ -33,8 +38,14 @@
         <div class="col-sm-6">
           <h4 class="mt-5">Specifications</h4>
           <div class="pb-5 pt-3">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt ad ducimus sapiente animi consectetur repellendus quae perferendis eius nostrum vitae sint, odio eveniet molestiae doloremque perspiciatis commodi? Autem, suscipit natus?</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt ad ducimus sapiente animi consectetur repellendus quae perferendis eius nostrum vitae sint, odio eveniet molestiae doloremque perspiciatis commodi? Autem, suscipit natus?</p>
+            <p>
+              {{item.desthree}}
+              <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt ad ducimus sapiente animi consectetur repellendus quae perferendis eius nostrum vitae sint, odio eveniet molestiae doloremque perspiciatis commodi? Autem, suscipit natus? -->
+            </p>
+            <p>
+              {{item.desfour}}
+              <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt ad ducimus sapiente animi consectetur repellendus quae perferendis eius nostrum vitae sint, odio eveniet molestiae doloremque perspiciatis commodi? Autem, suscipit natus? -->
+            </p>
           </div>
         </div>
         <div class="col-sm-6">
@@ -44,29 +55,29 @@
                 <tr>
                   <th scope="col" class="p-4">#</th>
                   <th scope="col" class="p-4">Size</th>
-                  <th scope="col" class="p-4">Availabe Color</th>
-                  <th scope="col" class="p-4">Brand</th>
+                  <!-- <th scope="col" class="p-4">Availabe Color</th> -->
+                  <!-- <th scope="col" class="p-4">Brand</th> -->
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row" class="p-4">1</th>
-                  <td class="p-4">Mark</td>
-                  <td class="p-4">Otto</td>
-                  <td class="p-4">@mdo</td>
+                <tr *ngFor="let item of sizeArray; index as i">
+                  <th scope="row" class="p-4">{{i + 1}}</th>
+                  <td class="p-4">{{item}}</td>
+                  <!-- <td class="p-4">Otto</td>
+                  <td class="p-4">@mdo</td> -->
                 </tr>
-                <tr>
+                <!-- <tr>
                   <th scope="row" class="p-4">2</th>
                   <td class="p-4">Jacob</td>
                   <td class="p-4">Thornton</td>
                   <td class="p-4">@fat</td>
-                </tr>
-                <tr>
+                </tr> -->
+                <!-- <tr>
                   <th scope="row" class="p-4">2</th>
                   <td class="p-4">Jacob</td>
                   <td class="p-4">Thornton</td>
                   <td class="p-4">@fat</td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div>

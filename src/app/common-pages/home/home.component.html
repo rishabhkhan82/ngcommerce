@@ -56,27 +56,30 @@
   <div class="container-fluid">
     <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center">
       <div>
-        <h2 class="me-sm-2"><span class="high-text">#50</span> Trending Clothing Wear</h2>
+        <h2 class="me-sm-2"><span class="high-text">#50</span> Big-Sale Clothing Wear</h2>
       </div>
       <div class="flex-fill">
         <div class="row g-3">
-          <div class="col-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="row g-0">
-                <div class="col-md-5">
-                  <img src="https://cdn.shopify.com/s/files/1/0249/4110/1152/products/TS078_MAROON_FRONT.jpg?v=1623061994" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-7">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting.</p>
-                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
+          <ng-container *ngFor="let item of productArray">
+            <div class="col-6 col-xl-3" *ngIf="item.hasdiscount !== 'No Discount'">
+              <div class="card shadow-sm">
+                <div class="row g-0">
+                  <div class="col-md-5">
+                    <img src="https://cdn.shopify.com/s/files/1/0249/4110/1152/products/TS078_MAROON_FRONT.jpg?v=1623061994" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.title}}</h5>
+                      <p class="card-text">{{item.desone}}</p>
+                      <p class="card-text mb-1"><strong class="text-color">${{item.price}}.00</strong></p>
+                      <a [routerLink]="['/product', item.userId]" class="text-danger stretched-link"><small>View Product</small></a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-6 col-xl-3">
+          </ng-container>
+          <!-- <div class="col-6 col-xl-3">
             <div class="card shadow-sm">
               <div class="row g-0">
                 <div class="col-md-5">
@@ -123,7 +126,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         
       </div>
@@ -251,102 +254,33 @@
       </div>
     </div>
     <owl-carousel-o [options]="newPick">
-      <ng-template carouselSlide>
-        <div class="card-cont">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
-          <h5 class="product-heading">London Hills Solid Men Half Sleeve Round Neck T-Shirt (Pack of 3)</h5>
-          <div class="div-block-15">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <div class="text-block-8">(52k)</div>
-          </div>
-          <div class="div-block-17">
-            <p class="discount italic">$20.00</p>
-            <div class="d-flex flex-row ps-1">
-              <div class="discount custom">M.R.P: </div>
-              <div class="discount custom other overline"> $40.00 </div>
-              <div class="discount custom other">(50% off)</div>
+      <ng-container *ngFor="let item of productArray">
+        <ng-template carouselSlide *ngIf="item.hasdiscount === 'No Discount'">
+          <div class="card-cont position-relative">
+            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
+            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
+            <!-- <h5 class="product-heading">London Hills Solid Men Half Sleeve Round Neck T-Shirt (Pack of 3)</h5> -->
+            <h5 class="product-heading">{{item.title}}</h5>
+            <div class="div-block-15">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+              <div class="text-block-8">(52k)</div>
             </div>
-          </div>
-          <a href="#" class="btn btn-primary w-button">See Details</a>
-        </div>
-      </ng-template>
-      <ng-template carouselSlide>
-        <div class="card-cont">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
-          <h5 class="product-heading">London Hills Solid Men Half Sleeve Round Neck T-Shirt (Pack of 3)</h5>
-          <div class="div-block-15">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <div class="text-block-8">(52k)</div>
-          </div>
-          <div class="div-block-17">
-            <p class="discount italic">$20.00</p>
-            <div class="d-flex flex-row ps-1">
-              <div class="discount custom">M.R.P: </div>
-              <div class="discount custom other overline"> $40.00 </div>
-              <div class="discount custom other">(50% off)</div>
+            <div class="div-block-17">
+              <p class="discount italic">${{item.price}}.00</p>
+              <div class="d-flex flex-row ps-1" *ngIf="item.hasdiscount !== 'No Discount'">
+                <div class="discount custom">M.R.P: </div>
+                <div class="discount custom other overline"> ${{item.price * 100/item.discoujntpercentage}}.00 </div>
+                <div class="discount custom other">({{item.discoujntpercentage}}% off)</div>
+              </div>
             </div>
+            <a href="#" class="btn btn-primary w-button stretched-link" [routerLink]="['/product', item.userId]">See Details</a>
           </div>
-          <a href="#" class="btn btn-primary w-button">See Details</a>
-        </div>
-      </ng-template>  
-      <ng-template carouselSlide>
-        <div class="card-cont">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
-          <h5 class="product-heading">London Hills Solid Men Half Sleeve Round Neck T-Shirt (Pack of 3)</h5>
-          <div class="div-block-15">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <div class="text-block-8">(52k)</div>
-          </div>
-          <div class="div-block-17">
-            <p class="discount italic">$20.00</p>
-            <div class="d-flex flex-row ps-1">
-              <div class="discount custom">M.R.P: </div>
-              <div class="discount custom other overline"> $40.00 </div>
-              <div class="discount custom other">(50% off)</div>
-            </div>
-          </div>
-          <a href="#" class="btn btn-primary w-button">See Details</a>
-        </div>
-      </ng-template>  
-      <ng-template carouselSlide>
-        <div class="card-cont">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
-          <h5 class="product-heading">London Hills Solid Men Half Sleeve Round Neck T-Shirt (Pack of 3)</h5>
-          <div class="div-block-15">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-            <div class="text-block-8">(52k)</div>
-          </div>
-          <div class="div-block-17">
-            <p class="discount italic">$20.00</p>
-            <div class="d-flex flex-row ps-1">
-              <div class="discount custom">M.R.P: </div>
-              <div class="discount custom other overline"> $40.00 </div>
-              <div class="discount custom other">(50% off)</div>
-            </div>
-          </div>
-          <a href="#" class="btn btn-primary w-button">See Details</a>
-        </div>
-      </ng-template>    
+        </ng-template>
+      </ng-container>
     </owl-carousel-o>
     
   </div>

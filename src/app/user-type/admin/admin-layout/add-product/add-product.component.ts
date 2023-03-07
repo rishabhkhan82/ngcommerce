@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/appServices/product.service';
 import { productAdding } from './add-product.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 interface Categories {
   value: string;
@@ -29,7 +30,7 @@ export class AddProductComponent implements OnInit {
 
   addProduct !: FormGroup;
 
-  productData !: any;
+  productData !: productAdding;
 
   submitted: boolean = false;
 
@@ -51,9 +52,16 @@ export class AddProductComponent implements OnInit {
     'xl'
   ];
 
-  constructor(public prodService: ProductService,private router: Router,private toastr: ToastrService) {
+  productId: string = '';
 
-  }
+  productingArray: any;
+
+  constructor(
+    public prodService: ProductService,
+    private router: Router,
+    private toastr: ToastrService,
+    private activeRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.addProduct = new FormGroup({
@@ -69,6 +77,37 @@ export class AddProductComponent implements OnInit {
       desthree : new FormControl(null, Validators.required),
       desfour : new FormControl(null, Validators.required),
     });
+
+    this.activeRoute.queryParams.subscribe(params => {
+      const proId = params['id'];
+        // console.log(params['id']); 
+      this.prodService.getSingleData(proId).subscribe(
+        (res) => {
+          const data = res;
+          this.productingArray = data;
+          console.log(this.productingArray);
+
+          this.addProduct.patchValue({
+            productimage : '',
+            title : this.productingArray.title,
+            price : this.productingArray.price,
+            category : this.productingArray.category,
+            hasdiscount : this.productingArray.hasdiscount,
+            discoujntpercentage : this.productingArray.discoujntpercentage,
+            size : this.productingArray.size,
+            desone : this.productingArray.desone,
+            destwo : this.productingArray.destwo,
+            desthree : this.productingArray.desthree,
+            desfour : this.productingArray.desfour,
+          });
+
+        }
+      )
+
+
+      }
+    );
+
     
   }
 
@@ -122,7 +161,7 @@ export class AddProductComponent implements OnInit {
         (res) => {
           // console.log(res);
           this.loader = false;
-          this.toastr.success('', 'You are Logged in successfully!');
+          this.toastr.success('', 'You have uploaded product successfully!');
           this.router.navigate(['/admin']);
         }
       );
@@ -132,14 +171,55 @@ export class AddProductComponent implements OnInit {
     }
     else {
       this.submitted=true;
-      this.toastr.error('', 'Please fill in the form to login!', {
+      this.toastr.error('', 'Please fill in the form to add product!', {
         timeOut: 4000,
         progressBar: true,
         progressAnimation: 'increasing',
       });
+
     }
   }
 
+  onApplyPercentage() {
+    let priceValue = this.addProduct.value.price;
+    let discountValue = this.addProduct.value.discoujntpercentage;
+    const newPrice = priceValue * (discountValue/100);
+
+    this.addProduct.patchValue({
+      price : newPrice
+    });
+  }
+
+  // onEditingProduct() {
+  //   this.addProduct.setValue({
+  //     name: this.userArray[i].name,
+  //     technology: this.userArray[i].technology
+  //   });
+  // }
+
+  // gettingSingleData(res: any) {
+
+    // console.log(res.productimage)
+    // this.addProduct.patchValue({
+    //   category: res.category,
+    //   productimage: res.productimage
+    // })
+
+    // this.addProduct.setValue({
+    //   productimage : res.productimage,
+    //   title : res.title,
+    //   price : res.price,
+    //   category : res.category,
+    //   hasdiscount : res.hasdiscount,
+    //   discoujntpercentage : res.discoujntpercentage,
+    //   size : res.size,
+    //   desone : res.desone,
+    //   destwo : res.destwo,
+    //   desthree : res.desthree,
+    //   desfour : res.desfour,
+
+    // });
+  // }
 
 
 

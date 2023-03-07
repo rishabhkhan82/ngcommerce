@@ -21,7 +21,15 @@ export class ProductService {
   }
 
   onGetProduct() {
-    return this.http.get<productAdding>(`${this.apiKey}/products.json`)
+    return this.http.get<productAdding>(`${this.apiKey}/products.json`);
+  }
+
+  onDeleteProduct(id:any) {
+    return this.http.delete(`${this.apiKey}/products/${id}.json`);
+  }
+
+  getSingleData(id:any) {
+    return this.http.get<productAdding>(`${this.apiKey}/products/${id}.json`);
   }
 
 }

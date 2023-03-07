@@ -11,38 +11,40 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 g-3" *ngFor="let item of productArray">
-          <div class="card-cont">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
-            <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
-            <h5 class="product-heading">{{item.title}}</h5>
-            <div class="div-block-15">
-              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
-              <div class="text-block-8">(52k)</div>
-            </div>
-            <div class="div-block-17">
-                <p class="discount italic">${{item.price}}</p>
-                <div class="d-flex flex-row ps-1">
-                  <div class="discount custom">M.R.P: </div>
-                  <div class="discount custom other overline"> $40.00 </div>
-                  <div class="discount custom other">(50% off)</div>
+        <ng-container *ngFor="let item of productArray; index as ind">
+          <div class="col-sm-3 g-3">
+            <div class="card-cont position-relative">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
+              <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
+              <h5 class="product-heading">{{item.title}}</h5>
+              <div class="div-block-15">
+                <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+                <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+                <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+                <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+                <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
+                <div class="text-block-8">(52k)</div>
+              </div>
+              <div class="div-block-17">
+                  <p class="discount italic">${{item.price}}</p>
+                  <div class="d-flex flex-row ps-1" *ngIf="item.hasdiscount !== 'No Discount'">
+                    <div class="discount custom">M.R.P: </div>
+                    <div class="discount custom other overline"> ${{item.price * 100/item.discoujntpercentage}}.00 </div>
+                    <div class="discount custom other">({{item.discoujntpercentage}}% off)</div>
+                  </div>
+                </div>
+                <!-- <a href="#" class="btn btn-primary w-button stretched-link" [routerLink]="['/product', item.userId]">See Details</a> -->
+                <hr class="mt-0">
+                <div class="btn-group w-100" role="group" aria-label="Basic example" style="height: 50px;">
+                  <button type="button" class="btn btn-success rounded-0" (click)="onEditProduct(item.userId, ind)">Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="onDeletingProduct(item.userId)">Delete</button>
+                  <a type="button" class="btn btn-secondary rounded-0" [routerLink]="['/product', item.userId]" (click)="onGetSingleData(item.userId)" style="line-height: 35px;">View</a>
                 </div>
               </div>
-              <a href="#" class="btn btn-primary w-button">See Details</a>
-              <hr>
-              <div class="btn-group w-100" role="group" aria-label="Basic example" style="height: 50px;">
-                <button type="button" class="btn btn-success rounded-0">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-                <button type="button" class="btn btn-secondary rounded-0">View</button>
-              </div>
-            </div>
-          <div>
-        </div>
-        </div>
+            <div>
+          </div>
+          </div>
+        </ng-container >
 
       </div>
     </div>

@@ -8,12 +8,14 @@ import { PageNotFoundComponent } from "./common-pages/page-not-found/page-not-fo
 import { CommonModule } from "@angular/common";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CustomPreloadingService } from "./appServices/custom-preloading.service";
+import { ProductIndividualComponent } from "./product/product-individual/product-individual.component";
 
 const routes : Routes = [
     {path: '', component: HomeComponent},
     {path: 'about', component: AboutComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'cart', component: CartComponent},
+    {path: 'product/:userId', component: ProductIndividualComponent},
     {path: '', data: {preload : true}, loadChildren: () => import('./auth/auth-module.module').then(m => m.AuthModule)},
     {path: 'user', loadChildren: () => import('./user-type/user/user.module').then(m => m.UserModule)},
     {path: 'admin', loadChildren: () => import('./user-type/admin/admin.module').then(m => m.AdminModule)},
@@ -26,6 +28,7 @@ const routes : Routes = [
         ContactComponent,
         AboutComponent,
         PageNotFoundComponent,
+        ProductIndividualComponent
     ],
     imports: [
         RouterModule.forRoot(routes, {

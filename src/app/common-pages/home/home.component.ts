@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ProductService } from 'src/app/appServices/product.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+
+  productArray : any = [];
+
+  constructor(
+    private productServi: ProductService,
+  ) {
+
+  }
+
+  ngOnInit() {
+    this.onFetchUsers();
+  }
     
   customOptions: OwlOptions = {
     loop: true,
@@ -61,6 +75,27 @@ export class HomeComponent {
     },
     margin: 16,
     nav: false
+  }
+
+  onFetchUsers() {
+    this.productServi.onGetProduct().pipe(map((resData: any) => {
+      // console.log(resData);
+      const userArrayTwo: any = [];
+      for(const id in resData) {
+        // console.log(id);
+        // console.log(resData[id])
+        if(resData.hasOwnProperty(id)) {
+          userArrayTwo.push({
+            userId: id, ...resData[id]
+          });
+        }
+      }
+      return userArrayTwo
+    })).subscribe((res) => {
+      const dataTwo = JSON.stringify(res);
+      this.productArray = JSON.parse(dataTwo);
+      console.log(this.productArray)
+    })
   }
 
 }
