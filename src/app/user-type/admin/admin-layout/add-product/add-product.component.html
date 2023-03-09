@@ -94,9 +94,15 @@
                             <input id="{{item}}" type="checkbox" [value]="item" name="size" (change)="onChangeSize($event)">
                             <label for="{{item}}" class="ms-1">{{item}}</label>
                           </div>
-                         
-
+                          <div>
+                            <p class="form-error text-danger d-block mt-2 pb-3" *ngIf="!addProduct?.get('size')?.valid && addProduct?.get('size')?.touched || submitted && addProduct?.get('size')?.invalid">
+                              <small>Size is Required</small>
+                            </p>
+                          </div>
                         </div>
+
+                        
+
                         <!-- <label for="">Select Size</label>
                         <div class="d-flex flex-row">
                           <div *ngFor="let item of size; let i=index" class="me-2">
@@ -157,7 +163,7 @@
                       </div>
                       <div class="col-sm-4">
                         <div class="">
-                          <button type="submit" class="btn btn-danger w-100 mt-0 rounded-0 h-50 position-relative">Add product <i *ngIf="loader" class="fa fa-spinner fa-spin btn-loader"></i></button>
+                          <button type="submit" class="btn btn-danger w-100 mt-0 rounded-0 h-50 position-relative">Add Product <i *ngIf="loader" class="fa fa-spinner fa-spin btn-loader"></i></button>
                         </div>
                       </div>
                     </div>

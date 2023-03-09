@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ProductSearchComponent } from './product/product-search/product-search.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { PaymentComponent } from './payment/payment.component';
 import { HeaderComponent } from './common-pages/header/header.component';
@@ -14,7 +13,6 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductSearchComponent,
     RatingsComponent,
     PaymentComponent,
     HeaderComponent,

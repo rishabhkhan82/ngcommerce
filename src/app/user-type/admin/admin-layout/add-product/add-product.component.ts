@@ -56,6 +56,8 @@ export class AddProductComponent implements OnInit {
 
   productingArray: any;
 
+  editMode: boolean = false;
+
   constructor(
     public prodService: ProductService,
     private router: Router,
@@ -79,14 +81,16 @@ export class AddProductComponent implements OnInit {
     });
 
     this.activeRoute.queryParams.subscribe(params => {
+      this.editMode = true;
       const proId = params['id'];
+
+      this.productId = proId;
         // console.log(params['id']); 
       this.prodService.getSingleData(proId).subscribe(
         (res) => {
           const data = res;
           this.productingArray = data;
           console.log(this.productingArray);
-
           this.addProduct.patchValue({
             productimage : '',
             title : this.productingArray.title,
@@ -155,16 +159,30 @@ export class AddProductComponent implements OnInit {
     // }
 
     if(this.addProduct.valid){
-      // console.log(this.addProduct.value);
-      this.loader = true;
-      this.prodService.onAddProduct(this.productData).subscribe(
-        (res) => {
-          // console.log(res);
-          this.loader = false;
-          this.toastr.success('', 'You have uploaded product successfully!');
-          this.router.navigate(['/admin']);
-        }
-      );
+
+      if(this.editMode) {
+        this.loader = true;
+        this.prodService.onProductEdit(this.productId, this.productData).subscribe(
+          (res) => {
+            this.router.navigate(['/admin/products']);
+            this.loader = false;
+            this.editMode = false;
+          }
+        );
+      }
+
+      else {
+        // console.log(this.addProduct.value);
+        this.loader = true;
+        this.prodService.onAddProduct(this.productData).subscribe(
+          (res) => {
+            // console.log(res);
+            this.loader = false;
+            this.toastr.success('', 'You have uploaded product successfully!');
+            this.router.navigate(['/admin']);
+          }
+        );
+      }
 
     // console.log(this.productData);
 

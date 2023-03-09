@@ -28,6 +28,10 @@ export class ProductService {
     return this.http.delete(`${this.apiKey}/products/${id}.json`);
   }
 
+  onProductEdit(prodId:any,prodData:{}) {
+    return this.http.put<productAdding>(`${this.apiKey}/products/${prodId}.json`, prodData);
+  }
+
   getSingleData(id:any) {
     return this.http.get<productAdding>(`${this.apiKey}/products/${id}.json`);
   }
