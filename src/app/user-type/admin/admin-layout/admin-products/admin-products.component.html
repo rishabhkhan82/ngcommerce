@@ -11,8 +11,53 @@
                 </div>
             </div>
         </div>
-        <ng-container *ngFor="let item of productArray; index as ind">
-          <div class="col-sm-3 g-3">
+        <ng-container *ngIf="dataloading">
+          <div class="col-sm-3 g-3" *ngFor="let item of generateFake">
+            <div class="bg-white card-cont">
+              <div>
+                  <ngx-skeleton-loader count="1"  [theme]="{
+                    'width': '100%', 
+                    'height.px': 300,
+                    'margin': 0
+                  }"></ngx-skeleton-loader>
+                  <h5>
+
+                  </h5>
+                  <ngx-skeleton-loader count="3" appearance="line"  [theme]="{
+                    'width': '100%', 
+                    'height.px': 20,
+                    'margin': 10
+                  }"></ngx-skeleton-loader>
+                  <hr class="mt-0" />
+                  <div class="row g-1">
+                    <div class="col-sm-4">
+                      <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
+                        'width': '100%', 
+                        'height.px': 50,
+                        'margin': 0
+                      }"></ngx-skeleton-loader>
+                    </div>
+                    <div class="col-sm-4">
+                      <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
+                        'width': '100%', 
+                        'height.px': 50,
+                        'margin': 0
+                      }"></ngx-skeleton-loader>
+                    </div>
+                    <div class="col-sm-4">
+                      <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
+                        'width': '100%', 
+                        'height.px': 50,
+                        'margin': 0
+                      }"></ngx-skeleton-loader>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!dataloading">
+          <div class="col-sm-3 g-3" *ngFor="let item of productArray; index as ind">
             <div class="card-cont position-relative">
               <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
               <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
@@ -44,7 +89,7 @@
             <div>
           </div>
           </div>
-        </ng-container >
+        </ng-container>
 
       </div>
     </div>

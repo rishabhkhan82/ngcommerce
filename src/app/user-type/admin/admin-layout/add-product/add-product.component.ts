@@ -81,36 +81,40 @@ export class AddProductComponent implements OnInit {
     });
 
     this.activeRoute.queryParams.subscribe(params => {
-      this.editMode = true;
       const proId = params['id'];
-
-      this.productId = proId;
-        // console.log(params['id']); 
-      this.prodService.getSingleData(proId).subscribe(
-        (res) => {
-          const data = res;
-          this.productingArray = data;
-          console.log(this.productingArray);
-          this.addProduct.patchValue({
-            productimage : '',
-            title : this.productingArray.title,
-            price : this.productingArray.price,
-            category : this.productingArray.category,
-            hasdiscount : this.productingArray.hasdiscount,
-            discoujntpercentage : this.productingArray.discoujntpercentage,
-            size : this.productingArray.size,
-            desone : this.productingArray.desone,
-            destwo : this.productingArray.destwo,
-            desthree : this.productingArray.desthree,
-            desfour : this.productingArray.desfour,
-          });
-
-        }
-      )
-
-
+      
+      if(proId) {
+        this.editMode = true;
+        this.productId = proId;
+          // console.log(params['id']); 
+        this.prodService.getSingleData(proId).subscribe(
+          (res) => {
+            const data = res;
+            this.productingArray = data;
+            // console.log(this.productingArray);
+            this.addProduct.patchValue({
+              productimage : '',
+              title : this.productingArray.title,
+              price : this.productingArray.price,
+              category : this.productingArray.category,
+              hasdiscount : this.productingArray.hasdiscount,
+              discoujntpercentage : this.productingArray.discoujntpercentage,
+              size : this.productingArray.size,
+              desone : this.productingArray.desone,
+              destwo : this.productingArray.destwo,
+              desthree : this.productingArray.desthree,
+              desfour : this.productingArray.desfour,
+            });
+  
+          }
+        )
       }
-    );
+
+      else {
+        this.editMode = false;
+      }
+
+    });
 
     
   }
@@ -167,6 +171,7 @@ export class AddProductComponent implements OnInit {
             this.router.navigate(['/admin/products']);
             this.loader = false;
             this.editMode = false;
+            this.toastr.success('', 'You have updated product successfully!');
           }
         );
       }
@@ -179,7 +184,7 @@ export class AddProductComponent implements OnInit {
             // console.log(res);
             this.loader = false;
             this.toastr.success('', 'You have uploaded product successfully!');
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/admin/products']);
           }
         );
       }

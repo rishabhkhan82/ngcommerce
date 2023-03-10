@@ -12,6 +12,15 @@ export class HomeComponent implements OnInit {
 
   productArray : any = [];
 
+  generateFake : any = [
+    {},
+    {},
+    {},
+    {}
+  ];
+  
+  dataloading: boolean = true;
+  
   constructor(
     private productServi: ProductService,
   ) {
@@ -94,7 +103,8 @@ export class HomeComponent implements OnInit {
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
       this.productArray = JSON.parse(dataTwo);
-      console.log(this.productArray)
+      console.log(this.productArray);
+      this.dataloading = false;
     })
   }
 

@@ -163,7 +163,7 @@
                       </div>
                       <div class="col-sm-4">
                         <div class="">
-                          <button type="submit" class="btn btn-danger w-100 mt-0 rounded-0 h-50 position-relative">Add Product <i *ngIf="loader" class="fa fa-spinner fa-spin btn-loader"></i></button>
+                          <button type="submit" class="btn btn-danger w-100 mt-0 rounded-0 h-50 position-relative">{{editMode? 'Update' : 'Add'}} Product <i *ngIf="loader" class="fa fa-spinner fa-spin btn-loader"></i></button>
                         </div>
                       </div>
                     </div>

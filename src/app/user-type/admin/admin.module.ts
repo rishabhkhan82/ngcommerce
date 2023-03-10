@@ -10,6 +10,7 @@ import { OrderDetailComponent } from "./admin-layout/order-detail/order-detail.c
 import { UserDetailComponent } from "./admin-layout/user-detail/user-detail.component";
 import { AdminLayoutComponent } from './admin-layout/admin-layout/admin-layout.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 
 const routes : Routes = [
@@ -38,7 +39,8 @@ const routes : Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     AdminDashboardComponent,

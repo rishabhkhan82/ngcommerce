@@ -12,6 +12,7 @@ import { ProductIndividualComponent } from "./product/product-individual/product
 import { ProductSearchComponent } from "./product/product-search/product-search.component";
 import { FormsModule } from "@angular/forms";
 import { FilterPipe } from "./appPipes/filter.pipe";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 
 const routes : Routes = [
     {path: '', component: HomeComponent},
@@ -42,7 +43,8 @@ const routes : Routes = [
         }),
         CommonModule,
         CarouselModule,
-        FormsModule
+        FormsModule,
+        NgxSkeletonLoaderModule
     ],
     exports: [
         RouterModule

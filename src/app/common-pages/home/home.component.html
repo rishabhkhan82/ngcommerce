@@ -253,7 +253,55 @@
         <h2 class="mb-5">Some new pick's for you</h2>
       </div>
     </div>
-    <owl-carousel-o [options]="newPick">
+    <ng-container >
+      <div class="row" *ngIf="dataloading">
+        <div class="col-sm-3" *ngFor="let item of generateFake">
+          <div class="bg-white card-cont">
+            <div>
+                <ngx-skeleton-loader count="1"  [theme]="{
+                  'width': '100%', 
+                  'height.px': 393,
+                  'margin': 0
+                }"></ngx-skeleton-loader>
+                <h5>
+  
+                </h5>
+                <ngx-skeleton-loader count="3" appearance="line"  [theme]="{
+                  'width': '100%', 
+                  'height.px': 20,
+                  'margin': 10
+                }"></ngx-skeleton-loader>
+                <hr class="mt-0" />
+                <div class="row g-1">
+                  <div class="col-sm-4">
+                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
+                      'width': '100%', 
+                      'height.px': 50,
+                      'margin': 0
+                    }"></ngx-skeleton-loader>
+                  </div>
+                  <div class="col-sm-4">
+                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
+                      'width': '100%', 
+                      'height.px': 50,
+                      'margin': 0
+                    }"></ngx-skeleton-loader>
+                  </div>
+                  <div class="col-sm-4">
+                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
+                      'width': '100%', 
+                      'height.px': 50,
+                      'margin': 0
+                    }"></ngx-skeleton-loader>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </ng-container>
+    <owl-carousel-o [options]="newPick" *ngIf="!dataloading">
       <ng-container *ngFor="let item of productArray">
         <ng-template carouselSlide *ngIf="item.hasdiscount === 'No Discount'">
           <div class="card-cont position-relative">

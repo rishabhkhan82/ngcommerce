@@ -14,6 +14,15 @@ export class AdminProductsComponent implements OnInit{
 
   productArray : any = [];
 
+  generateFake : any = [
+    {},
+    {},
+    {},
+    {}
+  ];
+
+  dataloading: boolean = true;
+
   constructor(
     private productServi: ProductService,
     private router: Router
@@ -42,7 +51,8 @@ export class AdminProductsComponent implements OnInit{
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
       this.productArray = JSON.parse(dataTwo);
-      console.log(this.productArray)
+      console.log(this.productArray);
+      this.dataloading = false;
     })
   }
 
