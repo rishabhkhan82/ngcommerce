@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { ProductService } from 'src/app/appServices/product.service';
 import { map } from 'rxjs';
 
@@ -19,6 +19,10 @@ export class ProductSearchComponent implements OnInit {
   searchType: any = 'name';
 
   resultArray: number = this.proListArray.length;
+
+  @ViewChildren('searchLength') filteredItems:any;
+
+  
 
   constructor(
     public productServi: ProductService,

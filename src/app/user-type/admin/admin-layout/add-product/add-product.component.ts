@@ -5,6 +5,10 @@ import { productAdding } from './add-product.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
+import { AdminNotificationService } from 'src/app/appServices/admin-notification.service';
+import { adminNotification } from '../admin-notification/admin-notification.model';
+import { map } from 'rxjs';
+
 
 interface Categories {
   value: string;
@@ -32,6 +36,8 @@ export class AddProductComponent implements OnInit {
 
   productData !: productAdding;
 
+  adminDtata !: adminNotification;
+
   submitted: boolean = false;
 
   category : Categories[] = [
@@ -58,11 +64,18 @@ export class AddProductComponent implements OnInit {
 
   editMode: boolean = false;
 
+  productArray !: productAdding;
+
+  addedProductId : string = '';
+
+  addedProductTitle : string = '';
+
   constructor(
     public prodService: ProductService,
     private router: Router,
     private toastr: ToastrService,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private adminNoti: AdminNotificationService
   ) {}
 
   ngOnInit() {
@@ -180,11 +193,38 @@ export class AddProductComponent implements OnInit {
         // console.log(this.addProduct.value);
         this.loader = true;
         this.prodService.onAddProduct(this.productData).subscribe(
-          (res) => {
+          (result:any) => {
             // console.log(res);
+            // console.log(res.name);
+            
+            const getTitle = '';
+
             this.loader = false;
-            this.toastr.success('', 'You have uploaded product successfully!');
-            this.router.navigate(['/admin/products']);
+            this.toastr.success('', 'You have added product successfully!');
+
+            this.addedProductId = result.name;
+
+            this.prodService.getSingleData(result.name).subscribe(
+              (res) => {
+                console.log(res.title);
+                console.log(res);
+                this.addedProductTitle = res.title;
+
+                this.adminDtata = {
+                  msg : 'product has been added successfully.',
+                  productTitle: this.addedProductTitle,
+                  productId: this.addedProductId
+                }
+    
+                this.adminNoti.onCreateAdminNotification(this.adminDtata).subscribe((res) => {
+                  // console.log(res);
+                });
+  
+                this.router.navigate(['/admin/products']);
+
+              }
+            );
+
           }
         );
       }
@@ -243,8 +283,5 @@ export class AddProductComponent implements OnInit {
 
     // });
   // }
-
-
-
 
 }

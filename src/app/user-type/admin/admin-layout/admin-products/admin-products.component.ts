@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/appServices/product.service';
 import { map } from 'rxjs';
 import { Router } from '@angular/router';
+import { adminNotification } from '../admin-notification/admin-notification.model';
+import { AdminNotificationService } from 'src/app/appServices/admin-notification.service';
 
 
 
@@ -23,9 +25,16 @@ export class AdminProductsComponent implements OnInit{
 
   dataloading: boolean = true;
 
+  adminDtata !: adminNotification;
+
+  addedProductId : string = '';
+
+  addedProductTitle : string = '';
+
   constructor(
     private productServi: ProductService,
-    private router: Router
+    private router: Router,
+    private adminNoti: AdminNotificationService
   ) {
 
   }
@@ -51,18 +60,34 @@ export class AdminProductsComponent implements OnInit{
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
       this.productArray = JSON.parse(dataTwo);
-      console.log(this.productArray);
+      // console.log(this.productArray);
       this.dataloading = false;
     })
   }
 
-  onDeletingProduct(prod: any) {
+  onDeletingProduct(prod: any, title : any) {
     if(confirm("Are you sure to delete this product")) {
       console.log(prod);
       this.productServi.onDeleteProduct(prod).subscribe((res) => {
+
         // console.log(res)
         this.onFetchProducts();
-      })
+
+        this.addedProductId = prod;
+
+        this.addedProductTitle = title;
+
+        this.adminDtata = {
+          msg : 'product has been deleted successfully.',
+          productTitle: this.addedProductTitle,
+          productId: this.addedProductId
+        }
+
+        this.adminNoti.onCreateAdminNotification(this.adminDtata).subscribe((res) => {
+          console.log(res);
+        });
+
+      });
     }
 
   }

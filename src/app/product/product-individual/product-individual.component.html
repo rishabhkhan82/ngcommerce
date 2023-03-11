@@ -1,4 +1,4 @@
-<div class="product-individual">
+<div class="product-individual" *ngIf="item.title">
   <div class="grey-back py-5">
   </div>
   <div class="container">
@@ -116,3 +116,5 @@
     </div>
   </div>
 </div>
+
+<app-page-not-found *ngIf="!item.title"></app-page-not-found>

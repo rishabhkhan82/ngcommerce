@@ -82,7 +82,7 @@
                 <hr class="mt-0">
                 <div class="btn-group w-100" role="group" aria-label="Basic example" style="height: 50px;">
                   <button type="button" class="btn btn-success rounded-0" (click)="onEditProduct(item.userId, ind)">Edit</button>
-                  <button type="button" class="btn btn-danger" (click)="onDeletingProduct(item.userId)">Delete</button>
+                  <button type="button" class="btn btn-danger" (click)="onDeletingProduct(item.userId, item.title)">Delete</button>
                   <a type="button" class="btn btn-secondary rounded-0" [routerLink]="['/product', item.userId]" (click)="onGetSingleData(item.userId)" style="line-height: 35px;">View</a>
                 </div>
               </div>

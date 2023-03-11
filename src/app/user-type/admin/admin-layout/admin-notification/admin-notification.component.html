@@ -14,30 +14,10 @@
       <div>
         <table class="table shadow">
           <tbody>
-            <tr class="">
-              <th scope="row" class="p-4"><h6 class="mb-0">1</h6></th>
-              <td class="p-4"><h6 class="mb-0">You have successfully changed your password.</h6></td>
-              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash"></i></td>
-            </tr>
-            <tr class="">
-              <th scope="row" class="p-4"><h6 class="mb-0">2</h6></th>
-              <td class="p-4"><h6 class="mb-0">You have successfully changed your password.</h6></td>
-              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash"></i></td>
-            </tr>
-            <tr class="">
-              <th scope="row" class="p-4"><h6 class="mb-0">3</h6></th>
-              <td class="p-4"><h6 class="mb-0">You have successfully changed your password.</h6></td>
-              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash"></i></td>
-            </tr>
-            <tr class="">
-              <th scope="row" class="p-4"><h6 class="mb-0">4</h6></th>
-              <td class="p-4"><h6 class="mb-0">You have successfully changed your password.</h6></td>
-              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash"></i></td>
-            </tr>
-            <tr class="">
-              <th scope="row" class="p-4"><h6 class="mb-0">5</h6></th>
-              <td class="p-4"><h6 class="mb-0">You have successfully changed your password.</h6></td>
-              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash"></i></td>
+            <tr class="" *ngFor="let item of notiArray; index as i">
+              <th scope="row" class="p-4"><h6 class="mb-0">{{i + 1}}</h6></th>
+              <td class="p-4"><h6 class="mb-0">"<a routerLink="/product/{{item.productId}}">{{item.productTitle}}</a>" {{item.msg}}</h6></td>
+              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash text-danger" (click)="onDeleteNoty(item.notiId)"></i></td>
             </tr>
           </tbody>
         </table>

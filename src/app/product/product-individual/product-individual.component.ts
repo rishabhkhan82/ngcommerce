@@ -15,8 +15,9 @@ export class ProductIndividualComponent {
 
   dynamicId: any;
   loader:boolean=true;
-  item: any;
+  item: any= [];
   sizeArray: any = [];
+  
 
   ngOnInit() {
     this.activeRoute.paramMap.subscribe(

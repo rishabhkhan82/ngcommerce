@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <div class="clearfix px-4">
           <div class="float-start">
-            <h2 class="mb-3">Product Search Result <small>({{proListArray.length}})</small></h2>
+            <h2 class="mb-3">Product Search Result <small>({{filteredItems?.length}})</small></h2>
           </div>
           <div class="float-end">
             <!-- <select class="form-select" aria-label="Default select example">
@@ -25,7 +25,7 @@
         </div>
         <hr class="divider mb-5" style="background-color: gainsboro; opacity: 0.1">
       </div>
-      <div class="col-sm-3" *ngFor="let item of proListArray | filter:nameSearch:serchPlace; index as i;">
+      <div class="col-sm-3" *ngFor="let item of proListArray | filter:nameSearch:serchPlace; index as i;" #searchLength>
         <div class="card-cont">
           <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
           <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
