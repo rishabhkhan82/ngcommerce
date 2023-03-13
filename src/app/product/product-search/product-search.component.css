@@ -17,3 +17,7 @@
 .w-button {display: inline-block;border-radius: 0px;line-height: 34px;width: 70%;margin-top: 0px;}
 .form-select {height: 50px;width: 250px;}
 h2 {font-family: 'DM Serif Display', serif;}
+h2.extra {font-family: 'DM Serif Display', serif;position: absolute;top: 16px;left: 33px;}
+.cate {border: 1px solid #cd2e34 !important;color: white;background-color: #d74c4c;}
+.btn.btn-outline-secondary.search-con {border: 1px solid #cd2e34 !important;background-color: #cd2e34 !important;color: white;border-radius: 0px 4px 4px 0px !important;}
+.search-div {width: 400px;}

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { ProductService } from 'src/app/appServices/product.service';
 import { map } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,26 +13,28 @@ export class ProductSearchComponent implements OnInit {
 
   proListArray : any = [];
 
-  nameSearch: any = '';
+  searchText: string = '';
 
-  serchPlace : any = 'name';
+  filteredArray : any = [];
 
-  searchType: any = 'name';
+  products: any = [];
 
-  resultArray: number = this.proListArray.length;
+  properties: any;
 
-  @ViewChildren('searchLength') filteredItems:any;
+  filterLength: any = false;
 
-  
+  selectText : string = 'title';
 
   constructor(
     public productServi: ProductService,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
     this.onFetchUsers();
+    this.router.navigate(['/product/search']);
   }
 
   onFetchUsers() {
@@ -48,17 +51,59 @@ export class ProductSearchComponent implements OnInit {
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
       this.proListArray = JSON.parse(dataTwo);
-      console.log(this.proListArray)
+      this.filteredArray  = [...this.proListArray];
+      console.log(this.proListArray);
+      this.filterLength = true;
     })
   }
 
-  onChangeSearchType(e:any) {
-    if(e.target.value == 'name') {
-      this.serchPlace = 'name';
+  selectChange(e:any, inputVal: any) {
+    if(e.target.value == 'category') {
+      this.selectText = 'category';
     }
     else {
-      this.serchPlace = 'category';
+      this.selectText = 'title';
     }
+    inputVal.value = '';
+    
+    this.filteredArray = this.proListArray;
+    this.router.navigate(['/product/search']);
   }
+
+filterArray() {
+      // No users, empty list.
+      if (!this.proListArray.length) {
+        this.filteredArray = [];
+        return;
+      }
+  
+      // no search text, all users.
+      if (!this.searchText) {      
+        this.filteredArray = [...this.proListArray]; // keep your usersList immutable
+        return;
+      }
+  
+      this.products = [...this.proListArray]; // keep your usersList immutable
+      this.properties = Object.keys(this.products[0]); // get user properties
+  
+      // check all properties for each user and return user if matching to searchText
+      this.filteredArray =  this.products.filter((user:any) => {
+        
+        return this.properties.find((property:any) => {
+          const valueString : any = user[property] && user[property].toString().toLowerCase();
+            if(property == this.selectText) {
+              if(property == 'title') {
+                this.router.navigate(['/product/search'], { queryParams: { title: this.searchText }});
+              }
+              else if (property == 'category') {
+                this.router.navigate(['/product/search'], { queryParams: { category: this.searchText }});
+              }
+              return valueString && valueString.includes(this.searchText.toLowerCase());
+            }
+        })
+        ? user
+        : null;
+      });
+}
 
 }

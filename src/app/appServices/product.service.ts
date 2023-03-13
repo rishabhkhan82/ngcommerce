@@ -36,4 +36,9 @@ export class ProductService {
     return this.http.get<productAdding>(`${this.apiKey}/products/${id}.json`);
   }
 
+  searchProductApi(query:any) {
+    console.log(query);
+    return this.http.get<productAdding>(`${this.apiKey}/products.json?category=${query}`);
+  }
+
 }
