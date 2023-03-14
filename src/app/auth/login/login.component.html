@@ -3,21 +3,32 @@
       <div class="right-div position-relative">
       <div class="right-cont shadow-sm p-4">
           <h1 class="text-center pb-2">Login</h1>
-          <img src="/assets/images/login-back.png" alt="no-img" class="img-fluid lock-img">
-          <form action="" class="mt-2">
-              <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-              <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-              </div>
-              <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" class="form-control rounded-0 border-0" placeholder="password" aria-label="Username" aria-describedby="basic-addon1">
-              </div>
+          <!-- <img src="/assets/images/login-back.png" alt="no-img" class="img-fluid lock-img"> -->
+          <hr class="mb-4" />
+          <form [formGroup]="loginForm" class="mt-2" (ngSubmit)="onLoginUser()">
+            <div class="mb-4">
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text bg-transparent rounded-0 border-0 px-3"><i class="fa-solid fa-envelope"></i></span>
+                  <input type="email" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Your Email" formControlName="email">
+                </div>
+                <p class="form-error text-danger mt-2 mb-0" *ngIf="!loginForm?.get('email')?.valid && loginForm?.get('email')?.touched || submitted && loginForm?.get('email')?.invalid">
+                    Email is required
+                </p>
+            </div>
+            <div class="mb-4">
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text bg-transparent rounded-0 border-0 px-3"><i class="fa-solid fa-lock"></i></span>
+                  <input type="password" class="form-control rounded-0 border-0" placeholder="Enter Password" formControlName="password">
+                </div>
+                <p class="form-error text-danger mt-2 mb-0" *ngIf="!loginForm?.get('password')?.valid && loginForm?.get('password')?.touched || submitted && loginForm?.get('password')?.invalid">
+                  Password is required
+                </p>
+            </div>
               <input type="submit" value="Log Inside" class="btn btn-primary w-100 h-50">
               <span class="w-100 text-center d-block py-2">OR</span>
               <button class="btn btn-secondary h-50 w-100">Sign in with Google</button>
           </form>
-          <hr />
+          <hr class="mt-4" />
           <div class="clearfix py-3">
               <div class="float-start">
               <a href="/forgot-password" alt="no-text"><small>Forgot Password?</small></a>

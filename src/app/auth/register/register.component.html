@@ -3,19 +3,26 @@
     <div class="right-div position-relative">
       <div class="right-cont shadow-sm p-4">
           <h1 class="text-center pb-2">Register</h1>
-          <img src="/assets/images/register-back.png" alt="no-img" class="img-fluid lock-img">
-          <form action="" class="mt-2">
-            <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
-              <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Your Name" aria-label="Username" aria-describedby="basic-addon1">
+          <hr class="mb-4"/>
+          <!-- <img src="/assets/images/register-back.png" alt="no-img" class="img-fluid lock-img"> -->
+          <form [formGroup]="userRegister" (ngSubmit)="onUserRegister()">
+            <div class="mb-4">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text bg-transparent rounded-0 border-0 px-3"><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" class="form-control rounded-0 border-0 shadow-none" formControlName="email" placeholder="Enter Your Email">
+              </div>
+              <p class="form-error text-danger mt-2 mb-0" *ngIf="!userRegister?.get('email')?.valid && userRegister?.get('email')?.touched || submitted && userRegister?.get('email')?.invalid">
+                Email is required
+              </p>
             </div>
-            <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-              <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" class="form-control rounded-0 border-0" placeholder="password" aria-label="Username" aria-describedby="basic-addon1">
+            <div class="mb-4">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text bg-transparent rounded-0 border-0 px-3"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" class="form-control rounded-0 border-0" formControlName="password" placeholder="Enter Password">
+              </div>
+              <p class="form-error text-danger mt-2 mb-0" *ngIf="!userRegister?.get('password')?.valid && userRegister?.get('password')?.touched || submitted && userRegister?.get('password')?.invalid">
+                Password is required
+              </p>
             </div>
             <input type="submit" value="Register" class="btn btn-primary w-100 h-50 mb-2">
           </form>
