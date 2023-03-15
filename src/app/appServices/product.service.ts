@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { firebaseConfig } from '../app-config';
 import { productAdding } from '../user-type/admin/admin-layout/add-product/add-product.model';
+import { AuthService } from './auth.service';
+import { exhaustMap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,8 @@ export class ProductService {
   apiKey = firebaseConfig.databaseURL;
 
   constructor(
-    private http : HttpClient
+    private http : HttpClient,
+    private auth : AuthService
     ) {
 
   }

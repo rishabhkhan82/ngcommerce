@@ -19,6 +19,12 @@
     top: 2px;
 }
 
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    right: 0px;
+    left: inherit;
+}
+
 /* responsive starts here */
 
 @media (min-width: 992px) and (max-width: 1200px) {

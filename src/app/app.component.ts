@@ -1,5 +1,6 @@
-import { Component, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from './appServices/auth.service';
 
 
 @Component({
@@ -7,12 +8,19 @@ import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ngcommerce';
   closeResult!: string;
 
-  constructor(private offcanvasService: NgbOffcanvas) {
+  constructor(
+      private offcanvasService: NgbOffcanvas,
+      private auth: AuthService
+    ) {
     console.log('App Module Loaded');
+  }
+
+  ngOnInit() {
+    this.auth.autoLogin();
   }
 
   // data: boolean = false;

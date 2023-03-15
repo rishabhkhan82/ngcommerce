@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 import { AuthService } from 'src/app/appServices/auth.service';
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     public auth : AuthService,
     private toastr: ToastrService,
-    private errService: AuthErrorService
+    private errService: AuthErrorService,
+    private router: Router
   ) {
 
   }
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
       this.auth.onLogin(email,password).subscribe(
         (res) => {
           console.log(res);
+          this.router.navigate(['/admin/products']);
           this.toastr.success('', 'You have login successfully!');
         },
         (err) => {
