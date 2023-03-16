@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/appServices/auth.service';
 
 @Component({
@@ -14,7 +16,9 @@ export class HeaderComponent implements OnInit {
    isLoggedIn: boolean = false;
 
    constructor(
-    public auth: AuthService
+    public auth: AuthService,
+    private toastr: ToastrService,
+    private router: Router
    ) {
 
    }
@@ -35,4 +39,10 @@ export class HeaderComponent implements OnInit {
    onToggle() {
     this.show = !this.show;
    }
+
+   onLogOut() {
+      this.auth.onLogout();
+      this.toastr.success('', 'You have logout successfully!');
+   }
+
 }

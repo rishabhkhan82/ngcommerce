@@ -11,7 +11,7 @@ export class AuthErrorService {
 
   handleError(err: HttpErrorResponse) {
     if(!err.error) {
-      return throwError('UNKNOWN')
+      return throwError('UNKNOWN');
     }
     else {
       return throwError(err.error.error.message)
