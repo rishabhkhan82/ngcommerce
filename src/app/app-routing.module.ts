@@ -13,6 +13,7 @@ import { ProductSearchComponent } from "./product/product-search/product-search.
 import { FormsModule } from "@angular/forms";
 import { FilterPipe } from "./appPipes/filter.pipe";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
+import { AuthGuard } from "./auth/auth.guard";
 
 const routes : Routes = [
     {path: '', component: HomeComponent},
@@ -23,7 +24,7 @@ const routes : Routes = [
     {path: 'product/:userId', component: ProductIndividualComponent},
     {path: '', data: {preload : true}, loadChildren: () => import('./auth/auth-module.module').then(m => m.AuthModule)},
     {path: 'user', loadChildren: () => import('./user-type/user/user.module').then(m => m.UserModule)},
-    {path: 'admin', loadChildren: () => import('./user-type/admin/admin.module').then(m => m.AdminModule)},
+    {path: 'admin', loadChildren: () => import('./user-type/admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard]},
     {path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ]
 

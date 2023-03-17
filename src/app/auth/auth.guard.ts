@@ -1,35 +1,38 @@
-// import { Injectable } from '@angular/core';
-// import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-// import { map, Observable, take } from 'rxjs';
-// import { AuthenticateService } from './authenticate.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { map, Observable, take } from 'rxjs';
+import { AuthService } from '../appServices/auth.service';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthGuard implements CanActivate {
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-//   constructor(
-//     private authService:AuthenticateService,
-//     private router: Router
-//   ) {
-//   }
+  constructor(
+    private authService:AuthService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
+  }
 
-//   canActivate(
-//     route: ActivatedRouteSnapshot,
-//     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-//     return this.authService.User.pipe(
-//       take(1),
-//       map(
-//         (user:any) => {
-//           if(user) {
-//             return true;
-//           }
-//           else {
-//             return this.router.createUrlTree(['login']);
-//           }
-//         }
-//       )
-//     )
-//   }
-// }
+    return this.authService.user.pipe(
+      take(1),
+      map(
+        (user:any) => {
+          if(user) {
+            return true;
+          }
+          else {
+            this.toastr.error('','Please login to continue');
+            return this.router.createUrlTree(['login']);
+          }
+        }
+      )
+    )
+  }
+}
