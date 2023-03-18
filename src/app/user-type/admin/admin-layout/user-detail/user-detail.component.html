@@ -11,54 +11,38 @@
   </div>
   <div class="col-sm-12">
     <div class="row">
-      <div class="col-sm-2">
+      <!-- <div class="col-sm-2">
         <div>
           <div class="user-box shadow-sm">
               <img src="/assets/images/login-right-back.jpg" alt="no-img">
               <h6 class="mt-3 mb-0 text-center">Samiksha</h6>
           </div>
         </div>
+      </div> -->
+
+      <div class="col-sm-12">
+        <table class="table border">
+          <thead>
+            <tr>
+              <th scope="col">Sr.no</th>
+              <th scope="col">Profile</th>
+              <th scope="col">Email</th>
+              <th scope="col">Name</th>
+              <th scope="col">User id</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of userArray; index as i">
+              <th scope="row">{{i+1}}</th>
+              <td><img src="{{userArray.profileUrl}}" alt="" style="width: 50px;height: 50px;object-fit:cover"></td>
+              <td>{{item.email}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.userId}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="col-sm-2">
-        <div>
-          <div class="user-box shadow-sm">
-              <img src="/assets/images/login-right-back.jpg" alt="no-img">
-              <h6 class="mt-3 mb-0 text-center">Samiksha</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div>
-          <div class="user-box shadow-sm">
-              <img src="/assets/images/login-right-back.jpg" alt="no-img">
-              <h6 class="mt-3 mb-0 text-center">Samiksha</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div>
-          <div class="user-box shadow-sm">
-              <img src="/assets/images/login-right-back.jpg" alt="no-img">
-              <h6 class="mt-3 mb-0 text-center">Samiksha</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div>
-          <div class="user-box shadow-sm">
-              <img src="/assets/images/login-right-back.jpg" alt="no-img">
-              <h6 class="mt-3 mb-0 text-center">Samiksha</h6>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2">
-        <div>
-          <div class="user-box shadow-sm">
-              <img src="/assets/images/login-right-back.jpg" alt="no-img">
-              <h6 class="mt-3 mb-0 text-center">Samiksha</h6>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

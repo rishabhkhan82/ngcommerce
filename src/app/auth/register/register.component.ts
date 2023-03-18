@@ -55,6 +55,18 @@ export class RegisterComponent implements OnInit {
         (res) => {
           console.log(res);
           this.toastr.success('', 'You have registered successfully!');
+
+          const newUserObject = {email: res.email, id: res.localId};
+
+          this.auth.onAddDataBaseUser(newUserObject).subscribe(
+            (res) => {
+              console.log(res);
+            },
+            (err) => {
+              console.log(err);
+            }
+          )
+
         },
         (err) => {
           console.log(err);
@@ -71,6 +83,9 @@ export class RegisterComponent implements OnInit {
           
         }
       )
+
+      
+
     }
 
     else {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 import { AuthService } from 'src/app/appServices/auth.service';
 
@@ -12,7 +13,7 @@ export class UserDetailComponent implements OnInit {
 
   emailValue = JSON.parse(localStorage.getItem('userData') || '{}'); 
 
-  userArray : any = {};
+  userArray : any = [];
 
   constructor(
     private auth: AuthService,
@@ -38,6 +39,34 @@ export class UserDetailComponent implements OnInit {
     //   }
     // );
 
+    this.onGetUsers();
+
+    
+
+  }
+
+  onGetUsers() {
+    this.auth.onGetAddedDataBaseUser().pipe(map((resData: any) => {
+      // console.log(resData);
+      const userArrayTwo: any = [];
+      for(const id in resData) {
+        // console.log(id);
+        // console.log(resData[id])
+        if(resData.hasOwnProperty(id)) {
+          userArrayTwo.push({
+            id: id, ...resData[id]
+          });
+        }
+      }
+      return userArrayTwo
+    })).subscribe((res) => {
+      const dataTwo = JSON.stringify(res);
+      this.userArray = JSON.parse(dataTwo);
+
+
+      console.log(this.userArray);
+      // this.dataloading = false;
+    })
   }
 
 

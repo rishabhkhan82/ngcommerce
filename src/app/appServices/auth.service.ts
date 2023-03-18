@@ -125,6 +125,36 @@ export class AuthService {
 
   }
 
+  changePassword(data:any) {
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${firebaseConfig.apiKey}`, {
+      idToken: data.token,
+      password: data.password,
+      returnSecureToken: true
+    });
+  }
+
+  forgotPassword(data:any) {
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${firebaseConfig.apiKey}`, {
+      requestType: 'PASSWORD_RESET',
+      email: data
+    });
+  }
+
+  onAddDataBaseUser(data:any) {
+      return this.http.post<any>(`https://rishabh-ngcommerce-default-rtdb.firebaseio.com/users.json`, {
+        email: data.email,
+        userId: data.id,
+        profileUrl: data.photoUrl,
+        name: data.name
+      });
+  }
+
+  onGetAddedDataBaseUser() {
+    return this.http.get<any>(`https://rishabh-ngcommerce-default-rtdb.firebaseio.com/users.json`);
+  }
+
+
+
   private authenticatedUser(email:any, userId: any, token: any, expiresIn: any): void {
 
     const expirationDate = new Date(new Date().getTime() + expiresIn*1000);
@@ -138,10 +168,6 @@ export class AuthService {
     localStorage.setItem('userData', JSON.stringify(user));
 
     // console.log('user =>', user);
-
-
-
-
   }
 
 
