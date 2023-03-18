@@ -5,9 +5,10 @@
     <div class="dashboard">
       <div class="d-flex  w-100 justify-content-between" style="padding: 20px 32px;">
         <div class="left d-flex flex-row align-items-center">
-          <img src="/assets/images/user.jpg" alt="no-img" class="dash-back-user-img shadow-sm">
+          <!-- <img src="/assets/images/user.jpg" alt="no-img" class="dash-back-user-img shadow-sm"> -->
+          <img src="{{singleUserDetails.photoUrl}}" alt="no-img" class="dash-back-user-img shadow-sm">
           <div class="welcom-div ms-3 shadow-sm">
-            <h6 class="mb-1">Hi Rishabh! | Welcome to admin dashboard</h6>
+            <h6 class="mb-1">Hi <span class="text-capitalize">{{singleUserDetails.displayName}}</span>! | Welcome to admin dashboard</h6>
           </div>
         </div>
         <div class="right">

@@ -30,10 +30,21 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loginForm = new FormGroup({
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
     });
+
+    this.auth.user.subscribe(
+      (res) => {
+        if(res) {
+          this.router.navigate(['/admin']);
+        }
+      }
+    )
+
+
   }
 
   onLoginUser() {

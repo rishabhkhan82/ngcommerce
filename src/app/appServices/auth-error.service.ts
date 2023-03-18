@@ -14,7 +14,9 @@ export class AuthErrorService {
     EMAIL_NOT_FOUND: 'This email is not found.',
     INVALID_PASSWORD: 'Wrong Password.',
     USER_DISABLED: 'You are disable to login',
-    UNKNOWN: 'Unknown error.'
+    UNKNOWN: 'Unknown error.',
+    INVALID_ID_TOKEN : 'Your credential is no longer valid',
+    USER_NOT_FOUND : 'No user found with this details'
   }
   
 }

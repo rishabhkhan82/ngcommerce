@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 import { AuthService } from 'src/app/appServices/auth.service';
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     public auth : AuthService,
     private toastr: ToastrService,
-    private errService: AuthErrorService
+    private errService: AuthErrorService,
+    private router: Router
   ) {
 
   }
@@ -32,6 +34,15 @@ export class RegisterComponent implements OnInit {
       email : new FormControl(null, Validators.required),
       password : new FormControl(null, Validators.required)
     });
+
+    this.auth.user.subscribe(
+      (res) => {
+        if(res) {
+          this.router.navigate(['/admin']);
+        }
+      }
+    )
+
   }
 
   onUserRegister() {

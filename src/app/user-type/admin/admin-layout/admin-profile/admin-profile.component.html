@@ -31,9 +31,9 @@
 												</p>
 											</div>
 											<div class="col-sm-4">
-												<div class="input-group shadow-sm" style="height: 50px;">
-													<span class="input-group-text rounded-0 border-0 px-3 bg-white" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-													<input type="email" [disabled]="email" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Email" formControlName="email" style="background-color: white;">
+												<div class="input-group shadow-sm border" style="height: 50px;" (click)="onClickEmail()">
+													<span class="input-group-text rounded-0 border-0 px-3 bg-light" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+													<input type="email" class="form-control rounded-0 border-0 shadow-none bg-light" placeholder="Enter Email" formControlName="email">
 												</div>
 												<p class="form-error text-danger mt-2 mb-0" *ngIf="!adminProfile?.get('email')?.valid && adminProfile?.get('email')?.touched || submitted && adminProfile?.get('email')?.invalid">
 													Email is required
