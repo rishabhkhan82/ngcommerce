@@ -23,13 +23,13 @@
       <div [ngClass]="show? 'd-block' : 'd-none'" class="collapse navbar-collapse" id="navbarSupportedContent">
         <hr  />
         <ul class="navbar-nav justify-content-between w-100 mb-2 mb-lg-0 border-lg-start ps-lg-2">
-          <li class="nav-item">
+          <li class="nav-item" (click)="onToggle()">
             <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fa-solid fa-house me-2 text-dark d-lg-none"></i> Home <i class="fa-solid fa-house ms-2 text-dark d-none d-lg-inline-block"></i></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" (click)="onToggle()">
             <a class="nav-link" routerLink="/about" routerLinkActive="active"><i class="fa-solid fa-circle-info text-dark me-2 d-lg-none"></i> About <i class="fa-solid fa-circle-info text-dark ms-2 d-none d-lg-inline-block"></i></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" (click)="onToggle()">
             <a class="nav-link" routerLink="/contact" routerLinkActive="active"><i class="fa-brands fa-rocketchat text-dark me-2 d-lg-none"></i> Contact <i class="fa-brands fa-rocketchat text-dark ms-2 d-none d-lg-inline-block"></i></a>
           </li>
           <li class="d-none d-lg-block">
@@ -39,7 +39,7 @@
                 <span class="visually-hidden">Toggle Dropdown</span>
                 <span class="me-2">category</span>
               </button>
-              <a type="button" routerLink="/product/search" class="btn btn-outline-secondary search-con"><i class="fa-solid fa-magnifying-glass"></i></a>
+              <a type="button" routerLink="/product/search" class="btn btn-outline-secondary search-con" (click)="onToggle()"><i class="fa-solid fa-magnifying-glass"></i></a>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -49,24 +49,24 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item" *ngIf="!isLoggedIn">
+          <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
             <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active"><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
           </li>
-          <li class="nav-item" *ngIf="!isLoggedIn">
+          <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
             <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="fa-solid fa-user me-2 text-dark"></i> Sign Up</a>
           </li>
-          <li class="nav-item" *ngIf="!isLoggedIn">
+          <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
             <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Login</a>
           </li>
 
-          <li class="nav-item" *ngIf="isLoggedIn">
+          <li class="nav-item" *ngIf="isLoggedIn" (click)="onToggle()">
             <a class="nav-link" routerLink="/admin/users" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Users</a>
           </li>
          
-          <li class="nav-item" *ngIf="isLoggedIn">
+          <li class="nav-item" *ngIf="isLoggedIn" (click)="onToggle()">
             <a class="nav-link" routerLink="/admin/products" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Products</a>
           </li>
-          <li class="nav-item" *ngIf="isLoggedIn">
+          <li class="nav-item" *ngIf="isLoggedIn" (click)="onToggle()">
             <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Orders</a>
           </li>
 
@@ -93,7 +93,7 @@
                 <span class="visually-hidden">Toggle Dropdown</span>
                 <span class="me-2">category</span>
               </button>
-              <button type="button" class="btn btn-outline-secondary search-con"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button type="button" class="btn btn-outline-secondary search-con" (click)="onToggle()"><i class="fa-solid fa-magnifying-glass"></i></button>
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
