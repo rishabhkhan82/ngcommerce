@@ -19,10 +19,31 @@
     top: 2px;
 }
 
-.navbar-expand-lg .navbar-nav .dropdown-menu {
+.dropdown-menu {
     position: absolute;
     right: 0px;
     left: inherit;
+    top: 37px;
+}
+
+.user-img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid grey;
+    border-radius: 50%;
+    padding: 2px;
+    position: relative;
+    top: 6px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #cd2e34 !important;
 }
 
 /* responsive starts here */
@@ -33,13 +54,28 @@
 
 @media (min-width: 768px) and (max-width: 992px) {
     .search-div {width: 100%;}
+    .navbar-nav .nav-item {width: 50%;}
+    li.d-lg-none {width: 100%;}
+    .navbar-nav {flex-direction: row !important;flex-wrap: wrap;}
+    .user-img {width: 25px;height: 25px;position: relative;top: -2px;}
+    .dropdown-menu {top: inherit;}
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
     .search-div {width: 100%;}
+    .navbar-nav .nav-item {width: 50%;}
+    li.d-lg-none {width: 100%;}
+    .navbar-nav {flex-direction: row !important;flex-wrap: wrap;}
+    .user-img {width: 25px;height: 25px;position: relative;top: -2px;}
+    .dropdown-menu {top: inherit;}
 }
 
 @media (max-width: 576px) {
     .search-div {width: 100%;}
+    .navbar-nav .nav-item {width: 50%;}
+    li.d-lg-none {width: 100%;}
+    .navbar-nav {flex-direction: row !important;flex-wrap: wrap;}
+    .user-img {width: 25px;height: 25px;position: relative;top: -2px;}
+    .dropdown-menu {top: inherit;}
 }
 

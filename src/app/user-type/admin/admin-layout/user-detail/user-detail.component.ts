@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 import { AuthService } from 'src/app/appServices/auth.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user-detail',
@@ -15,59 +17,45 @@ export class UserDetailComponent implements OnInit {
 
   userArray : any = [];
 
+  limitUserArray : boolean = true;
+
+  userArrayLength: any;
+
+  @Output() userLengthToParent = new EventEmitter<string>();
+
   constructor(
     private auth: AuthService,
     private toastr: ToastrService,
-    private authError: AuthErrorService
+    private authError: AuthErrorService,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
-
-    // this.auth.getProfile(this.emailValue._token).subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //     // console.log(res.users.email);
-    //     // this.userArray = res.;
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //     const data = this.authError.errorMsg;
-
-    //     this.toastr.error('', this.authError.errorMsg[err.error.error.message]);
-    //   }
-    // );
-
     this.onGetUsers();
+    console.log(this.router.url)
 
-    
+    if(this.router.url === '/admin/users') {
+      this.limitUserArray = false;
+    }
 
   }
 
   onGetUsers() {
-    this.auth.onGetAddedDataBaseUser().pipe(map((resData: any) => {
-      // console.log(resData);
-      const userArrayTwo: any = [];
-      for(const id in resData) {
-        // console.log(id);
-        // console.log(resData[id])
-        if(resData.hasOwnProperty(id)) {
-          userArrayTwo.push({
-            id: id, ...resData[id]
-          });
-        }
+    this.auth.onGetAddedDataBaseUser().subscribe((res) => {
+      this.userArrayLength = res.length;
+      const dataToDisplay = res?.slice(0, 4);
+
+      if(this.limitUserArray) {
+        this.userArray = dataToDisplay;
       }
-      return userArrayTwo
-    })).subscribe((res) => {
-      const dataTwo = JSON.stringify(res);
-      this.userArray = JSON.parse(dataTwo);
 
+      else {
+        this.userArray = res;
+      }
 
-      console.log(this.userArray);
-      // this.dataloading = false;
     })
   }
-
 
 }

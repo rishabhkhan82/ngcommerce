@@ -2,10 +2,10 @@
   <div class="col-sm-12 px-2">
       <div class="clearfix">
       <div class="float-start">
-          <h4 class="mb-4">Users <small>(10)</small></h4>
+          <h4 class="mb-4">Users <small>({{userArrayLength}})</small></h4>
       </div>
       <div class="float-end">
-          <a href="/dfkdfj" class="text-danger fw-bold">View All Users</a>
+          <a routerLink="/admin/users" class="text-danger fw-bold">View All Users</a>
       </div>
       </div>
   </div>
@@ -21,23 +21,19 @@
       </div> -->
 
       <div class="col-sm-12">
-        <table class="table border">
+        <table class="table shadow-sm">
           <thead>
-            <tr>
-              <th scope="col">Sr.no</th>
-              <th scope="col">Profile</th>
-              <th scope="col">Email</th>
-              <th scope="col">Name</th>
-              <th scope="col">User id</th>
+            <tr class="bg-light">
+              <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Sr.no</h6></th>
+              <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Email</h6></th>
+              <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">User id</h6></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of userArray; index as i">
-              <th scope="row">{{i+1}}</th>
-              <td><img src="{{userArray.profileUrl}}" alt="" style="width: 50px;height: 50px;object-fit:cover"></td>
-              <td>{{item.email}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.userId}}</td>
+              <td class="p-3 px-4" scope="row"><h6>{{i+1}}</h6></td>
+              <td class="p-3 px-4"><h6>{{item.email}}</h6></td>
+              <td class="p-3 px-4"><h6>{{item.userId}}</h6></td>
             </tr>
           </tbody>
         </table>

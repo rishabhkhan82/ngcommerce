@@ -6,6 +6,17 @@
         <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">shopping_cart</span></a>
         <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">search</span></a>
       </div>
+      <div *ngIf="isLoggedIn" ngbDropdown class="d-inline-block me-3 d-lg-none">
+        <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
+         <img class="user-img" src="/assets/images/user.jpg" alt="no-img">
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ngbDropdownItem>Dashboard</a>
+          <a routerLink="/admin/profile" routerLinkActive="active" ngbDropdownItem>Update Profile</a>
+          <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem>Change Password</a>
+          <button ngbDropdownItem (click)="onLogOut()">Logout</button>
+        </div>
+      </div>
       <button class="navbar-toggler p-0 border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="onToggle()">
         <span class="material-symbols-outlined">menu</span>
       </button>
@@ -38,24 +49,37 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active"><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="fa-solid fa-user me-2 text-dark"></i> Sign Up</a>
           </li>
           <li class="nav-item" *ngIf="!isLoggedIn">
             <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Login</a>
           </li>
+
           <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" routerLink="/admin/users" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Users</a>
+          </li>
+         
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" routerLink="/admin/products" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Products</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Orders</a>
+          </li>
+
+          <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn">
 
             <div ngbDropdown class="d-inline-block">
-              <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-               User
+              <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
+               <img class="user-img" src="/assets/images/user.jpg" alt="no-img">
               </button>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Action - 1</button>
-                <button ngbDropdownItem>Another Action</button>
+                <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ngbDropdownItem>Dashboard</a>
+                <a routerLink="/admin/profile" routerLinkActive="active" ngbDropdownItem>Update Profile</a>
+                <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem>Change Password</a>
                 <button ngbDropdownItem (click)="onLogOut()">Logout</button>
               </div>
             </div>

@@ -35,14 +35,6 @@ export class RegisterComponent implements OnInit {
       password : new FormControl(null, Validators.required)
     });
 
-    this.auth.user.subscribe(
-      (res) => {
-        if(res) {
-          this.router.navigate(['/admin']);
-        }
-      }
-    )
-
   }
 
   onUserRegister() {
@@ -61,6 +53,7 @@ export class RegisterComponent implements OnInit {
           this.auth.onAddDataBaseUser(newUserObject).subscribe(
             (res) => {
               console.log(res);
+                this.router.navigate(['/admin']);
             },
             (err) => {
               console.log(err);
@@ -84,8 +77,6 @@ export class RegisterComponent implements OnInit {
         }
       )
 
-      
-
     }
 
     else {
@@ -93,6 +84,5 @@ export class RegisterComponent implements OnInit {
     }
 
   }
-
 
 }

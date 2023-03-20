@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { catchError, retry, tap } from 'rxjs/operators';
+import { catchError, map, retry, tap } from 'rxjs/operators';
 import { firebaseConfig } from '../app-config';
 import { AuthResponse } from '../appInterface/auth-response.interface';
 import { User } from '../auth/user.auth.model';
@@ -21,6 +21,8 @@ export class AuthService {
   });
 
   tokenExpiTimer: any;
+
+  usersLenth: any;
 
   constructor(
     public http : HttpClient,
@@ -150,8 +152,23 @@ export class AuthService {
   }
 
   onGetAddedDataBaseUser() {
-    return this.http.get<any>(`https://rishabh-ngcommerce-default-rtdb.firebaseio.com/users.json`);
+    return this.http.get<any>(`https://rishabh-ngcommerce-default-rtdb.firebaseio.com/users.json`).pipe(map((resData: any) => {
+      // console.log(resData);
+      const userArrayTwo: any = [];
+      for(const id in resData) {
+        // console.log(id);
+        // console.log(resData[id])
+        if(resData.hasOwnProperty(id)) {
+          userArrayTwo.push({
+            id: id, ...resData[id]
+          });
+        }
+      }
+      return userArrayTwo
+    }));
   }
+
+
 
 
 
