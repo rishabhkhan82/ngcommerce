@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
 
    isLoggedIn: boolean = false;
 
+   userRole : any = '';
+
    constructor(
     public auth: AuthService,
     private toastr: ToastrService,
@@ -29,9 +31,17 @@ export class HeaderComponent implements OnInit {
     this.auth.user.subscribe((res) => {
       if(res) {
         this.isLoggedIn = true;
+
+        if(res.id === 'IhXXaaDWdNSRhcBHZNPKunfHomd2') {
+          this.userRole = 'admin';
+        }
+        else {
+          this.userRole = 'user';
+        }
       }
       else {
         this.isLoggedIn = false;
+        this.userRole = '';
       }
     })
    }

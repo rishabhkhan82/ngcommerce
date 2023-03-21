@@ -36,15 +36,6 @@ export class LoginComponent implements OnInit {
       password: new FormControl(null, Validators.required),
     });
 
-    this.auth.user.subscribe(
-      (res) => {
-        if(res) {
-          this.router.navigate(['/admin']);
-        }
-      }
-    )
-
-
   }
 
   onLoginUser() {
@@ -56,8 +47,20 @@ export class LoginComponent implements OnInit {
       this.auth.onLogin(email,password).subscribe(
         (res) => {
           console.log(res);
-          this.router.navigate(['/admin/products']);
-          this.toastr.success('', 'You have login successfully!');
+          // this.router.navigate(['/admin/products']);
+          this.auth.user.subscribe(
+            (res:any) => {
+                if(res.id === 'IhXXaaDWdNSRhcBHZNPKunfHomd2') {
+                  // this.router.navigate(['/admin']);
+                  window.location.href = '/admin';
+                  this.toastr.success('', 'You have login successfully!');
+                }
+                else {
+                  // this.router.navigate(['/user']);
+                  window.location.href = '/user';
+                }
+              }
+            )
         },
         (err) => {
           console.log(err);

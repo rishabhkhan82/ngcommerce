@@ -53,7 +53,8 @@ export class RegisterComponent implements OnInit {
           this.auth.onAddDataBaseUser(newUserObject).subscribe(
             (res) => {
               console.log(res);
-                this.router.navigate(['/admin']);
+                // this.router.navigate(['/admin']);
+                window.location.href = '/user';
             },
             (err) => {
               console.log(err);
