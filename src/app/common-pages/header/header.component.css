@@ -77,12 +77,13 @@
     .navbar-nav {flex-direction: row !important;flex-wrap: wrap;}
     .user-img {width: 25px;height: 25px;position: relative;top: -2px;}
     .dropdown-menu {top: inherit;}
-    .navbar-expand-lg .navbar-nav .nav-link {font-size: 14px;}
     hr.top {margin-top: 0.5rem !important;margin-bottom: 0.5rem !important;}
     hr.bottom {margin-bottom: 1rem !important;margin-top: 0.5rem !important;}
-    input[type="text"] {font-size: 14px;}
-    .btn.btn-outline-secondary.cate {font-size: 14px;}
     .btn.btn-outline-secondary.cate .me-2 {margin-right: 0px !important;position: relative;top: -1px;}
     .fa-solid.fa-magnifying-glass {font-size: 14px;}
+    .collapse.navbar-collapse {width: calc(100% + 40px);margin-left: -20px;margin-right: -20px;}
+    .navbar-nav {padding: 0px 20px;}
+    li.d-lg-none {width: calc(100% + 40px);margin-left: -20px;margin-right: -20px;}
+    .input-group.search-div {padding: 0px 20px;}
 }
 

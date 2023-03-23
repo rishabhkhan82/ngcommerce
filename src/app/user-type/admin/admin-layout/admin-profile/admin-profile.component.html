@@ -10,10 +10,16 @@
 								<div class="row">
 									<div class="col-sm-3">
 										<div class="d-flex flex-row mt-0 align-items-center">
-											<input type="file" id="adminprofile" class="d-none" formControlName="profileImage">
-											<label for="adminprofile">
-												<img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user-pro-img">
+											<input type="file" class="d-none" id="adminprofile" formControlName="profileImage" (change)="upload($event)">
+											<label for="adminprofile" class="position-relative">
+												<img *ngIf="!adminProfile?.get('imageUrl')?.value" src="/assets/images/user.jpg" alt="no-img" class="img-fluid user-pro-img">
+												<img *ngIf="adminProfile?.get('imageUrl')?.value" [src]="adminProfile?.get('imageUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
+												<div class="loader position-absolute" *ngIf="imageLoading">
+													<i class="fa fa-spinner fa-spin text-white" aria-hidden="true"></i>
+												</div>
 											</label>
+											<!-- <div>{{ uploadPercent | async }}</div> -->
+											<!-- {{downloadURL}} -->
 										</div>
 										<p class="form-error text-danger mt-2 mb-0" *ngIf="!adminProfile?.get('profileImage')?.valid && adminProfile?.get('profileImage')?.touched || submitted && adminProfile?.get('profileImage')?.invalid">
 											Profile images is required

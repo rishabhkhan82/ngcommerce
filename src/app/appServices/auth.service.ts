@@ -103,7 +103,7 @@ export class AuthService {
     return this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${firebaseConfig.apiKey}`, {
       idToken: data.token,
       displayName: data.name,
-      photoUrl: data.profileImage
+      photoUrl: data.imageUrl
     });
   }
 

@@ -1,3 +1,13 @@
 .profile .user-pro-img {width: 150px;height: 150px;object-fit: cover;border-radius: 50%;}
 h4 {font-family: 'DM Serif Display', serif;}
 img {cursor: pointer;border: 2px solid #cd2e34;border-style: dashed;border-radius: 50%;padding: 8px;}
+.loader {
+    top: 0px;
+    width: 100%;
+    background-color: #28313Baa;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
