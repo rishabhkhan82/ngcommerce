@@ -21,3 +21,21 @@ h2.extra {font-family: 'DM Serif Display', serif;position: absolute;top: 16px;le
 .cate {border: 1px solid #cd2e34 !important;color: white;background-color: #d74c4c;}
 .btn.btn-outline-secondary.search-con {border: 1px solid #cd2e34 !important;background-color: #cd2e34 !important;color: white;border-radius: 0px 4px 4px 0px !important;}
 .search-div {width: 400px;}
+
+/* responsive starts here */
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .search-div {width: 100%;margin-bottom: 30px;}
+  h2 {text-align: center};
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .search-div {width: 100%;margin-bottom: 30px;}
+  h2 {text-align: center};
+}
+  
+@media (max-width: 576px) {
+  .search-div {width: 305px;margin-bottom: 30px;margin-left: auto;margin-right: auto;margin-bottom: 30px;}
+  h2 {text-align: center;font-size: 20px;}
+  .form-control, select {font-size: 14px !important;}
+}

@@ -5,3 +5,7 @@
 .login .right-cont .h-50 {height: 50px !important;}
 .login .right-cont .input-group-text {height: 50px;}
 h1, h4 {font-family: 'DM Serif Display', serif;}
+
+@media (max-width: 576px) {
+    .login .right-cont {width: 326px;}
+}

@@ -1,146 +1,143 @@
 <div class="header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white px-2 px-sm-4 shadow-sm" style="z-index: 99;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">NGcommerce</a>
-      <div class="ms-auto box-header d-lg-none">
-        <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">shopping_cart</span></a>
-        <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">search</span></a>
-      </div>
-      <div *ngIf="isLoggedIn  && userRole === 'admin'" ngbDropdown class="d-inline-block me-3 d-lg-none">
-        <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-         <img class="user-img" src="/assets/images/user.jpg" alt="no-img">
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ngbDropdownItem>Dashboard</a>
-          <a routerLink="/admin/profile" routerLinkActive="active" ngbDropdownItem>Update Profile</a>
-          <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem>Change Password</a>
-          <button ngbDropdownItem (click)="onLogOut()">Logout</button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-2 px-sm-4 shadow-sm" style="z-index: 99">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">NGcommerce</a>
+            <div class="ms-auto box-header d-lg-none">
+              <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">shopping_cart</span></a>
+              <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">search</span></a>
+            </div>
+            <div *ngIf="isLoggedIn && userRole === 'admin'" ngbDropdown class="d-inline-block me-3 d-lg-none">
+                <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
+                    <img class="user-img" src="/assets/images/user.jpg" alt="no-img" />
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>
+                    <a routerLink="/admin/profile" routerLinkActive="active" ngbDropdownItem >Update Profile</a>
+                    <a routerLink="/change-password"routerLinkActive="active"ngbDropdownItem>Change Password</a>
+                    <button ngbDropdownItem (click)="onLogOut()">Logout</button>
+                </div>
+            </div>
+            <div *ngIf="isLoggedIn && userRole === 'user'" ngbDropdown class="d-inline-block me-3 d-lg-none">
+                <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
+                    <img class="user-img" src="/assets/images/user.jpg" alt="no-img" />
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <a routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>
+                    <a routerLink="/user/profile" routerLinkActive="active" ngbDropdownItem >Update Profile</a>
+                    <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem >Change Password</a>
+                    <button ngbDropdownItem (click)="onLogOut()">Logout</button>
+                </div>
+            </div>
+            <button class="navbar-toggler p-0 border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="onToggle()">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div [ngClass]="show ? 'd-block' : 'd-none'" class="collapse navbar-collapse" id="navbarSupportedContent">
+                <hr class="top" />
+                <ul class="navbar-nav justify-content-between w-100 mb-2 mb-lg-0 border-lg-start ps-lg-2">
+                    <li class="nav-item" (click)="onToggle()">
+                        <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ><i class="fa-solid fa-house me-2 text-dark d-lg-none"></i> Home
+                            <i class="fa-solid fa-house ms-2 text-dark d-none d-lg-inline-block"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/about" routerLinkActive="active" ><i class="fa-solid fa-circle-info text-dark me-2 d-lg-none"></i>About
+                            <i class="fa-solid fa-circle-info text-dark ms-2 d-none d-lg-inline-block"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/contact" routerLinkActive="active" ><i class="fa-brands fa-rocketchat text-dark me-2 d-lg-none"></i>Contact
+                            <i class="fa-brands fa-rocketchat text-dark ms-2 d-none d-lg-inline-block"></i>
+                        </a>
+                    </li>
+                    <li class="d-none d-lg-block">
+                        <div class="input-group search-div">
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Enter Product Name"/>
+                            <button type="button" class="btn btn-outline-secondary cate dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                                <span class="me-2">category</span>
+                            </button>
+                            <a type="button" routerLink="/product/search" class="btn btn-outline-secondary search-con" (click)="onToggle()" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item" *ngIf="!(userRole === 'admin')" (click)="onToggle()">
+                        <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active" ><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="fa-solid fa-user me-2 text-dark"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/admin/users" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> Users</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/admin/products" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> Products</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> Orders</a>
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn && userRole === 'user'" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/user/orders" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> My orders</a >
+                    </li>
+                    <li class="nav-item" *ngIf="isLoggedIn && userRole === 'user'" (click)="onToggle()">
+                        <a class="nav-link" routerLink="/user/wishlist" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> wishlist</a>
+                    </li>
+                    <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn && userRole === 'admin'">
+                        <div ngbDropdown class="d-inline-block">
+                            <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
+                                <img class="user-img" src="/assets/images/user.jpg" alt="no-img"/>
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>
+                                <a routerLink="/admin/profile" routerLinkActive="active" ngbDropdownItem >Update Profile</a>
+                                <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem >Change Password</a>
+                                <button ngbDropdownItem (click)="onLogOut()">Logout</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn && userRole === 'user'">
+                        <div ngbDropdown class="d-inline-block">
+                            <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
+                              <img class="user-img" src="/assets/images/user.jpg" alt="no-img" />
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <a routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>
+                                <a routerLink="/user/profile" routerLinkActive="active" ngbDropdownItem >Update Profile</a>
+                                <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem >Change Password</a>
+                                <button ngbDropdownItem (click)="onLogOut()">Logout</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="d-lg-none">
+                        <hr class="mb-4 bottom" />
+                        <div class="input-group search-div">
+                            <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Enter Product Name" />
+                            <button type="button" class="btn btn-outline-secondary cate dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                              <span class="visually-hidden">Toggle Dropdown</span>
+                              <span class="me-2">Category</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary search-con" (click)="onToggle()">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <div *ngIf="isLoggedIn  && userRole === 'user'" ngbDropdown class="d-inline-block me-3 d-lg-none">
-        <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-         <img class="user-img" src="/assets/images/user.jpg" alt="no-img">
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <a routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ngbDropdownItem>Dashboard</a>
-          <a routerLink="/user/profile" routerLinkActive="active" ngbDropdownItem>Update Profile</a>
-          <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem>Change Password</a>
-          <button ngbDropdownItem (click)="onLogOut()">Logout</button>
-        </div>
-      </div>
-      <button class="navbar-toggler p-0 border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="onToggle()">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-      <div [ngClass]="show? 'd-block' : 'd-none'" class="collapse navbar-collapse" id="navbarSupportedContent">
-        <hr class="top"  />
-        <ul class="navbar-nav justify-content-between w-100 mb-2 mb-lg-0 border-lg-start ps-lg-2">
-          <li class="nav-item" (click)="onToggle()">
-            <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fa-solid fa-house me-2 text-dark d-lg-none"></i> Home <i class="fa-solid fa-house ms-2 text-dark d-none d-lg-inline-block"></i></a>
-          </li>
-          <li class="nav-item" (click)="onToggle()">
-            <a class="nav-link" routerLink="/about" routerLinkActive="active"><i class="fa-solid fa-circle-info text-dark me-2 d-lg-none"></i> About <i class="fa-solid fa-circle-info text-dark ms-2 d-none d-lg-inline-block"></i></a>
-          </li>
-          <li class="nav-item" (click)="onToggle()">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active"><i class="fa-brands fa-rocketchat text-dark me-2 d-lg-none"></i> Contact <i class="fa-brands fa-rocketchat text-dark ms-2 d-none d-lg-inline-block"></i></a>
-          </li>
-          <li class="d-none d-lg-block">
-            <div class="input-group search-div">
-              <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Enter Product Name">
-              <button type="button" class="btn btn-outline-secondary cate dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-                <span class="me-2">category</span>
-              </button>
-              <a type="button" routerLink="/product/search" class="btn btn-outline-secondary search-con" (click)="onToggle()"><i class="fa-solid fa-magnifying-glass"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item" *ngIf="!(userRole === 'admin')" (click)="onToggle()">
-            <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active"><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
-          </li>
-          <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
-            <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="fa-solid fa-user me-2 text-dark"></i> Sign Up</a>
-          </li>
-          <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Login</a>
-          </li>
-
-          <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
-            <a class="nav-link" routerLink="/admin/users" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Users</a>
-          </li>
-         
-          <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
-            <a class="nav-link" routerLink="/admin/products" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Products</a>
-          </li>
-          <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
-            <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Orders</a>
-          </li>
-
-          <li class="nav-item" *ngIf="isLoggedIn && userRole === 'user'" (click)="onToggle()">
-            <a class="nav-link" routerLink="/user/orders" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> My orders</a>
-          </li>
-
-          <li class="nav-item" *ngIf="isLoggedIn && userRole === 'user'" (click)="onToggle()">
-            <a class="nav-link" routerLink="/user/wishlist" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> wishlist</a>
-          </li>
-
-          <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn  && userRole === 'admin'">
-
-            <div ngbDropdown class="d-inline-block">
-              <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-               <img class="user-img" src="/assets/images/user.jpg" alt="no-img">
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ngbDropdownItem>Dashboard</a>
-                <a routerLink="/admin/profile" routerLinkActive="active" ngbDropdownItem>Update Profile</a>
-                <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem>Change Password</a>
-                <button ngbDropdownItem (click)="onLogOut()">Logout</button>
-              </div>
-            </div>
-
-          </li>
-
-          <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn  && userRole === 'user'">
-
-            <div ngbDropdown class="d-inline-block">
-              <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-               <img class="user-img" src="/assets/images/user.jpg" alt="no-img">
-              </button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <a routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ngbDropdownItem>Dashboard</a>
-                <a routerLink="/user/profile" routerLinkActive="active" ngbDropdownItem>Update Profile</a>
-                <a routerLink="/change-password" routerLinkActive="active" ngbDropdownItem>Change Password</a>
-                <button ngbDropdownItem (click)="onLogOut()">Logout</button>
-              </div>
-            </div>
-
-          </li>
-
-          <li class="d-lg-none">
-            <hr class="mb-4 bottom" />
-            <div class="input-group search-div">
-              <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="Enter Product Name">
-              <button type="button" class="btn btn-outline-secondary cate dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-                <span class="me-2">Category</span>
-              </button>
-              <button type="button" class="btn btn-outline-secondary search-con" (click)="onToggle()"><i class="fa-solid fa-magnifying-glass"></i></button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </div>
