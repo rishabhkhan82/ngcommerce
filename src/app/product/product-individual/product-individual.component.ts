@@ -28,8 +28,8 @@ export class ProductIndividualComponent {
         this.du.getSingleData(this.dynamicId).subscribe(
           (res) => {
             console.log(res);
-            this.item = res;
             this.loader=false;
+            this.item = res;
             this.sizeArray = this.item.size;
           }
         );

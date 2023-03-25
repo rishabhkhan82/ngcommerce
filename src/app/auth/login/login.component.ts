@@ -13,11 +13,9 @@ import { AuthService } from 'src/app/appServices/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm !: FormGroup;
-
+  loader: boolean = false;
   submitted: boolean = false;
-
   error: string = '';
-
   errText = this.errService.errorMsg;
 
   constructor(
@@ -30,22 +28,21 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.loginForm = new FormGroup({
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
     });
-
   }
 
   onLoginUser() {
-
     if(this.loginForm.valid) {
+      this.loader = true;
       console.log(this.loginForm.value);
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       this.auth.onLogin(email,password).subscribe(
         (res) => {
+          this.loader = false;
           console.log(res);
           // this.router.navigate(['/admin/products']);
           this.auth.user.subscribe(
@@ -53,7 +50,6 @@ export class LoginComponent implements OnInit {
                 if(res.id === 'IhXXaaDWdNSRhcBHZNPKunfHomd2') {
                   // this.router.navigate(['/admin']);
                   window.location.href = '/admin';
-                  this.toastr.success('', 'You have login successfully!');
                 }
                 else {
                   // this.router.navigate(['/user']);
@@ -63,6 +59,7 @@ export class LoginComponent implements OnInit {
             )
         },
         (err) => {
+          this.loader = false;
           console.log(err);
           
           if(!err.error || !err.error.error) {
@@ -76,15 +73,9 @@ export class LoginComponent implements OnInit {
           }
         }
       )
-      
     }
-
     else {
       this.submitted = true;
     }
-
   }
-
-
-
 }

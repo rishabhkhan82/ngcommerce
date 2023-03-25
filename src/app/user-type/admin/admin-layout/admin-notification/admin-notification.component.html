@@ -1,24 +1,31 @@
-<div class="p-4 m-2">
+<div class="px-3 py-4 p-sm-4 m-sm-2">
   <div class="row">
     <div class="col-sm-12">
         <div class="clearfix">
-        <div class="float-start">
-            <h4 class="mb-4">Notifications <small>(20)</small></h4>
-        </div>
-        <div class="float-end">
-            <a href="/dfkdfj" class="text-danger fw-bold">View All Notifications</a>
-        </div>
+          <div class="float-start">
+              <h4 class="mb-4">Notifications <small>({{notiArray.length === 0? '-' : notiArray.length}})</small></h4>
+          </div>
         </div>
     </div>
     <div class="col-sm-12">
-      <div>
+      <div class="table-responsive">
         <table class="table shadow">
           <tbody>
-            <tr class="" *ngFor="let item of notiArray; index as i">
-              <th scope="row" class="p-4"><h6 class="mb-0">{{i + 1}}</h6></th>
-              <td class="p-4"><h6 class="mb-0">"<a routerLink="/product/{{item.productId}}">{{item.productTitle}}</a>" {{item.msg}}</h6></td>
-              <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash text-danger" (click)="onDeleteNoty(item.notiId)"></i></td>
-            </tr>
+            <ng-container *ngIf="loading">
+              <tr class="" *ngFor="let item of noteLoader">
+                <td class="p-4 ms-auto text-end" colspan="3">
+                  <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 20,'margin.px': 0}"></ngx-skeleton-loader>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="!loading">
+              <tr class="" *ngFor="let item of notiArray; index as i">
+                <th scope="row" class="p-4"><h6 class="mb-0">{{i + 1}}</h6></th>
+                <td class="p-4"><h6 class="mb-0">"<a routerLink="/product/{{item.productId}}" *ngIf="item.msg !== 'product has been deleted successfully.'">{{item.productTitle}}</a><a class="text-decoration-underline" *ngIf="item.msg === 'product has been deleted successfully.'">{{item.productTitle}}</a>" {{item.msg}}</h6></td>
+                <td class="p-4 ms-auto text-end"><i class="fa-solid fa-trash text-danger" (click)="onDeleteNoty(item.notiId)"></i></td>
+              </tr>
+            </ng-container>
+            
           </tbody>
         </table>
       </div>

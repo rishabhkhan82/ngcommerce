@@ -1,17 +1,17 @@
-<div class="p-4 m-2">
+<div class="px-3 py-4 p-sm-4 m-sm-2">
   <div class="row">
     <div class="col-sm-12">
         <div class="clearfix">
         <div class="float-start">
             <h4 class="mb-4">Orders <small>(20)</small></h4>
         </div>
-        <div class="float-end">
-            <a href="/dfkdfj" class="text-danger fw-bold">View All Orders</a>
+        <div class="float-end" *ngIf="viewAll">
+            <a routerLink="/admin/orders" class="text-danger fw-bold">View All Orders</a>
         </div>
         </div>
     </div>
     <div class="col-sm-12">
-      <div>
+      <div class="table-responsive">
         <table class="table shadow-sm">
           <thead class="border-bottom bg-light">
             <th class="p-4 py-3"><h6 class="mb-0 p-0">User</h6></th>
@@ -23,6 +23,24 @@
             <th class="p-4 py-3"><h6 class="mb-0 p-0">Price</h6></th>
           </thead>
           <tbody>
+            <!-- <ng-container *ngIf="loading">
+              <tr class="" *ngFor="let item of orderLoader">
+                <td class="p-4 ms-auto text-end" colspan="7">
+                  <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 20,'margin.px': 0}"></ngx-skeleton-loader>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="!loading">
+              <tr class="">
+                <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user" style="max-width: 80px;"></td>
+                <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>
+                <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid" style="max-width: 80px;height: 50px;"></td>
+                <td class="p-4"><h6 class="mb-0">3</h6></td>
+                <td class="p-4"><h6 class="mb-0">12/12/2023</h6></td>
+                <td class="p-4"><h6 class="mb-0">#54kldjfkjk45634fkdlfk</h6></td>
+                <td class="p-4"><h6 class="mb-0">$20</h6></td>
+              </tr>
+            </ng-container> -->
             <tr class="">
               <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user" style="max-width: 80px;"></td>
               <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>

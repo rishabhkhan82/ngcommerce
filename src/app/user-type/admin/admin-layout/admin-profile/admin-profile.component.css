@@ -1,13 +1,24 @@
 .profile .user-pro-img {width: 150px;height: 150px;object-fit: cover;border-radius: 50%;}
 h4 {font-family: 'DM Serif Display', serif;}
 img {cursor: pointer;border: 2px solid #cd2e34;border-style: dashed;border-radius: 50%;padding: 8px;}
-.loader {
-    top: 0px;
-    width: 100%;
-    background-color: #28313Baa;
-    height: 150px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loader {top: 0px;width: 100%;background-color: #28313Baa;height: 150px;border-radius: 50%;display: flex;justify-content: center;align-items: center;}
+
+/* responsive starts here */
+
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+  
+@media (min-width: 768px) and (max-width: 991px) {
+  .profile .user-pro-img {width: 100px;height: 100px;}
+}
+  
+@media (min-width: 576px) and (max-width: 767px) {
+  label {width: 100px;margin-left: auto;margin-right: auto;}
+  .profile .user-pro-img {width: 100px;height: 100px;}
+}
+  
+@media (max-width: 575px) {
+  label {width: 100px;margin-left: auto;margin-right: auto;}
+  .profile .user-pro-img {width: 100px;height: 100px;}
 }

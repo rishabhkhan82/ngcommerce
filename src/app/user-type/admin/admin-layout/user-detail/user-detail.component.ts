@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 import { AuthService } from 'src/app/appServices/auth.service';
 import { Output, EventEmitter } from '@angular/core';
+import { CommonService } from 'src/app/appServices/common.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,18 +22,29 @@ export class UserDetailComponent implements OnInit {
 
   userArrayLength: any;
 
+  viewAll : boolean = true;
+
+  userLoader: any = [];
+
+  loading: boolean = true;
+
   @Output() userLengthToParent = new EventEmitter<string>();
 
   constructor(
     private auth: AuthService,
     private toastr: ToastrService,
     private authError: AuthErrorService,
-    private router: Router
+    private router: Router,
+    private genFake : CommonService
+
   ) {
 
   }
 
   ngOnInit() {
+
+    this.userLoader = this.genFake.generateFake(4);
+
     this.onGetUsers();
     console.log(this.router.url)
 
@@ -40,10 +52,19 @@ export class UserDetailComponent implements OnInit {
       this.limitUserArray = false;
     }
 
+    const url = this.router.url;
+    if(url === '/admin/users') {
+      this.viewAll = false;
+    }
+    else {
+      this.viewAll = true;
+    }
+
   }
 
   onGetUsers() {
     this.auth.onGetAddedDataBaseUser().subscribe((res) => {
+      this.loading = false;
       this.userArrayLength = res.length;
       const dataToDisplay = res?.slice(0, 4);
 

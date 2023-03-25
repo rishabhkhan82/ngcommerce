@@ -1,70 +1,69 @@
-
-    <div class="p-4 m-2">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="dash-in-box">
-              <div class="d-flex in align-items-center p-3">
-                <div class="me-3">
-                  <div class="circle mx-auto d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                  </div>
-                </div>
-                <div class="">
-                  <h6>Users</h6>
-                  <h6 class="mb-0"><small>{{usersLenth? usersLenth : '--'}}</small></h6>
-                </div>
+<div class="p-3 p-sm-4 m-sm-2">
+  <div class="row g-3">
+    <div class="col-6 col-lg-3">
+      <div class="dash-in-box">
+          <div class="d-flex in align-items-center p-2 p-sm-3">
+            <div class="me-2 me-sm-3">
+              <div class="circle mx-auto d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-cart-shopping"></i>
               </div>
+            </div>
+            <div class="">
+              <h6>Users</h6>
+              <h6 class="mb-0"><small>{{usersLenth? usersLenth : '--'}}</small></h6>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="dash-in-box">
-              <div class="d-flex in align-items-center p-3">
-                <div class="me-3">
-                  <div class="circle mx-auto d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                  </div>
-                </div>
-                <div class="">
-                  <h6>Orders</h6>
-                  <h6 class="mb-0"><small>29</small></h6>
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="dash-in-box">
-              <div class="d-flex in align-items-center p-3">
-                <div class="me-3">
-                  <div class="circle mx-auto d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                  </div>
-                </div>
-                <div class="">
-                  <h6>Products</h6>
-                  <h6 class="mb-0"><small>{{productLength? productLength : '--'}}</small></h6>
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="dash-in-box">
-              <div class="d-flex in align-items-center p-3">
-                <div class="me-3">
-                  <div class="circle mx-auto d-flex justify-content-center align-items-center">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                  </div>
-                </div>
-                <div class="">
-                  <h6>Notifications</h6>
-                  <h6 class="mb-0"><small>{{notiLength? notiLength : '--'}}</small></h6>
-                </div>
-              </div>
-          </div>
-        </div>
       </div>
     </div>
-    <hr class="divider my-0" style="background-color: gainsboro; opacity: 0.4">
-    <app-user-detail></app-user-detail>
-    <hr class="divider my-0" style="background-color: gainsboro; opacity: 0.4">
-    <app-order-detail></app-order-detail>
+    <div class="col-6 col-lg-3">
+      <div class="dash-in-box">
+          <div class="d-flex in align-items-center p-2 p-sm-3">
+            <div class="me-2 me-sm-3">
+              <div class="circle mx-auto d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+            </div>
+            <div class="">
+              <h6>Orders</h6>
+              <h6 class="mb-0"><small>29</small></h6>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="dash-in-box">
+          <div class="d-flex in align-items-center p-2 p-sm-3">
+            <div class="me-2 me-sm-3">
+              <div class="circle mx-auto d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+            </div>
+            <div class="">
+              <h6>Products</h6>
+              <h6 class="mb-0"><small>{{productLength? productLength : '--'}}</small></h6>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="dash-in-box">
+          <div class="d-flex in align-items-center p-2 p-sm-3">
+            <div class="me-2 me-sm-3">
+              <div class="circle mx-auto d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+            </div>
+            <div class="text-truncate">
+              <h6 class="text-truncate">Notifications</h6>
+              <h6 class="mb-0"><small>{{notiLength? notiLength : '--'}}</small></h6>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="divider my-0" style="background-color: gainsboro; opacity: 0.4">
+<app-user-detail></app-user-detail>
+<hr class="divider my-0" style="background-color: gainsboro; opacity: 0.4">
+<app-order-detail></app-order-detail>
     

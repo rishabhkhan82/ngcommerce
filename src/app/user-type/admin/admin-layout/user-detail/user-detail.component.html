@@ -1,10 +1,10 @@
-<div class="row px-3 pt-4 m-2 pb-4">
-  <div class="col-sm-12 px-2">
+<div class="row px-3 py-4 m-sm-2">
+  <div class="col-sm-12">
       <div class="clearfix">
       <div class="float-start">
-          <h4 class="mb-4">Users <small>({{userArrayLength}})</small></h4>
+          <h4 class="mb-4">Users <small>({{userArrayLength? userArrayLength : '-'}})</small></h4>
       </div>
-      <div class="float-end">
+      <div class="float-end" *ngIf="viewAll">
           <a routerLink="/admin/users" class="text-danger fw-bold">View All Users</a>
       </div>
       </div>
@@ -19,26 +19,35 @@
           </div>
         </div>
       </div> -->
-
       <div class="col-sm-12">
-        <table class="table shadow-sm">
-          <thead>
-            <tr class="bg-light">
-              <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Sr.no</h6></th>
-              <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Email</h6></th>
-              <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">User id</h6></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of userArray; index as i">
-              <td class="p-3 px-4" scope="row"><h6>{{i+1}}</h6></td>
-              <td class="p-3 px-4"><h6>{{item.email}}</h6></td>
-              <td class="p-3 px-4"><h6>{{item.userId}}</h6></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table shadow-sm">
+            <thead>
+              <tr class="bg-light">
+                <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Sr.no</h6></th>
+                <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Email</h6></th>
+                <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">User id</h6></th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngIf="loading">
+                <tr class="" *ngFor="let item of userLoader">
+                  <td class="p-4 ms-auto text-end" colspan="3">
+                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 20,'margin.px': 0}"></ngx-skeleton-loader>
+                  </td>
+                </tr>
+              </ng-container>
+              <ng-container *ngIf="!loading">
+                <tr *ngFor="let item of userArray; index as i">
+                  <td class="p-4" scope="row"><h6 class="mb-0">{{i+1}}</h6></td>
+                  <td class="p-4"><h6 class="mb-0">{{item.email}}</h6></td>
+                  <td class="p-4"><h6 class="mb-0">{{item.userId}}</h6></td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
       </div>
-
     </div>
   </div>
 </div>

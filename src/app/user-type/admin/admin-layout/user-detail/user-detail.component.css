@@ -3,3 +3,9 @@
 h4 {line-height: 24px;}
 h4 {font-family: 'DM Serif Display', serif;}
 table {border: 1px solid #e7e4e4;}
+
+/* responsive starts here */
+
+@media (max-width: 575px) {
+  .text-danger {font-size: 14px;}
+}

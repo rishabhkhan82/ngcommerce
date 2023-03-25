@@ -24,11 +24,12 @@
                 Password is required
               </p>
             </div>
-            <input type="submit" value="Register" class="btn btn-primary w-100 h-50 mb-2 rounded-0">
+            <button type="submit" class="btn btn-primary w-100 h-50 position-relative">Register <i *ngIf="loader"  class="fa fa-spinner fa-spin btn-loader"></i></button>
+            <!-- <input type="submit" value="Register" class="btn btn-primary w-100 h-50 mb-2 rounded-0"> -->
           </form>
           <hr />
           <div class="py-2 text-center">
-            <small>Already Registered? <a href="/login" alt="no-text">login</a> here</small>
+            <small>Already Registered? <a routerLink="/login" alt="no-text">login</a> here</small>
           </div>
       </div>
     </div>

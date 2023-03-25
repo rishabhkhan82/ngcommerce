@@ -1,4 +1,5 @@
-.product-img {max-height: 200px;}
+.img-cont {height: 200px;}
+.img-cont img {height: 200px;object-fit: cover;object-position: center;}
 .pro-file {width: 100%;height: 200px;}
 h4 {font-family: 'DM Serif Display', serif;}
 .add-product-form input::placeholder,textarea::placeholder,label,select {color: grey !important;}

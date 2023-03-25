@@ -20,3 +20,7 @@
 h4 {font-family: 'DM Serif Display', serif;}
 
 /* new pick ends here */
+
+@media (max-width: 575px) {
+  .text-danger {font-size: 14px;}
+}

@@ -8,3 +8,9 @@ h3 {padding: 36px 44px;}
 .dash-in-box .in .circle i {font-size: 17px;color: black;}
 .dashboard {border-top: 3px solid #cd2e34;border-radius: 8px 8px 0px 0px;}
 h4 {font-family: 'DM Serif Display', serif;}
+
+/* responsive starts here */
+
+@media (max-width: 575px) {
+ h6 {font-size: 14px !important;}
+}

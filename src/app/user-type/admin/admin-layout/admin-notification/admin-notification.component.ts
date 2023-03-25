@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 import { AdminNotificationService } from 'src/app/appServices/admin-notification.service';
+import { CommonService } from 'src/app/appServices/common.service';
+import { ToastServiceService } from 'src/app/appServices/toast-service.service';
 
 @Component({
   selector: 'app-admin-notification',
@@ -11,13 +14,20 @@ export class AdminNotificationComponent implements OnInit {
 
   notiArray : any = [];
 
+  noteLoader: any = [];
+
+  loading: boolean = true;
+
   constructor(
-    private notiService : AdminNotificationService
+    private notiService : AdminNotificationService,
+    private genFake : CommonService,
+    private toastr: ToastrService
   ) {
 
   }
 
   ngOnInit() {
+    this.noteLoader = this.genFake.generateFake(4);
     this.onGetNoti();
   }
 
@@ -39,15 +49,16 @@ export class AdminNotificationComponent implements OnInit {
       const dataTwo = JSON.stringify(res);
       this.notiArray = JSON.parse(dataTwo);
       // console.log(this.notiArray);
+      this.loading = false;
     });
   }
 
   onDeleteNoty(data: any) {
     if(confirm("Are you sure to delete this notification")) {
       // console.log(data);
-
       this.notiService.onDeleteAdminNotification(data).subscribe(
         (res) => {
+          this.toastr.success('', 'Notification deleted successfully!');
           this.onGetNoti();
         }
       );

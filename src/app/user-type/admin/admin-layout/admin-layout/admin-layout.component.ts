@@ -23,4 +23,8 @@ export class AdminLayoutComponent implements OnInit {
     )
   }
 
+  onLogout() {
+    this.auth.onLogout();
+  }
+
 }

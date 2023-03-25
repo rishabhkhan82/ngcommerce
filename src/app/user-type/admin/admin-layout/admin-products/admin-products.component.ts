@@ -4,6 +4,9 @@ import { map } from 'rxjs';
 import { Router } from '@angular/router';
 import { adminNotification } from '../admin-notification/admin-notification.model';
 import { AdminNotificationService } from 'src/app/appServices/admin-notification.service';
+import { AuthErrorService } from 'src/app/appServices/auth-error.service';
+import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/appServices/common.service';
 
 
 
@@ -16,12 +19,7 @@ export class AdminProductsComponent implements OnInit{
 
   productArray : any = [];
 
-  generateFake : any = [
-    {},
-    {},
-    {},
-    {}
-  ];
+  generateFake : any = [];
 
   dataloading: boolean = true;
 
@@ -31,16 +29,24 @@ export class AdminProductsComponent implements OnInit{
 
   addedProductTitle : string = '';
 
+  error: string = '';
+
+  errText = this.errService.errorMsg;
+
   constructor(
     private productServi: ProductService,
     private router: Router,
-    private adminNoti: AdminNotificationService
+    private adminNoti: AdminNotificationService,
+    private errService: AuthErrorService,
+    private toastr: ToastrService,
+    private genFake: CommonService
   ) {
 
   }
 
   ngOnInit() {
     this.onFetchProducts();
+    this.generateFake = this.genFake.generateFake(4);
   }
 
   onFetchProducts() {
@@ -62,6 +68,22 @@ export class AdminProductsComponent implements OnInit{
       this.productArray = JSON.parse(dataTwo);
       console.log(this.productArray);
       this.dataloading = false;
+    },
+    (err) => {
+      this.dataloading = false;
+
+      console.log(err);
+      
+      if(!err.error || !err.error.error) {
+        this.error = this.errText['UNKNOWN'];
+        this.toastr.error('', this.error);
+      }
+
+      else {
+        this.error = this.errText[err.error.error.message];
+        this.toastr.error('', this.error);
+      }
+
     })
   }
 
@@ -77,6 +99,8 @@ export class AdminProductsComponent implements OnInit{
 
         this.addedProductTitle = title;
 
+        this.toastr.success('', 'Product has been deleted successfully');
+
         this.adminDtata = {
           msg : 'product has been deleted successfully.',
           productTitle: this.addedProductTitle,
@@ -86,6 +110,22 @@ export class AdminProductsComponent implements OnInit{
         this.adminNoti.onCreateAdminNotification(this.adminDtata).subscribe((res) => {
           console.log(res);
         });
+
+      }, 
+      (err) => {
+        this.dataloading = false;
+
+        console.log(err);
+        
+        if(!err.error || !err.error.error) {
+          this.error = this.errText['UNKNOWN'];
+          this.toastr.error('', this.error);
+        }
+
+        else {
+          this.error = this.errText[err.error.error.message];
+          this.toastr.error('', this.error);
+        }
 
       });
     }

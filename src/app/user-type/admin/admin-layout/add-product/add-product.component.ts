@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminNotificationService } from 'src/app/appServices/admin-notification.service';
 import { adminNotification } from '../admin-notification/admin-notification.model';
 import { map } from 'rxjs';
+import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 
 
 interface Categories {
@@ -39,6 +40,10 @@ export class AddProductComponent implements OnInit {
   adminDtata !: adminNotification;
 
   submitted: boolean = false;
+
+  error: string = '';
+
+  errText = this.errService.errorMsg;
 
   category : Categories[] = [
     {value: 'jeans'},
@@ -75,7 +80,8 @@ export class AddProductComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private activeRoute: ActivatedRoute,
-    private adminNoti: AdminNotificationService
+    private adminNoti: AdminNotificationService,
+    private errService: AuthErrorService,
   ) {}
 
   ngOnInit() {
@@ -185,6 +191,20 @@ export class AddProductComponent implements OnInit {
             this.loader = false;
             this.editMode = false;
             this.toastr.success('', 'You have updated product successfully!');
+          }, 
+          (err) => {
+            this.loader = false;
+            console.log(err);
+            
+            if(!err.error || !err.error.error) {
+              this.error = this.errText['UNKNOWN'];
+              this.toastr.error('', this.error);
+            }
+
+            else {
+              this.error = this.errText[err.error.error.message];
+              this.toastr.error('', this.error);
+            }
           }
         );
       }
@@ -225,6 +245,20 @@ export class AddProductComponent implements OnInit {
               }
             );
 
+          }, 
+          (err) => {
+            this.loader = false;
+            console.log(err);
+            
+            if(!err.error || !err.error.error) {
+              this.error = this.errText['UNKNOWN'];
+              this.toastr.error('', this.error);
+            }
+
+            else {
+              this.error = this.errText[err.error.error.message];
+              this.toastr.error('', this.error);
+            }
           }
         );
       }

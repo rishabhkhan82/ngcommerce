@@ -1,14 +1,17 @@
 <div class="dashboard py-5">
 </div>
-<div class="container mb-2 pb-5">
+<div class="container pb-5">
   <div class="dash-cont shadow">
     <div class="dashboard">
       <div class="d-flex  w-100 justify-content-between" style="padding: 20px 32px;">
         <div class="left d-flex flex-row align-items-center">
           <!-- <img src="/assets/images/user.jpg" alt="no-img" class="dash-back-user-img shadow-sm"> -->
-          <img src="{{singleUserDetails.photoUrl}}" alt="no-img" class="dash-back-user-img shadow-sm">
+          <img *ngIf="singleUserDetails.photoUrl; else adminDetails" src="{{singleUserDetails.photoUrl}}" alt="no-img" class="dash-back-user-img shadow-sm">
+          <ng-template #adminDetails>
+            <div  class="dash-back-user-img shadow-sm"></div>
+          </ng-template>
           <div class="welcom-div ms-3 shadow-sm">
-            <h6 class="mb-1">Hi <span class="text-capitalize" *ngIf="singleUserDetails.displayName">{{singleUserDetails.displayName}}!</span> <span class="" *ngIf="!singleUserDetails.displayName">{{singleUserDetails.email}}, </span> | Welcome to admin dashboard</h6>
+            <h6 class="mb-1">Hi <span class="text-capitalize" *ngIf="singleUserDetails.displayName">{{singleUserDetails.displayName}}! </span> <span class="" *ngIf="!singleUserDetails.displayName">{{singleUserDetails.email}}, </span> <span class="d-block d-md-inline-block"><span class="d-none d-md-inline-block">|</span> Welcome to admin dashboard</span></h6>
           </div>
         </div>
         <div class="right">
@@ -23,7 +26,7 @@
         <a routerLink="/admin/users" routerLinkActive="active" alt="no-link" class="dash-menu-link">Users</a>
         <a routerLink="/admin/products" routerLinkActive="active" alt="no-link" class="dash-menu-link">Products</a>
         <a routerLink="/admin/notifications" routerLinkActive="active" alt="no-link" class="dash-menu-link">Notifications</a>
-        <a routerLink="/" alt="no-link" class="dash-menu-link">Logout</a>
+        <a (click)="onLogout()" alt="no-link" class="dash-menu-link logout">Logout</a>
     </div>
     <router-outlet></router-outlet>
   </div>

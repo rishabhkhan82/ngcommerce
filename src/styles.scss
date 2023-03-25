@@ -24,7 +24,8 @@ body {background-color: #212529;}
 
 /* standard buttons ends here */
 
-/* standard link starts here */
+/* standard form shadow starts here */
 
+.form-control:focus {box-shadow: 0 0 0 0.25rem rgb(175 2 2 / 25%) !important;}
 
-/* standard link ends here */
+/* standard form shadow ends here */

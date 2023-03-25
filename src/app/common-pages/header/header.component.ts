@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
 
    userRole : any = '';
 
+   userDetails: any = {};
+
    constructor(
     public auth: AuthService,
     private toastr: ToastrService,
@@ -43,7 +45,13 @@ export class HeaderComponent implements OnInit {
         this.isLoggedIn = false;
         this.userRole = '';
       }
-    })
+    });
+
+    this.auth.userProfile.subscribe(
+      (res) => {
+        this.userDetails = res;
+      }
+    )
    }
 
    onToggle() {
@@ -52,7 +60,7 @@ export class HeaderComponent implements OnInit {
 
    onLogOut() {
       this.auth.onLogout();
-      this.toastr.success('', 'You have logout successfully!');
+      // this.toastr.success('', 'You have logout successfully!');
    }
 
 }

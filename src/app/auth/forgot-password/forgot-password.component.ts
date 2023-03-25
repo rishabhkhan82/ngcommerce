@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthErrorService } from 'src/app/appServices/auth-error.service';
 import { AuthService } from 'src/app/appServices/auth.service';
 
 @Component({
@@ -14,9 +16,18 @@ export class ForgotPasswordComponent implements OnInit {
 
   submitted: boolean = false;
 
+  loader : boolean = false;
+
+  error: string = '';
+
+  errText = this.errService.errorMsg;
+
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private errService: AuthErrorService,
+    private toastr: ToastrService,
+
   ) {}
 
   ngOnInit() {
@@ -34,13 +45,27 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit() {
     if(this.forgotForm.valid) {
+      this.loader = true;
       console.log(this.forgotForm.value)
       this.auth.forgotPassword(this.forgotForm.value.email).subscribe(
         (res) => {
+          this.loader = false;
+          this.toastr.error('', 'Please, check your email to reset password');
           console.log(res);
         },
         (err) => {
-          console.log(err)
+          this.loader = false;
+          console.log(err);
+          console.log(err);
+          if(!err.error || !err.error.error) {
+            this.error = this.errText['UNKNOWN'];
+            this.toastr.error('', this.error);
+          }
+          else {
+            this.error = this.errText[err.error.error.message];
+            this.toastr.error('', this.error);
+          }
+
         }
       )
     }

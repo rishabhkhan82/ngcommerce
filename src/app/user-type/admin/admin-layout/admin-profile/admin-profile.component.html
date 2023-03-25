@@ -1,15 +1,15 @@
-<div class="p-4">
+<div class="pb-3 pt-4 p-sm-4">
 	<div class="profile pb-4">
 		<div class="container">
 			<div class="row"> 
 				<div class="col-sm-12">								
 					<div>
 						<h4>Profile</h4> 
-						<div class="bg-light px-4 py-5 mt-4 rounded shadow-sm border">
+						<div class="bg-light px-3 px-sm-4 py-4 py-sm-5 mt-4 rounded shadow-sm border">
 							<form [formGroup]="adminProfile" (ngSubmit)="onSubmit()">
-								<div class="row">
-									<div class="col-sm-3">
-										<div class="d-flex flex-row mt-0 align-items-center">
+								<div class="row align-items-center">
+									<div class="col-md-3">
+										<div class="d-flex flex-row mt-0 align-items-center mb-4 mb-md-0">
 											<input type="file" class="d-none" id="adminprofile" formControlName="profileImage" (change)="upload($event)">
 											<label for="adminprofile" class="position-relative">
 												<img *ngIf="!adminProfile?.get('imageUrl')?.value" src="/assets/images/user.jpg" alt="no-img" class="img-fluid user-pro-img">
@@ -25,9 +25,9 @@
 											Profile images is required
 										</p>
 									</div>
-									<div class="col-sm-9">
-										<div class="row mt-5">
-											<div class="col-sm-4">
+									<div class="col-md-9">
+										<div class="row g-3">
+											<div class="col-lg-6">
 												<div class="input-group shadow-sm" style="height: 50px;">
 													<span class="input-group-text rounded-0 border-0 px-3 bg-white" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
 													<input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Name" formControlName="name" style="background-color: white;">
@@ -36,7 +36,7 @@
 													Name is required
 												</p>
 											</div>
-											<div class="col-sm-4">
+											<div class="col-lg-6">
 												<div class="input-group shadow-sm border" style="height: 50px;" (click)="onClickEmail()">
 													<span class="input-group-text rounded-0 border-0 px-3 bg-light" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
 													<input type="email" class="form-control rounded-0 border-0 shadow-none bg-light" placeholder="Enter Email" formControlName="email">
@@ -48,7 +48,7 @@
 													Email is required
 												</p> -->
 											</div>
-											<div class="col-sm-4">
+											<div class="col-lg-6">
 												<div class="">
 													<button class="btn btn-primary w-100 rounded-0 mt-0" style="height: 50px;">Update profile</button>
 												</div>

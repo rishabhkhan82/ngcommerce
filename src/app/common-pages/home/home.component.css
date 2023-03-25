@@ -1,10 +1,12 @@
 /* banner section starts here */
 
-.banner {background-image: url("https://www.globalblue.com/business/images/article926851.ece/alternates/LANDSCAPE2_970/TFS_Article_2019_970x643.jpg");background-color: #cccccc; height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover; }
+/* .banner {background-image: url("https://www.globalblue.com/business/images/article926851.ece/alternates/LANDSCAPE2_970/TFS_Article_2019_970x643.jpg");background-color: #cccccc; height: 500px; background-position: center; background-repeat: no-repeat; background-size: cover; } */
+.banner {background-image: url('/assets/images/banner-1.jpg');background-color: #cccccc; height: 500px; background-position: inherit; background-repeat: no-repeat; background-size: cover; }
 .ban-heading {height: 500px;}
 .ban-heading h1 {font-size: 70px;max-width: 500px;font-family: 'DM Serif Display', serif;}
 .ban-heading p {max-width: 400px;}
-.ban-cont {background-image: linear-gradient(53deg, white 30%, transparent);}
+.ban-heading a {line-height: 35px;}
+.ban-cont {background-image: linear-gradient(53deg, white 5%, transparent);}
 
 /* banner section ends here */
 
@@ -16,7 +18,8 @@
 .trending .card img {height: 100%;object-fit: cover;object-position: center;width: 100%;border-radius: 8px 0px 0px 8px;}
 .trending hr.divider {color: #c3c3c3eb !important;}
 .text-color {color: #cd2e34 !important;}
-.trending h5 {font-family: 'DM Serif Display', serif;}
+.trending h5 {display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;font-size: 18px !important;}
+.trending p {line-height: 18px;}
 
 /* is trending ends here */
 
@@ -77,19 +80,19 @@
 
 /* news letter ends here */
 
-@media (min-width: 768px) and (max-width: 992px) 
+@media (min-width: 768px) and (max-width: 991px) 
 {
     .shop-in-easy-steps img.right {max-width: 100%;}
     .shop-in-easy-steps img.left {max-width: 100%;}
 }
 
-@media (min-width: 576px) and (max-width: 768px) 
+@media (min-width: 576px) and (max-width: 767px) 
 {
     .shop-in-easy-steps img.right {max-width: 100%;}
     .shop-in-easy-steps img.left {max-width: 100%;}
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575px) {
     .ban-heading h1 {font-size: 40px;line-height: 46px;}
     .ban-heading p {display: none;}
     .ban-heading {height: 266px;}
