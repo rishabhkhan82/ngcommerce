@@ -10,7 +10,7 @@
 								<div class="row align-items-center">
 									<div class="col-md-3">
 										<div class="d-flex flex-row mt-0 align-items-center mb-4 mb-md-0">
-											<input type="file" class="d-none" id="adminprofile" formControlName="profileImage" (change)="upload($event)">
+											<input type="file" class="d-none" id="adminprofile" formControlName="profileImage" (change)="upload($event, adminProfile?.get('imageUrl')?.value)">
 											<label for="adminprofile" class="position-relative">
 												<img *ngIf="!adminProfile?.get('imageUrl')?.value" src="/assets/images/user.jpg" alt="no-img" class="img-fluid user-pro-img">
 												<img *ngIf="adminProfile?.get('imageUrl')?.value" [src]="adminProfile?.get('imageUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
@@ -21,6 +21,7 @@
 											<!-- <div>{{ uploadPercent | async }}</div> -->
 											<!-- {{downloadURL}} -->
 										</div>
+										<!-- <button type="button" (click)="deleteImage(adminProfile?.get('imageUrl')?.value)">delete images</button> -->
 										<p class="form-error text-danger mt-2 mb-0" *ngIf="!adminProfile?.get('profileImage')?.valid && adminProfile?.get('profileImage')?.touched || submitted && adminProfile?.get('profileImage')?.invalid">
 											Profile images is required
 										</p>
@@ -50,7 +51,7 @@
 											</div>
 											<div class="col-lg-6">
 												<div class="">
-													<button class="btn btn-primary w-100 rounded-0 mt-0" style="height: 50px;">Update profile</button>
+													<button class="btn btn-primary w-100 rounded-0 mt-0 position-relative" style="height: 50px;">Update profile <i *ngIf="loader"  class="fa fa-spinner fa-spin btn-loader"></i></button>
 												</div>
 											</div>
 										</div>

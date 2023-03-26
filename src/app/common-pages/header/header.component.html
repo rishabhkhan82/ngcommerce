@@ -8,7 +8,12 @@
             </div>
             <div *ngIf="isLoggedIn && userRole === 'admin'" ngbDropdown class="d-inline-block me-3 d-lg-none">
                 <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-                    <img class="user-img" src="/assets/images/user.jpg" alt="no-img" />
+                    <!-- <img class="user-img" src="/assets/images/user.jpg" alt="no-img" /> -->
+                    <img class="user-img" *ngIf="userDetails.photoUrl; else adminOtherDown" src="{{userDetails.photoUrl}}" alt="no-img"/>
+                    <ng-template #adminOtherDown>
+                        <img class="user-img" src="/assets/images/user.jpg" alt="no-img"/>
+                    </ng-template>
+
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>
@@ -19,7 +24,11 @@
             </div>
             <div *ngIf="isLoggedIn && userRole === 'user'" ngbDropdown class="d-inline-block me-3 d-lg-none">
                 <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-                    <img class="user-img" src="/assets/images/user.jpg" alt="no-img" />
+                    <!-- <img class="user-img" src="/assets/images/user.jpg" alt="no-img" /> -->
+                    <img class="user-img" *ngIf="userDetails.photoUrl; else userOtherDown" src="{{userDetails.photoUrl}}" alt="no-img"/>
+                    <ng-template #userOtherDown>
+                        <img class="user-img" src="/assets/images/user.jpg" alt="no-img"/>
+                    </ng-template>
                 </button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <a routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>
@@ -77,27 +86,27 @@
                         <a class="nav-link" routerLink="/login" routerLinkActive="active"><i class="fa-solid fa-lock me-2 text-dark"></i> Login</a>
                     </li>
                     <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
-                        <a class="nav-link" routerLink="/admin/users" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> Users</a>
+                        <a class="nav-link" routerLink="/admin/users" routerLinkActive="active" ><i class="fa-solid fa-users me-2 text-dark"></i> Users</a>
                     </li>
                     <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
-                        <a class="nav-link" routerLink="/admin/products" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> Products</a>
+                        <a class="nav-link" routerLink="/admin/products" routerLinkActive="active" ><i class="fa-solid fa-shirt me-2 text-dark"></i> Products</a>
                     </li>
                     <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'" (click)="onToggle()">
-                        <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> Orders</a>
+                        <a class="nav-link" routerLink="/admin/orders" routerLinkActive="active" ><i class="fa-solid fa-list me-2 text-dark"></i> Orders</a>
                     </li>
                     <li class="nav-item" *ngIf="isLoggedIn && userRole === 'user'" (click)="onToggle()">
-                        <a class="nav-link" routerLink="/user/orders" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> My orders</a >
+                        <a class="nav-link" routerLink="/user/orders" routerLinkActive="active" ><i class="fa-solid fa-list me-2 text-dark"></i> My orders</a >
                     </li>
                     <li class="nav-item" *ngIf="isLoggedIn && userRole === 'user'" (click)="onToggle()">
-                        <a class="nav-link" routerLink="/user/wishlist" routerLinkActive="active" ><i class="fa-solid fa-lock me-2 text-dark"></i> wishlist</a>
+                        <a class="nav-link" routerLink="/user/wishlist" routerLinkActive="active" ><i class="fa-solid fa-heart me-2 text-dark"></i> wishlist</a>
                     </li>
                     <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn && userRole === 'admin'">
                         <div ngbDropdown class="d-inline-block">
                             <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
                                 <!-- <img class="user-img" src="/assets/images/user.jpg" alt="no-img"/> -->
-                                <div class="user-img" *ngIf="!userDetails.photoUrl; else adminOther"></div>
-                                <ng-template #adminOther>
-                                    <img class="user-img" src="{{userDetails.photoUrl}}" alt="no-img"/>
+                                <img class="user-img" *ngIf="userDetails.photoUrl; else adminOtherUp" src="{{userDetails.photoUrl}}" alt="no-img"/>
+                                <ng-template #adminOtherUp>
+                                    <img class="user-img" src="/assets/images/user.jpg" alt="no-img"/>
                                 </ng-template>
 
                             </button>
@@ -112,7 +121,11 @@
                     <li class="nav-item d-none d-lg-block" *ngIf="isLoggedIn && userRole === 'user'">
                         <div ngbDropdown class="d-inline-block">
                             <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
-                              <img class="user-img" src="/assets/images/user.jpg" alt="no-img" />
+                              <!-- <img class="user-img" src="/assets/images/user.jpg" alt="no-img" /> -->
+                                <img class="user-img" *ngIf="userDetails.photoUrl; else userOtherUp" src="{{userDetails.photoUrl}}" alt="no-img"/>
+                                <ng-template #userOtherUp>
+                                    <img class="user-img" src="/assets/images/user.jpg" alt="no-img"/>
+                                </ng-template>
                             </button>
                             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                 <a routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ngbDropdownItem >Dashboard</a>

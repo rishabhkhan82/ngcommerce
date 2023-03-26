@@ -12,21 +12,21 @@
                       <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-4">
-                                <label for="filing" class="pro-file rounded-0 text-center d-flex mb-4 mb-sm-5 mb-lg-0 justify-content-center align-items-center rounded shadow-sm border"><div class="fw-bold">Add Product Image</div></label>
+                                <label for="filing" class="pro-file rounded-0 text-center d-flex mb-5 mb-lg-0 justify-content-center align-items-center rounded shadow-sm border"><div class="fw-bold">Add Product Image</div></label>
                                 <input type="file" id="filing" class="d-none" formControlName="productimage">
                                 <p class="form-error text-danger mt-2 pb-3" *ngIf="!addProduct?.get('productimage')?.valid && addProduct?.get('productimage')?.touched || submitted && addProduct?.get('productimage')?.invalid">
                                   product image is required
                                 </p>
                             </div>
                             <div class="col-sm-4">
-                              <div class="img-cont mb-4 mb-sm-5">
+                              <div class="img-cont mb-5">
                                 <img src="/assets/images/banner.jpg" alt="no-img" class="product-img img-fluid">
                               </div>
                             </div>
                         </div>
                       </div>
                       <div class="col-sm-6 col-lg-8">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-50">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-50">
                           <div>
                             <input formControlName="title" type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Product Name" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;height: 50px;">
                           </div>
@@ -38,7 +38,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6 col-lg-4">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-50">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-50">
                           <div>
                             <input formControlName="price" type="number" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Product Price ( ₹ )" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;height: 50px;">
                           </div>
@@ -50,7 +50,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6 col-lg-3">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-50">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-50">
                           <div>
                             <select formControlName="category"  class="form-control rounded-0 border-0 shadow-none" id="" style="background-color: white;height: 50px;">
                               <option selected value="">Select Category</option>
@@ -67,7 +67,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6 col-lg-3">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm h-50">
+                        <div class="input-group mb-5 shadow-sm h-50">
                             <select formControlName="hasdiscount"  class="form-control rounded-0 border-0 shadow-none" id="" style="background-color: white;" (change)="onChangeDiscount($event)">
                               <option *ngFor="let item of hasdiscount" [value]="item.value">
                                 {{item.value}}
@@ -76,12 +76,12 @@
                         </div>
                       </div>
                       <div class="col-sm-6 col-lg-3">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm h-50">
+                        <div class="input-group mb-5 shadow-sm h-50">
                           <input formControlName="discoujntpercentage" type="number" class="form-control rounded-0 border-0 shadow-none" placeholder="Discount In Percentage" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;" (change)="onApplyPercentage()">
                         </div>
                       </div>
                       <div class="col-sm-6 col-lg-3">
-                        <!-- <div class="input-group mb-4 mb-sm-5 shadow-sm" style="height: 50px;">
+                        <!-- <div class="input-group mb-5 shadow-sm" style="height: 50px;">
                           <select formControlName="size"  class="form-control rounded-0 border-0 shadow-none" id="" style="background-color: white;">
                             <option selected value="">Select Size</option>
                             <option *ngFor="let item of size" [value]="item.value">
@@ -92,7 +92,7 @@
                         <label for="">Select Size</label>
 
                         <div class="d-flex flex-row">
-                          <div class="input-group mb-4 mb-sm-5 h-27" *ngFor="let item of sizeArray; index as i">
+                          <div class="input-group mb-5 h-27" *ngFor="let item of sizeArray; index as i">
                             <input id="{{item}}" type="checkbox" [value]="item" name="size" (change)="onChangeSize($event)">
                             <label for="{{item}}" class="ms-1">{{item}}</label>
                           </div>
@@ -116,7 +116,7 @@
                         </div> -->
                       </div>
                       <div class="col-sm-6">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-204">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
                           <div>
                             <textarea formControlName="desone" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 1"></textarea>
                           </div>
@@ -128,7 +128,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-204">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
                           <div>
                             <textarea formControlName="destwo" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 2"></textarea>
                           </div>
@@ -140,7 +140,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-204">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
                           <div>
                             <textarea formControlName="desthree" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 3"></textarea>
                           </div>
@@ -152,7 +152,7 @@
                         </div>
                       </div>
                       <div class="col-sm-6">
-                        <div class="input-group mb-4 mb-sm-5 shadow-sm flex-column flex-nowrap h-204">
+                        <div class="input-group mb-5 shadow-sm flex-column flex-nowrap h-204">
                           <div>
                             <textarea formControlName="desfour" name="" id="" cols="20" rows="8" class="w-100 border-0 form-control shadow shadow-sm rounded-0" placeholder="Description Para 4"></textarea>
                           </div>

@@ -268,7 +268,7 @@ export class AddProductComponent implements OnInit {
     }
     else {
       this.submitted=true;
-      this.toastr.error('', 'Please fill in the form to add product!', {
+      this.toastr.error('', "Please fill in the form's required field to add product!", {
         timeOut: 4000,
         progressBar: true,
         progressAnimation: 'increasing',

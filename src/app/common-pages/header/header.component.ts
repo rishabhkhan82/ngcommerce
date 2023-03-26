@@ -19,6 +19,8 @@ export class HeaderComponent implements OnInit {
 
    userDetails: any = {};
 
+   loading: boolean = true;
+
    constructor(
     public auth: AuthService,
     private toastr: ToastrService,
@@ -50,6 +52,7 @@ export class HeaderComponent implements OnInit {
     this.auth.userProfile.subscribe(
       (res) => {
         this.userDetails = res;
+        this.loading = false;
       }
     )
    }
@@ -59,6 +62,7 @@ export class HeaderComponent implements OnInit {
    }
 
    onLogOut() {
+      this.userDetails = {};
       this.auth.onLogout();
       // this.toastr.success('', 'You have logout successfully!');
    }

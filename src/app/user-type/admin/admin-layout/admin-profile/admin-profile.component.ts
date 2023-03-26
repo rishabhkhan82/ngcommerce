@@ -6,6 +6,9 @@ import { AuthService } from 'src/app/appServices/auth.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { getStorage, ref, deleteObject } from "firebase/storage";
+
+
 
 @Component({
     selector: 'app-admin-profile',
@@ -21,6 +24,8 @@ export class AdminProfileComponent implements OnInit {
     emailValue = JSON.parse(localStorage.getItem('userData') || '{}'); 
 
     imageLoading : boolean = false;
+
+    loader: boolean = false;
 
     path: string = '';
     uploadPercent!: Observable<number | undefined>;
@@ -68,21 +73,27 @@ export class AdminProfileComponent implements OnInit {
         // console.log(this.adminProfile)
 
         if(this.adminProfile.valid) {
+            
+            this.loader = true;
 
             const newObject = {token: this.emailValue._token, ...this.adminProfile.value}
             console.log(newObject);
             console.log(this.adminProfile.value);
+
             
             this.auth.updateProfile(newObject).subscribe(
                 (res:any) => {
                     // console.log(res);
+                    this.loader = false;
                     this.toastr.success('', 'Your profile has updated');
                     this.auth.getProfile(this.emailValue._token);
+
 
                     console.log(res);
 
                 },
                 (err) => {
+                    this.loader = false;
                     console.log(err);
                     this.toastr.error('', this.authError.errorMsg[err.error.error.message]);
                 }
@@ -99,7 +110,7 @@ export class AdminProfileComponent implements OnInit {
         this.toastr.error('', 'This field is disabled')
     }
 
-    upload(event: any) {
+    upload(event: any, url : any) {
         this.path = event.target.files[0];
         
         console.log(event);
@@ -108,8 +119,7 @@ export class AdminProfileComponent implements OnInit {
 
         this.uploadImage();
 
-        
-
+        this.deleteImage(url);
 
     }
     
@@ -143,6 +153,9 @@ export class AdminProfileComponent implements OnInit {
                         imageUrl: this.downloadURL
                     });
 
+                    this.onSubmit();
+
+
                     this.imageLoading = false;
 
                     console.log(this.adminProfile.value);
@@ -153,10 +166,31 @@ export class AdminProfileComponent implements OnInit {
 
         })).subscribe(
             (res) => {
+                
             }
         );
 
         
+
+      }
+
+      deleteImage(url:any) {
+
+        const storage = getStorage();
+
+        const file = this.path;
+        const filePath = '/files'+Math.random();
+        const fileRef = this.storage.ref(filePath);
+
+        // Create a reference to the file to delete
+        const desertRef = ref(storage, url);
+
+        // Delete the file
+        deleteObject(desertRef).then(() => {
+        // File deleted successfully
+        }).catch((error) => {
+        // Uh-oh, an error occurred!
+        });
 
       }
 
