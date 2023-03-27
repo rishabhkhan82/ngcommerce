@@ -23,6 +23,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "firebase": "^9.16.0",
+    "ngx-bootstrap-confirm": "^4.0.3",
     "ngx-owl-carousel-o": "^15.0.0",
     "ngx-skeleton-loader": "^7.0.0",
     "ngx-toastr": "^16.1.0",

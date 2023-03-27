@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { AdminNotificationService } from 'src/app/appServices/admin-notification.service';
 import { CommonService } from 'src/app/appServices/common.service';
 import { ToastServiceService } from 'src/app/appServices/toast-service.service';
+import { NgxBootstrapConfirmService } from 'ngx-bootstrap-confirm';
 
 @Component({
   selector: 'app-admin-notification',
@@ -21,7 +22,8 @@ export class AdminNotificationComponent implements OnInit {
   constructor(
     private notiService : AdminNotificationService,
     private genFake : CommonService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private ngxBootstrapConfirmService: NgxBootstrapConfirmService
   ) {
 
   }
@@ -54,15 +56,37 @@ export class AdminNotificationComponent implements OnInit {
   }
 
   onDeleteNoty(data: any) {
-    if(confirm("Are you sure to delete this notification")) {
-      // console.log(data);
-      this.notiService.onDeleteAdminNotification(data).subscribe(
-        (res) => {
-          this.toastr.success('', 'Notification deleted successfully!');
-          this.onGetNoti();
-        }
-      );
+    // if(confirm("Are you sure to delete this notification")) {
+    //   // console.log(data);
+    //   this.notiService.onDeleteAdminNotification(data).subscribe(
+    //     (res) => {
+    //       this.toastr.success('', 'Notification deleted successfully!');
+    //       this.onGetNoti();
+    //     }
+    //   );
+    // }
+
+    let options ={
+      title: 'Sure you want to delete this notification?',
+      confirmLabel: 'Yes',
+      declineLabel: 'No'
     }
+
+    this.ngxBootstrapConfirmService.confirm(options).then((res: boolean) => {
+      if (res) {
+        this.notiService.onDeleteAdminNotification(data).subscribe(
+              (res) => {
+                this.toastr.success('', 'Notification deleted successfully!');
+                this.onGetNoti();
+              }
+            );
+        console.log('Okay');
+      } else {
+        console.log('Cancel');
+      }
+    });
+
+
   }
 
 }

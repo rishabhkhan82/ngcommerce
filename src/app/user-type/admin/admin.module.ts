@@ -12,6 +12,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout/admin-layout.c
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { CustomerQueriesComponent } from './admin-layout/customer-queries/customer-queries.component';
+import { NgxBootstrapConfirmModule } from 'ngx-bootstrap-confirm';
 
 
 const routes : Routes = [
@@ -44,6 +45,7 @@ const routes : Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     NgxSkeletonLoaderModule,
+    NgxBootstrapConfirmModule
   ],
   exports: [
     AdminDashboardComponent,

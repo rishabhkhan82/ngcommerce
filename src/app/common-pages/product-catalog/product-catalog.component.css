@@ -1,7 +1,7 @@
 .card-cont {position: relative;overflow: hidden;padding: 18px 18px 26px;border-style: solid;border-width: 1px;border-color: rgb(231, 231, 231);border-radius: 20px;transition: all 0.3s;}
 .card-cont:hover {border: 1px solid #d74c4c !important;}
 .image-11 {position: absolute;inset: 26px -14px 0% auto;max-width: 100%;vertical-align: middle;display: inline-block;}
-.card-cont img.image-11 {width: 150px;}
+.card-cont img.image-11 {width: 130px;}
 .image-10 {display: block;margin-right: auto;margin-left: auto;padding: 0px;max-width: 100%;vertical-align: middle;}
 .product-heading {margin-bottom: 4px;font-size: 12px;line-height: 24px;margin-top: 10px;}
 .div-block-15 {display: block;}
