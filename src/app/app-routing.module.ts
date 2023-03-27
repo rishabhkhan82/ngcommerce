@@ -10,10 +10,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CustomPreloadingService } from "./appServices/custom-preloading.service";
 import { ProductIndividualComponent } from "./product/product-individual/product-individual.component";
 import { ProductSearchComponent } from "./product/product-search/product-search.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FilterPipe } from "./appPipes/filter.pipe";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { AuthGuard } from "./auth/auth.guard";
+import { ProductCatalogComponent } from "./common-pages/product-catalog/product-catalog.component";
 
 const routes : Routes = [
     {path: '', component: HomeComponent},
@@ -36,7 +37,8 @@ const routes : Routes = [
         PageNotFoundComponent,
         ProductIndividualComponent,
         ProductSearchComponent,
-        FilterPipe
+        FilterPipe,
+        ProductCatalogComponent
     ],
     imports: [
         RouterModule.forRoot(routes, {
@@ -45,7 +47,8 @@ const routes : Routes = [
         CommonModule,
         CarouselModule,
         FormsModule,
-        NgxSkeletonLoaderModule
+        NgxSkeletonLoaderModule,
+        ReactiveFormsModule
     ],
     exports: [
         RouterModule

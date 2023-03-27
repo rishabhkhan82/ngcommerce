@@ -1,0 +1,42 @@
+<div class="row px-3 py-4 m-sm-2">
+    <div class="col-sm-12">
+        <div class="clearfix">
+            <div class="float-start">
+                <h4 class="mb-4">User quiries <small>({{queryArray.length? queryArray.length : '-'}})</small></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="table-responsive">
+            <table class="table shadow-sm">
+              <thead>
+                <tr class="bg-light">
+                  <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Name</h6></th>
+                  <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Email</h6></th>
+                  <th class="p-4 py-3" scope="col"><h6 class="mb-0 p-0">Message</h6></th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container>
+                  <tr class="" *ngFor="let item of queryLoader">
+                    <td class="p-4 ms-auto text-end" colspan="3">
+                      <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 20,'margin.px': 0}"></ngx-skeleton-loader>
+                    </td>
+                  </tr>
+                </ng-container>
+                <ng-container>
+                  <tr *ngFor="let item of queryArray;index as i">
+                    <td class="p-4" scope="row"><h6 class="mb-0">{{item.name}}</h6></td>
+                    <td class="p-4"><h6 class="mb-0">{{item.email}}</h6></td>
+                    <td class="p-4"><h6 class="mb-0">{{item.message}}</h6></td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

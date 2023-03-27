@@ -7,19 +7,34 @@
       <div class="col-md-7 col-lg-6 col-xl-5">
         <div class="contact-right p-4 p-sm-5 shadow">
           <h2 class="mb-4 mb-sm-5">Feel free to contact us</h2>
-          <form action="" class="mt-2">
-            <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-              <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Your Name" aria-label="Username" aria-describedby="basic-addon1">
+          <form [formGroup]="queryForm" class="mt-2" (ngSubmit)="submit()">
+            <div class="mb-4">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Your Name" formControlName="name">
+              </div>
+              <p class="form-error text-danger mt-2 mb-0" *ngIf="!queryForm?.get('name')?.valid && queryForm?.get('name')?.touched || submitted && queryForm?.get('name')?.invalid">
+                  Name is required
+              </p>
             </div>
-            <div class="input-group mb-4 shadow-sm">
-              <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-              <input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Your Email" aria-label="Username" aria-describedby="basic-addon1">
+            <div class="mb-4">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text bg-transparent rounded-0 border-0 px-3" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+                <input type="email" class="form-control rounded-0 border-0 shadow-none" placeholder="Your Email" formControlName="email">
+              </div>
+              <p class="form-error text-danger mt-2 mb-0" *ngIf="!queryForm?.get('email')?.valid && queryForm?.get('email')?.touched || submitted && queryForm?.get('email')?.invalid">
+                  Email is required
+              </p>
             </div>
-            <div class="input-group mb-4 shadow-sm">
-              <textarea name="message" id="" cols="30" rows="10" class="form-control rounded-0 border-0" placeholder="Your Message Here"></textarea>
+            <div class="mb-4">
+              <div class="input-group shadow-sm">
+                <textarea name="message" id="" cols="30" rows="10" class="form-control rounded-0 border-0" formControlName="message" placeholder="Your Message Here"></textarea>
+              </div>
+              <p class="form-error text-danger mt-2 mb-0" *ngIf="!queryForm?.get('message')?.valid && queryForm?.get('message')?.touched || submitted && queryForm?.get('message')?.invalid">
+                  Message is required
+              </p>
             </div>
-            <input type="submit" value="Get in touch" class="btn btn-primary w-100 h-50 rounded-0">
+            <button type="submit" class="btn btn-primary w-100 h-50 rounded-0 position-relative">Get in Touch <i *ngIf="loader" class="fa fa-spinner fa-spin btn-loader"></i></button>
           </form>
         </div>
       </div>

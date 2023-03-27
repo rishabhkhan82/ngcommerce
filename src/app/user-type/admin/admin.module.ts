@@ -11,6 +11,7 @@ import { UserDetailComponent } from "./admin-layout/user-detail/user-detail.comp
 import { AdminLayoutComponent } from './admin-layout/admin-layout/admin-layout.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
+import { CustomerQueriesComponent } from './admin-layout/customer-queries/customer-queries.component';
 
 
 const routes : Routes = [
@@ -22,6 +23,7 @@ const routes : Routes = [
       { path: 'products', component: AdminProductsComponent},
       { path: 'notifications', component: AdminNotificationComponent },
       { path: 'add-product', component: AddProductComponent },
+      { path: 'user-query', component: CustomerQueriesComponent },
   ], }
 ];
 
@@ -35,6 +37,7 @@ const routes : Routes = [
     AdminProductsComponent,
     AddProductComponent,
     AdminLayoutComponent,
+    CustomerQueriesComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +53,7 @@ const routes : Routes = [
     AdminProfileComponent,
     AdminProductsComponent,
     AddProductComponent,
+    CustomerQueriesComponent
   ],
   providers: [
 
