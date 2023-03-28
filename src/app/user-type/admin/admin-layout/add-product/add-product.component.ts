@@ -9,7 +9,10 @@ import { AdminNotificationService } from 'src/app/appServices/admin-notification
 import { adminNotification } from '../admin-notification/admin-notification.model';
 import { map } from 'rxjs';
 import { AuthErrorService } from 'src/app/appServices/auth-error.service';
-
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
+import { getStorage, ref, deleteObject } from "firebase/storage";
 
 interface Categories {
   value: string;
@@ -75,6 +78,15 @@ export class AddProductComponent implements OnInit {
 
   addedProductTitle : string = '';
 
+  // for storng image starte here
+
+  imageLoading : boolean = false;
+
+
+  path: string = '';
+  uploadPercent!: Observable<number | undefined>;
+  downloadURL!: Observable<string | undefined>;
+
   constructor(
     public prodService: ProductService,
     private router: Router,
@@ -82,11 +94,13 @@ export class AddProductComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private adminNoti: AdminNotificationService,
     private errService: AuthErrorService,
+    private storage: AngularFireStorage
+
   ) {}
 
   ngOnInit() {
     this.addProduct = new FormGroup({
-      productimage : new FormControl(null, Validators.required),
+      productimage : new FormControl(null),
       title : new FormControl(null, Validators.required),
       price : new FormControl(null, Validators.required),
       category : new FormControl([], Validators.required),
@@ -97,6 +111,8 @@ export class AddProductComponent implements OnInit {
       destwo : new FormControl(null, Validators.required),
       desthree : new FormControl(null, Validators.required),
       desfour : new FormControl(null, Validators.required),
+      productUrl: new FormControl('', Validators.required)
+
     });
 
     this.activeRoute.queryParams.subscribe(params => {
@@ -123,6 +139,7 @@ export class AddProductComponent implements OnInit {
               destwo : this.productingArray.destwo,
               desthree : this.productingArray.desthree,
               desfour : this.productingArray.desfour,
+              productUrl: this.productingArray.productUrl
             });
   
           }
@@ -285,6 +302,90 @@ export class AddProductComponent implements OnInit {
     this.addProduct.patchValue({
       price : newPrice
     });
+  }
+
+  upload(event: any, url : any) {
+    this.path = event.target.files[0];
+    
+    console.log(event);
+
+    this.imageLoading = true;
+
+    this.uploadImage();
+
+    this.deleteImage(url);
+
+}
+
+  uploadImage() {
+    // console.log(this.path);
+
+    const file = this.path;
+    const filePath = '/files'+Math.random();
+    const fileRef = this.storage.ref(filePath);
+
+    const task = this.storage.upload(filePath, file);
+    
+     // observe percentage changes
+     this.uploadPercent = task.percentageChanges();
+     // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {  
+        this.downloadURL = fileRef.getDownloadURL(); 
+        // console.log(this.downloadURL.subscribe());
+
+        this.storage.ref(filePath).getDownloadURL().subscribe(
+            (res) => {
+                this.downloadURL = res;
+                console.log(this.downloadURL);
+
+                // this.adminProfile.patchValue({
+                //     profileImage: this.downloadURL
+                // });
+
+                this.addProduct.patchValue({
+                  productUrl: this.downloadURL
+                });
+
+                // this.onAddProduct();
+
+
+                this.imageLoading = false;
+
+                console.log(this.addProduct.value);
+
+            }
+        )
+
+
+    })).subscribe(
+        (res) => {
+            
+        }
+    );
+
+    
+
+  }
+
+  deleteImage(url:any) {
+
+    const storage = getStorage();
+
+    const file = this.path;
+    const filePath = '/files'+Math.random();
+    const fileRef = this.storage.ref(filePath);
+
+    // Create a reference to the file to delete
+    const desertRef = ref(storage, url);
+
+    // Delete the file
+    deleteObject(desertRef).then(() => {
+    // File deleted successfully
+    }).catch((error) => {
+    // Uh-oh, an error occurred!
+    });
+
   }
 
   // onEditingProduct() {

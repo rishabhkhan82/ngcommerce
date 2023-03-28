@@ -18,6 +18,7 @@
 .button {width: 65%;border-radius: 0px;background-color: rgb(255, 22, 22);text-align: center;}
 .w-button {display: inline-block;border-radius: 0px;line-height: 34px;width: 70%;margin-top: 0px;}
 h4 {font-family: 'DM Serif Display', serif;}
+.pro-img {min-height: 300px;max-height: 300px;object-fit: cover;}
 
 /* new pick ends here */
 
