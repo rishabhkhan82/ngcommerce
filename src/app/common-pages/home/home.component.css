@@ -18,8 +18,9 @@
 .trending .card img {height: 100%;object-fit: cover;object-position: center;width: 100%;border-radius: 8px 0px 0px 8px;}
 .trending hr.divider {color: #c3c3c3eb !important;}
 .text-color {color: #cd2e34 !important;}
-.trending h5 {display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;font-size: 18px !important;}
-.trending p {line-height: 18px;}
+.trending h5 {display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;font-size: 12px !important;line-height: 16px;}
+.trending p {line-height: 18px;font-size: 13px;margin-bottom: 8px;}
+.trending a {font-size: 14px;}
 
 /* is trending ends here */
 

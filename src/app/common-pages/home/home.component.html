@@ -58,21 +58,21 @@
       <div>
         <h2 class="me-sm-2"><span class="high-text">#50</span> Trending Clothing Wear</h2>
       </div>
-      <div class="flex-fill">
+      <div class="flex-fill ">
         <div class="row g-3">
           <ng-container *ngFor="let item of productArray">
-            <div class="col-6 col-xl-3" *ngIf="item.hasdiscount !== 'No Discount'">
+            <div class="col-6 col-xl-3" *ngIf="item.hasdiscount === 'No Discount'">
               <div class="card shadow-sm">
                 <div class="row g-0">
                   <div class="col-md-5">
-                    <img src="https://cdn.shopify.com/s/files/1/0249/4110/1152/products/TS078_MAROON_FRONT.jpg?v=1623061994" class="img-fluid rounded-start" alt="...">
+                    <img [src]="item.productUrl" class="img-fluid rounded-start" alt="...">
                   </div>
                   <div class="col-md-7">
                     <div class="card-body">
                       <h5 class="card-title">{{item.title}}</h5>
-                      <p class="card-text">{{item.desone}}</p>
-                      <p class="card-text mb-1"><strong class="text-color">${{item.price}}.00</strong></p>
-                      <a [routerLink]="['/product', item.userId]" class="text-danger stretched-link"><small>View Product</small></a>
+                      <p class="card-text text-truncate">{{item.category}}</p>
+                      <p class="card-text mb-1"><strong class="text-color">₹{{item.price}}.00</strong></p>
+                      <a [routerLink]="['/product', item.userId]" class="text-dark stretched-link"><small>View Product</small></a>
                     </div>
                   </div>
                 </div>
@@ -260,7 +260,7 @@
             <div>
                 <ngx-skeleton-loader count="1"  [theme]="{
                   'width': '100%', 
-                  'height.px': 393,
+                  'height.px': 300,
                   'margin': 0
                 }"></ngx-skeleton-loader>
                 <h5>
@@ -273,21 +273,7 @@
                 }"></ngx-skeleton-loader>
                 <hr class="mt-0" />
                 <div class="row g-1">
-                  <div class="col-sm-4">
-                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
-                      'width': '100%', 
-                      'height.px': 50,
-                      'margin': 0
-                    }"></ngx-skeleton-loader>
-                  </div>
-                  <div class="col-sm-4">
-                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
-                      'width': '100%', 
-                      'height.px': 50,
-                      'margin': 0
-                    }"></ngx-skeleton-loader>
-                  </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-8">
                     <ngx-skeleton-loader count="1" appearance="line"  [theme]="{
                       'width': '100%', 
                       'height.px': 50,

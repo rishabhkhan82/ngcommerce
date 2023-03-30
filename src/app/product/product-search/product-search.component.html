@@ -23,10 +23,11 @@
       </div>
 
       <div class="col-sm-6 col-md-4 col-xl-3" *ngFor="let item of filteredArray">
-        <div class="card-cont">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11">
-          <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b673b2b19e119bfc7f991a_img-shirt.jpg" loading="lazy" width="274" alt="" class="image-10">
-          <h5 class="product-heading">{{item.title}}</h5>
+        <div class="card-cont position-relative">
+          <div width="120" *ngIf="item.hasdiscount == 'Has Discount'" alt="no-img" class="image-11">Sale | {{item.discoujntpercentage}}% off</div>
+          <!-- <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b7e7c76df4ef721334346f_Add%20a%20heading%20(2)%20(1).png" loading="lazy" width="120" alt="" class="image-11"> -->
+          <img src="{{item.productUrl}}" loading="lazy" width="274" alt="" class="image-10">
+          <h5 class="product-heading w-100 text-truncate">{{item.title}}</h5>
           <div class="div-block-15">
             <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
             <img src="https://uploads-ssl.webflow.com/638d9c570d5f31d5f1c848ea/63b5590f7e2c705803ffa141_star_FILL0_wght400_GRAD0_opsz48.svg" loading="lazy" width="20" alt="">
@@ -36,10 +37,10 @@
             <div class="text-block-8">(52k)</div>
           </div>
           <div class="div-block-17">
-              <p class="discount italic">${{item.price}}.00</p>
+              <p class="discount italic">₹{{item.price}}.00</p>
               <div class="d-flex flex-row ps-1"  *ngIf="item.hasdiscount !== 'No Discount'">
                 <div class="discount custom">M.R.P: </div>
-                <div class="discount custom other overline"> ${{item.price * 100/item.discoujntpercentage}}.00 </div>
+                <div class="discount custom other overline"> ₹{{(item.price * 100 / (100 - item.discoujntpercentage))}}.00 </div>
                 <div class="discount custom other">({{item.discoujntpercentage}}% off)</div>
               </div>
             </div>

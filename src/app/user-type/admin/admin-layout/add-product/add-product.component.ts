@@ -297,7 +297,10 @@ export class AddProductComponent implements OnInit {
   onApplyPercentage() {
     let priceValue = this.addProduct.value.price;
     let discountValue = this.addProduct.value.discoujntpercentage;
-    const newPrice = priceValue * (discountValue/100);
+    const newPrice = priceValue - ((discountValue/100) * priceValue);
+    // alert(priceValue);
+    // alert(discountValue);
+    // alert((100 * priceValue) / discountValue)
 
     this.addProduct.patchValue({
       price : newPrice

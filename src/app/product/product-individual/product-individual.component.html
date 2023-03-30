@@ -9,14 +9,14 @@
       <div class="white-block py-5 px-4 p-sm-5 position-relative mb-5">
         <div class="row">
           <div class="col-md-4">
-            <img src="https://m.media-amazon.com/images/I/61yBCMmuI4L._UL1440_.jpg" alt="no-img" class="img-fluid border rounded shadow-sm pro-img">
+            <img src="{{item.productUrl}}" alt="no-img" class="img-fluid border rounded shadow-sm pro-img">
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-7 ps-0">
             <div class="px-3 details">
               <div class="clearfix">
                 <h4 class="mb-4">{{item.title}}</h4>
-                <h4 class="mb-4 text-danger">${{item.price}}.00</h4>
+                <h4 class="mb-4 text-danger">₹{{item.price}}.00</h4>
               </div>
               <p>
                 <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatum neque eum veniam perferendis dolores, voluptatem dicta, quasi magni architecto tenetur odit fugiat reiciendis. Odio quia officia pariatur atque! Dolorem. -->
