@@ -7,6 +7,7 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { WishlistComponent } from "./wishlist/wishlist.component";
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { RouterModule, Routes } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes : Routes = [
   { path: '', component : UserLayoutComponent, children: [
@@ -29,7 +30,8 @@ const routes : Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   exports: [
     UserDashboardComponent,

@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   submitted: boolean = false;
   error: string = '';
   errText = this.errService.errorMsg;
+  userRole: string = '';
 
   constructor(
     public auth : AuthService,
@@ -32,6 +33,25 @@ export class RegisterComponent implements OnInit {
       email : new FormControl(null, Validators.required),
       password : new FormControl(null, Validators.required)
     });
+
+    this.auth.user.subscribe((res) => {
+      if(res) {
+        if(res.id === 'IhXXaaDWdNSRhcBHZNPKunfHomd2') {
+          this.userRole = 'admin';
+          this.router.navigate(['/admin']);
+          this.toastr.error('', "You are all ready registered");
+        }
+        else {
+          this.userRole = 'user';
+          this.router.navigate(['/user']);
+          this.toastr.error('', "You are all ready registered");
+        }
+      }
+      else {
+        this.userRole = '';
+      }
+    });
+
   }
 
   onUserRegister() {

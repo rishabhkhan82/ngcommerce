@@ -24,7 +24,7 @@ const routes : Routes = [
     {path: 'product/search', component: ProductSearchComponent},
     {path: 'product/:userId', component: ProductIndividualComponent},
     {path: '', data: {preload : true}, loadChildren: () => import('./auth/auth-module.module').then(m => m.AuthModule)},
-    {path: 'user', loadChildren: () => import('./user-type/user/user.module').then(m => m.UserModule)},
+    {path: 'user', loadChildren: () => import('./user-type/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard]},
     {path: 'admin', loadChildren: () => import('./user-type/admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard]},
     {path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ]

@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
   key : any = 'sale';
   
   dataloading: boolean = true;
+
+  trendingLoading: boolean = true;
   
   constructor(
     private productServi: ProductService,

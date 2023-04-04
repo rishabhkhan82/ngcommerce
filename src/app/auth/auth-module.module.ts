@@ -7,12 +7,13 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { RouterModule, Routes } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
+import { AuthGuard } from "./auth.guard";
 
 const routes : Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'admin-login', component: AdminLoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'change-password', component: ChangePasswordComponent},
+  { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   { path: 'forgot-password', component: ForgotPasswordComponent },
 ];
 

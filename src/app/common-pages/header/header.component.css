@@ -48,7 +48,7 @@
   .navbar-nav {padding: 0px 20px;}
   li.d-lg-none {width: calc(100% + 40px);margin-left: -20px;margin-right: -20px;}
   .input-group.search-div {padding: 0px 20px;}
-  .collapse.navbar-collapse {transition: all ease-in-out 0.3s; display: block !important;overflow: hidden;}
+  .collapse.navbar-collapse {transition: all ease-in-out 0.1s; display: block !important;overflow: hidden;}
   .collapse.navbar-collapse.hide {height: 0px;}
   .collapse.navbar-collapse.show {height: 208px;}
 }

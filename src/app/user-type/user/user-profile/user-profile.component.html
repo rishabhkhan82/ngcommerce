@@ -1,48 +1,67 @@
-<div class="profile pb-4">
-  <div class="container">
-    <div class="row"> 
-      <div class="col-sm-12 px-0">
-        <div class="p-4 m-2">
-          <h4>Profile</h4>
-          <div class="bg-light px-4 py-5 mt-4 rounded shadow-sm border">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="d-flex flex-row mt-0 align-items-center">
-                  <img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user-pro-img">
-                </div>
-              </div>
-              <div class="col-sm-8">
-                <form action="">
-                  <div class="row mt-5">
-                    <div class="col-sm-6 mb-5">
-                      <div class="input-group shadow-sm" style="height: 50px;">
-                        <span class="input-group-text rounded-0 border-0 px-3 bg-white" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-                        <input type="email" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Name" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
-                      </div>
-                    </div>
-                    <div class="col-sm-6 mb-5">
-                      <div class="input-group shadow-sm" style="height: 50px;">
-                        <span class="input-group-text rounded-0 border-0 px-3 bg-white" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
-                        <input type="email" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Email" aria-label="Username" aria-describedby="basic-addon1" style="background-color: white;">
-                      </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <div class="">
-                        <textarea name="" id="" cols="20" rows="8" placeholder="Add Your Address Here" class="w-100 border-0 form-control shadow shadow-sm mb-5"></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div>
-                        <button class="btn btn-primary w-100 rounded-0 mt-0" style="height: 50px;">Update profile</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="pb-3 pt-4 p-sm-4">
+	<div class="profile pb-4">
+		<div class="container">
+			<div class="row"> 
+				<div class="col-sm-12">								
+					<div>
+						<h4>Profile</h4> 
+						<div class="bg-light px-3 px-sm-4 py-4 py-sm-5 mt-4 rounded shadow-sm border">
+							<form [formGroup]="userProfile" (ngSubmit)="onSubmit()">
+								<div class="row align-items-center">
+									<div class="col-md-3">
+										<div class="d-flex flex-row mt-0 align-items-center mb-4 mb-md-0">
+											<input type="file" class="d-none" id="userProfile" formControlName="profileImage" (change)="upload($event, userProfile?.get('imageUrl')?.value)">
+											<label for="userProfile" class="position-relative">
+												<img *ngIf="!userProfile?.get('imageUrl')?.value" src="/assets/images/user.jpg" alt="no-img" class="img-fluid user-pro-img">
+												<img *ngIf="userProfile?.get('imageUrl')?.value" [src]="userProfile?.get('imageUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
+												<div class="loader position-absolute" *ngIf="imageLoading">
+													<i class="fa fa-spinner fa-spin text-white" aria-hidden="true"></i>
+												</div>
+											</label>
+											<!-- <div>{{ uploadPercent | async }}</div> -->
+											<!-- {{downloadURL}} -->
+										</div>
+										<!-- <button type="button" (click)="deleteImage(userProfile?.get('imageUrl')?.value)">delete images</button> -->
+										<p class="form-error text-danger mt-2 mb-0" *ngIf="!userProfile?.get('profileImage')?.valid && userProfile?.get('profileImage')?.touched || submitted && userProfile?.get('profileImage')?.invalid">
+											Profile images is required
+										</p>
+									</div>
+									<div class="col-md-9">
+										<div class="row g-3">
+											<div class="col-lg-6">
+												<div class="input-group shadow-sm" style="height: 50px;">
+													<span class="input-group-text rounded-0 border-0 px-3 bg-white" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+													<input type="text" class="form-control rounded-0 border-0 shadow-none" placeholder="Enter Name" formControlName="name" style="background-color: white;">
+												</div>
+												<p class="form-error text-danger mt-2 mb-0" *ngIf="!userProfile?.get('name')?.valid && userProfile?.get('name')?.touched || submitted && userProfile?.get('name')?.invalid">
+													Name is required
+												</p>
+											</div>
+											<div class="col-lg-6">
+												<div class="input-group shadow-sm border" style="height: 50px;" (click)="onClickEmail()">
+													<span class="input-group-text rounded-0 border-0 px-3 bg-light" id="basic-addon1"><i class="fa-solid fa-envelope"></i></span>
+													<input type="email" class="form-control rounded-0 border-0 shadow-none bg-light" placeholder="Enter Email" formControlName="email">
+												</div>
+												<p class="form-error text-danger mt-2 mb-0" *ngIf="!userProfile?.get('email')?.valid && userProfile?.get('email')?.touched || submitted && userProfile?.get('email')?.invalid">
+													Email is required
+												</p>
+												<!-- <p class="form-error text-danger mt-2 mb-0" *ngIf="!userProfile?.get('email')?.valid && userProfile?.get('email')?.touched || submitted && userProfile?.get('email')?.errors?.status">
+													Email is required
+												</p> -->
+											</div>
+											<div class="col-lg-6">
+												<div class="">
+													<button class="btn btn-primary w-100 rounded-0 mt-0 position-relative" style="height: 50px;">Update profile <i *ngIf="loader"  class="fa fa-spinner fa-spin btn-loader"></i></button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

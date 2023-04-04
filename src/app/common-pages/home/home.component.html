@@ -58,77 +58,54 @@
       <div>
         <h2 class="me-sm-2"><span class="high-text">#50</span> Trending Clothing Wear</h2>
       </div>
-      <div class="flex-fill ">
+      <div class="flex-fill w-100" *ngIf="dataloading">
+        <div class="row g-3">
+          <div class="col-6 col-xl-3" *ngFor="let item of generateFake">
+            <div class="card shadow-sm">
+              <div class="row g-0">
+                <div class="col-md-5">
+                  <div class="overflow-hidden" style="height: 180px">
+                    <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 180,'margin': 0}"></ngx-skeleton-loader>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <ngx-skeleton-loader count="4" appearance="line"  [theme]="{
+                      'width': '100%', 
+                      'height.px': 18,
+                      'margin': 10
+                    }"></ngx-skeleton-loader>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-fill" *ngIf="!dataloading">
         <div class="row g-3">
           <ng-container *ngFor="let item of productArray">
             <div class="col-6 col-xl-3" *ngIf="item.hasdiscount === 'No Discount'">
               <div class="card shadow-sm">
-                <div class="row g-0">
+                <div class="row gx-0">
                   <div class="col-md-5">
-                    <img [src]="item.productUrl" class="img-fluid rounded-start" alt="...">
+                    <div class="image">
+                      <img src="{{item.productUrl}}" class="img-fluid rounded-start" alt="...">
+                    </div>
                   </div>
                   <div class="col-md-7">
                     <div class="card-body">
                       <h5 class="card-title">{{item.title}}</h5>
                       <p class="card-text text-truncate">{{item.category}}</p>
                       <p class="card-text mb-1"><strong class="text-color">₹{{item.price}}.00</strong></p>
-                      <a [routerLink]="['/product', item.userId]" class="text-dark stretched-link"><small>View Product</small></a>
+                      <a [routerLink]="['/product', item.userId]" class="text-dark"><small>View Product</small></a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </ng-container>
-          <!-- <div class="col-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="row g-0">
-                <div class="col-md-5">
-                  <img src="https://rukminim1.flixcart.com/image/612/612/l41n2q80/t-shirt/k/x/j/l-1jgrf-013-blk-jugular-original-imagff7w8tfwd2dr.jpeg?q=70" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-7">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting.</p>
-                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="row g-0">
-                <div class="col-md-5">
-                  <img src="https://n4.sdlcdn.com/imgs/k/e/t/Veirdo-100-Cotton-Regular-Fit-SDL219315225-1-b7c92.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-7">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting.</p>
-                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="row g-0">
-                <div class="col-md-5">
-                  <img src="https://m.media-amazon.com/images/I/51AhpP3CcnL._UX425_.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-7">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting.</p>
-                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </div>
-        
       </div>
     </div>
   </div>
@@ -315,3 +292,52 @@
     </div>
   </div>
 </div>
+
+<!-- <div class="col-6 col-xl-3">
+            <div class="card shadow-sm">
+              <div class="row g-0">
+                <div class="col-md-5">
+                  <img src="https://rukminim1.flixcart.com/image/612/612/l41n2q80/t-shirt/k/x/j/l-1jgrf-013-blk-jugular-original-imagff7w8tfwd2dr.jpeg?q=70" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting.</p>
+                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-xl-3">
+            <div class="card shadow-sm">
+              <div class="row g-0">
+                <div class="col-md-5">
+                  <img src="https://n4.sdlcdn.com/imgs/k/e/t/Veirdo-100-Cotton-Regular-Fit-SDL219315225-1-b7c92.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting.</p>
+                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-xl-3">
+            <div class="card shadow-sm">
+              <div class="row g-0">
+                <div class="col-md-5">
+                  <img src="https://m.media-amazon.com/images/I/51AhpP3CcnL._UX425_.jpg" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting.</p>
+                    <p class="card-text"><strong class="text-color">$30.00</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->

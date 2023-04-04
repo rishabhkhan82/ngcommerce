@@ -84,7 +84,11 @@ export class AuthService {
 
   onLogout() {
     this.user.next(null);
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
+
+    window.location.href = '';
+
+
     localStorage.removeItem('userData');
 
     if(this.tokenExpiTimer) {
