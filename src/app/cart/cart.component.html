@@ -10,28 +10,32 @@
                 <thead class="border-bottom">
                   <th class="p-4"><h6 class="mb-0 p-0">Sr.no</h6></th>
                   <th class="p-4"><h6 class="mb-0 p-0">Product name</h6></th>
-                  <th class="p-4"><h6 class="mb-0 p-0">Product image</h6></th>
+                  <th class="p-4"><h6 class="mb-0 p-0">Image</h6></th>
                   <th class="p-4"><h6 class="mb-0 p-0">Quantity</h6></th>
                   <th class="p-4"><h6 class="mb-0 p-0">Price</h6></th>
                 </thead>
                 <tbody>
-                  <tr class="">
-                    <td scope="row" class="p-4"><h6 class="mb-0">1</h6></td>
-                    <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>
-                    <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid" style="max-width: 80px;"></td>
-                    <td class="p-4"><h6 class="mb-0">2</h6></td>
-                    <td class="p-4"><h6 class="mb-0">$20</h6></td>
-                  </tr>
-                  <tr class="">
-                    <td scope="row" class="p-4"><h6 class="mb-0">1</h6></td>
-                    <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>
-                    <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid" style="max-width: 80px;"></td>
-                    <td class="p-4"><h6 class="mb-0">2</h6></td>
-                    <td class="p-4"><h6 class="mb-0">$20</h6></td>
-                  </tr>
-    
+                  <!-- <ng-container *ngIf="loader">
+                    <tr class="" *ngFor="let item of orderLoader">
+                      <td class="p-4 ms-auto text-end" colspan="5">
+                        <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 20,'margin.px': 0}"></ngx-skeleton-loader>
+                      </td>
+                    </tr>
+                  </ng-container> -->
+                  <ng-container>
+                    <tr class="" *ngFor="let item of cartArray;index as i" >
+                      <td scope="row" class="p-4"><h6 class="mb-0">{{i + 1}}</h6></td>
+                      <td class="p-4"><h6 class="mb-0"><a [routerLink]="['/product', item.productId]" class="text-dark">{{item.title}}</a></h6></td>
+                      <td class="px-4 py-2"><img src="{{item.productUrl}}" alt="no-img" class="img-fluid"></td>
+                      <td class="p-4"><h6 class="mb-0">{{item.quantity}}</h6></td>
+                      <td class="p-4"><h6 class="mb-0">₹{{item.price}}</h6></td>
+                    </tr>
+                  </ng-container>
                 </tbody>
               </table>
+              <ng-container>
+                <p *ngIf="cartArray.length == 0" class="px-4">Your Cart is empty! <a routerLink="/product/search" class="text-danger">Shop Now</a></p>
+              </ng-container>
             </div>
           </div>
           <div class="col-lg-4">
@@ -54,23 +58,36 @@
                   <tbody>
                     <tr>
                       <th scope="col"><h6>Price</h6></th>
-                      <td scope="col" class="text-end">$20.00</td>
+                      <td scope="col" class="text-end">₹{{price}}</td>
                     </tr>
                     <tr>
                       <th scope="col"><h6>Tax</h6></th>
-                      <td scope="col" class="text-end">+$4.00</td>
+                      <td scope="col" class="text-end">+₹{{this.tax}}</td>
                     </tr>
                     <tr>
                       <th scope="col"><h6>Coupon Applied</h6></th>
-                      <td scope="col" class="text-end">-$2.00</td>
+                      <td scope="col" class="text-end">-₹0.00</td>
                     </tr>
                     <tr>
-                      <th scope="col"><h6>Totol Price</h6></th>
-                      <td scope="col" class="text-end">$22.00</td>
+                      <th scope="col"><h6>Total Price</h6></th>
+                      <td scope="col" class="text-end">₹{{totalPrice}}</td>
                     </tr>
                   </tbody>
                 </table>
-                <button type="submit" class="btn btn-dark mt-2 w-100 rounded-0" style="height: 50px;">Checkout</button>
+                <ng-container *ngIf="checkoutStatus">
+                  <form [formGroup]="addressForm" (ngSubmit)="onOrder()">
+
+                    <div class="mb-2">
+                      <textarea formControlName="address" placeholder="Please enter address to continue" class="w-100 form-control" rows="4"></textarea>
+                      <p class="form-error text-danger mt-2 mb-0" *ngIf="!addressForm?.get('address')?.valid && addressForm?.get('address')?.touched || submitted && addressForm?.get('address')?.invalid">
+                        address is required
+                      </p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2 w-100 rounded-0" style="height: 50px;">Order Now</button>
+                  </form>
+                </ng-container>
+                <button type="button" (click)="onCheckClik()" class="btn btn-dark mt-2 w-100 rounded-0" style="height: 50px;">{{checkoutStatus? 'Cancel' : 'Checkout'}}</button>
               </div>
             </div>
           </div>

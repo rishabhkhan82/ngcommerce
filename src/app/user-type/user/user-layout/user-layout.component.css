@@ -13,3 +13,39 @@
 .dash-cont .dash-in-box .in .circle i {font-size: 17px;color: black;}
 .dash-cont .dashboard {border-top: 3px solid #cd2e34;border-radius: 8px 8px 0px 0px;}
 h4 {font-family: 'DM Serif Display', serif;}
+.logout {cursor: pointer;}
+
+/* responsive starts here */
+
+  
+@media (min-width: 768px) and (max-width: 991px) {
+    .dash-cont .dash-menus {width: 100%;overflow-x: scroll;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .dash-cont .dash-menus::-webkit-scrollbar {display: none;}
+  }
+    
+  @media (min-width: 576px) and (max-width: 767px) {
+    .dash-cont .dash-menus {width: 100%;overflow-x: scroll;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .dash-cont .dash-menus::-webkit-scrollbar {display: none;}
+    .dashboard .welcom-div {max-height: inherit;}
+  }
+    
+  @media (max-width: 575px) {
+    .dash-cont .dash-menus {width: 100%;overflow-x: scroll;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .dash-cont .dash-menus::-webkit-scrollbar {display: none;}
+    .dashboard .welcom-div {max-height: inherit;}
+    .d-flex.w-100.justify-content-between {padding:  16px !important;}
+    .dashboard .dash-back-user-img {width: 40px;height: 40px;}
+    .welcom-div h6 {font-size: 14px;}
+    .dash-cont .dash-menu-link.active {padding: 10px 18px;}
+   .dash-cont .dash-menu-link {font-size: 15px;}
+   .dash-cont {min-height: inherit;}
+  }

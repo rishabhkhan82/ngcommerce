@@ -15,6 +15,7 @@ import { FilterPipe } from "./appPipes/filter.pipe";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { AuthGuard } from "./auth/auth.guard";
 import { ProductCatalogComponent } from "./common-pages/product-catalog/product-catalog.component";
+import { NgxBootstrapConfirmModule } from "ngx-bootstrap-confirm";
 
 const routes : Routes = [
     {path: '', component: HomeComponent},
@@ -38,7 +39,8 @@ const routes : Routes = [
         ProductIndividualComponent,
         ProductSearchComponent,
         FilterPipe,
-        ProductCatalogComponent
+        ProductCatalogComponent,
+        CartComponent
     ],
     imports: [
         RouterModule.forRoot(routes, {
@@ -48,7 +50,9 @@ const routes : Routes = [
         CarouselModule,
         FormsModule,
         NgxSkeletonLoaderModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxBootstrapConfirmModule
+
     ],
     exports: [
         RouterModule

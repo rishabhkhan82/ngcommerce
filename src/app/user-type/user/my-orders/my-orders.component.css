@@ -3,3 +3,19 @@
 h4 {line-height: 24px;font-family: 'DM Serif Display', serif;}
 table {border: 1px solid #e7e4e4;}
 img.user {width: 50px;height: 50px;border-radius: 50%;object-fit: cover;}
+a.text-dark {margin-bottom: 8px;}
+table tr td:last-child {width: 220px;}
+
+/* responsive starts here */
+  
+@media (min-width: 768px) and (max-width: 991px) {
+    table {min-width: 1000px;}
+}
+    
+@media (min-width: 576px) and (max-width: 767px) {
+    table {min-width: 1000px;}
+}
+
+@media (max-width: 575px) {
+    table {min-width: 1000px;}
+}

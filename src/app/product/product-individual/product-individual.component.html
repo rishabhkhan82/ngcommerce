@@ -27,10 +27,20 @@
                 <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatum neque eum veniam perferendis dolores, voluptatem dicta, quasi magni architecto tenetur odit fugiat reiciendis. Odio quia officia pariatur atque! Dolorem. -->
               </p>
               <div>
-                <button class="btn btn-primary bg-secondary border-secondary" style="height: 50px;">Add to cart</button>
+                <div class="input-group mb-3">
+                  <button class="btn btn-outline-secondary" type="button" (click)="onPlus()">+</button>
+                  <input type="text" value="{{quantity}}" class="form-control text-center">
+                  <button class="btn btn-outline-secondary" type="button"  (click)="onMinus()">-</button>
+                </div>
               </div>
               <div>
-                <button class="btn btn-primary" style="height: 50px;">Buy now</button>
+                <button type="button" (click)="onAddtoCart(item)" class="btn btn-primary bg-secondary border-secondary position-relative" style="height: 50px;">{{!removeItemMode? 'Add to cart' : 'Remove to cart'}}</button>
+                <!-- <button (click)="onRemoveCart()" class="btn btn-primary bg-secondary border-secondary" style="height: 50px;">Remove to cart</button> -->
+              </div>
+              <div>
+                <!-- <button *ngIf="removeItemMode" type="button" (click)="onRemoveCart()" class="btn btn-primary bg-secondary border-secondary" style="height: 50px;">Remove to cart</button> -->
+
+                <!-- <button class="btn btn-primary" style="height: 50px;">Buy now</button> -->
               </div>
             </div>
           </div>

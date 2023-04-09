@@ -4,6 +4,8 @@
 h4 {font-family: 'DM Serif Display', serif;}
 .details {min-height: 395px;}
 .loader {height: 200px;}
+/* .btn-loader {position: absolute;right: 15px;top: 15px;} */
+.input-group {max-width: 150px;}
 
 /* responsive starts here */
 

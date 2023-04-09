@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/appServices/auth.service';
+import { CartService } from 'src/app/appServices/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -21,10 +22,13 @@ export class HeaderComponent implements OnInit {
 
    loading: boolean = true;
 
+   cartData : any;
+
    constructor(
     public auth: AuthService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    public cartService : CartService
    ) {
 
    }
@@ -55,6 +59,13 @@ export class HeaderComponent implements OnInit {
         this.loading = false;
       }
     )
+
+    if(this.isLoggedIn) {
+      this.cartService.onGetCart();
+      this.getCartValue();
+    }
+
+
    }
 
    onToggle() {
@@ -65,6 +76,14 @@ export class HeaderComponent implements OnInit {
       this.userDetails = {};
       this.auth.onLogout();
       // this.toastr.success('', 'You have logout successfully!');
+   }
+
+   getCartValue() {
+    this.cartService.cartArray.subscribe(
+      (res) => {
+        this.cartData = res.length;
+      }
+    )
    }
 
 }

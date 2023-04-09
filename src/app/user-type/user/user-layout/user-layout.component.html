@@ -8,7 +8,8 @@
           <!-- <img src="/assets/images/user.jpg" alt="no-img" class="dash-back-user-img shadow-sm"> -->
           <img *ngIf="singleUserDetails.photoUrl; else userDetails" src="{{singleUserDetails.photoUrl}}" alt="no-img" class="dash-back-user-img shadow-sm">
           <ng-template #userDetails>
-            <div  class="dash-back-user-img shadow-sm"></div>
+            <img src="/assets/images/user.jpg" alt="no-img" class="dash-back-user-img shadow-sm">
+            <!-- <div  class="dash-back-user-img shadow-sm"></div> -->
           </ng-template>
           <div class="welcom-div ms-3 shadow-sm">
             <h6 class="mb-1">Hi <span class="text-capitalize mb-1 mb-md-0 d-inline-block" *ngIf="singleUserDetails.displayName">{{singleUserDetails.displayName}}! </span> <span class="" *ngIf="!singleUserDetails.displayName">{{singleUserDetails.email}}, </span> <span class="d-block d-md-inline-block"><span class="d-none d-md-inline-block">&nbsp;|</span> Welcome to user dashboard</span></h6>
@@ -19,10 +20,10 @@
     <div class="dash-menus bg-dark d-flex flex-row">
         <a routerLink="/user" alt="no-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="dash-menu-link">Dashboard</a>
         <a routerLink="/user/profile" alt="no-link" routerLinkActive="active" class="dash-menu-link">Profile</a>
-        <a routerLink="/user/orders" alt="no-link" routerLinkActive="active" class="dash-menu-link">My Orders</a>
-        <a routerLink="/user/wishlist" alt="no-link" routerLinkActive="active" class="dash-menu-link">Wishlist</a>
-        <a routerLink="/user/notifications" alt="no-link" routerLinkActive="active" class="dash-menu-link">Notifications</a>
-        <a routerLink="/" alt="no-link" class="dash-menu-link">Logout</a>
+        <a routerLink="/user/orders" alt="no-link" routerLinkActive="active" class="dash-menu-link">My&nbsp;Orders</a>
+        <!-- <a routerLink="/user/wishlist" alt="no-link" routerLinkActive="active" class="dash-menu-link">Wishlist</a>
+        <a routerLink="/user/notifications" alt="no-link" routerLinkActive="active" class="dash-menu-link">Notifications</a> -->
+        <a (click)="onLogout()" alt="no-link" class="dash-menu-link logout">Logout</a>
     </div>
     <router-outlet></router-outlet>
   </div>

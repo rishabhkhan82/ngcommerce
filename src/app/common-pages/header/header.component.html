@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="/">NGcommerce</a>
             <div class="ms-auto box-header d-lg-none">
-              <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">shopping_cart</span></a>
+              <a routerLink="/login" class="me-3 position-relative"><span class="material-symbols-outlined">shopping_cart</span><span *ngIf="cartData != '0'" class="badge rounded-pill bg-danger">{{cartData}}</span></a>
               <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">search</span></a>
             </div>
             <div *ngIf="isLoggedIn && userRole === 'admin'" ngbDropdown class="d-inline-block me-3 d-lg-none">
@@ -77,7 +77,7 @@
                         </div>
                     </li>
                     <li class="nav-item" *ngIf="!(userRole === 'admin')" (click)="onToggle()">
-                        <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active" ><i class="fa-solid fa-cart-shopping me-2 text-dark"></i> Cart</a>
+                        <a class="nav-link" aria-current="page" routerLink="/cart" routerLinkActive="active" ><i class="fa-solid fa-cart-shopping me-2 text-dark position-relative"><span *ngIf="cartData != '0'" class="badge rounded-pill bg-danger">{{cartData}}</span></i> Cart </a>
                     </li>
                     <li class="nav-item" *ngIf="!isLoggedIn" (click)="onToggle()">
                         <a class="nav-link" routerLink="/register" routerLinkActive="active"><i class="fa-solid fa-user me-2 text-dark"></i> Register</a>

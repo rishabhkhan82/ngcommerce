@@ -8,14 +8,16 @@ import { WishlistComponent } from "./wishlist/wishlist.component";
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { RouterModule, Routes } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
+
 
 const routes : Routes = [
   { path: '', component : UserLayoutComponent, children: [
       { path: '', component: UserDashboardComponent},
       { path: 'profile', component: UserProfileComponent},
       { path: 'orders', component: MyOrdersComponent},
-      { path: 'wishlist', component: WishlistComponent},
-      { path: 'notifications', component: UserNotificationComponent },
+      // { path: 'wishlist', component: WishlistComponent},
+      // { path: 'notifications', component: UserNotificationComponent },
   ], }
 ];
 
@@ -31,7 +33,8 @@ const routes : Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSkeletonLoaderModule,
   ],
   exports: [
     UserDashboardComponent,

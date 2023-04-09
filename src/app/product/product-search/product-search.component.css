@@ -27,7 +27,7 @@ h2.extra {font-family: 'DM Serif Display', serif;position: absolute;top: 16px;le
 
 @media (min-width: 768px) and (max-width: 991px) {
   .search-div {width: 100%;margin-bottom: 30px;}
-  h2 {text-align: center};
+  h2 {text-align: center;}
 }
 
 @media (min-width: 576px) and (max-width: 767px) {

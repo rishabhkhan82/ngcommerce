@@ -3,7 +3,7 @@
     <div class="col-sm-12">
         <div class="clearfix">
         <div class="float-start">
-            <h4 class="mb-4">Orders <small>(20)</small></h4>
+            <h4 class="mb-4">Orders <small>({{orderArray.length == '0'? '--' : orderArray.length}})</small></h4>
         </div>
         <div class="float-end" *ngIf="viewAll">
             <a routerLink="/admin/orders" class="text-danger fw-bold">View All Orders</a>
@@ -13,52 +13,50 @@
     <div class="col-sm-12">
       <div class="table-responsive">
         <table class="table shadow-sm">
-          <thead class="border-bottom bg-light">
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">User</h6></th>
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">Product name</h6></th>
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">Image</h6></th>
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">Quantity</h6></th>
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">Order date</h6></th>
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">Transaction id</h6></th>
-            <th class="p-4 py-3"><h6 class="mb-0 p-0">Price</h6></th>
+          <thead class="border-bottom">
+            <th class="p-4"><h6 class="mb-0 p-0">Sr.No</h6></th>
+            <th class="p-4"><h6 class="mb-0 p-0">Product names and quantity</h6></th>
+            <th class="p-4"><h6 class="mb-0 p-0">Order date</h6></th>
+            <th class="p-4"><h6 class="mb-0 p-0">Price</h6></th>
+            <th class="p-4"><h6 class="mb-0 p-0">Status</h6></th>
           </thead>
           <tbody>
-            <!-- <ng-container *ngIf="loading">
+            <ng-container *ngIf="loader">
               <tr class="" *ngFor="let item of orderLoader">
-                <td class="p-4 ms-auto text-end" colspan="7">
+                <td class="p-4 ms-auto text-end" colspan="5">
                   <ngx-skeleton-loader count="1" appearance="line"  [theme]="{'width': '100%', 'height.px': 20,'margin.px': 0}"></ngx-skeleton-loader>
                 </td>
               </tr>
             </ng-container>
-            <ng-container *ngIf="!loading">
-              <tr class="">
-                <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user" style="max-width: 80px;"></td>
-                <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>
-                <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid" style="max-width: 80px;height: 50px;"></td>
-                <td class="p-4"><h6 class="mb-0">3</h6></td>
-                <td class="p-4"><h6 class="mb-0">12/12/2023</h6></td>
-                <td class="p-4"><h6 class="mb-0">#54kldjfkjk45634fkdlfk</h6></td>
-                <td class="p-4"><h6 class="mb-0">$20</h6></td>
+            <ng-container *ngIf="!loader">
+              <tr class="" *ngFor="let item of orderArray;index as i">
+                  <td class="px-4 py-4"><h6 class="mb-0">{{i+1}}</h6></td>
+                  <td class="p-4">
+                    <h6 class="mb-0">
+                      <ng-container *ngFor="let product of item.products">
+                        <div class="names">
+                          <a class="text-dark" [routerLink]="['/product', product.productId]">{{product.title}}</a>
+                          <span> ({{product.quantity}})</span>
+                        </div>
+                      </ng-container>
+                    </h6>
+                  </td>
+                  <td class="p-4"><h6 class="mb-0">{{item.date}}</h6></td>
+                  <td class="p-4"><h6 class="mb-0">{{item.orderPrice}}</h6></td>
+                  <td class="p-4">
+                    <h6 class="mb-0"><span class="badge bg-success pt-1 pb-2 px-2">{{item.status}}</span> 
+                      <!-- <button (click)="onEditMode()" class="btn btn-danger p-0 px-2 ms-2"><i class="fa fa-pencil"></i></button> -->
+                    </h6>
+                    <select class="form-select mt-3 form-control" [value]="item.status"  (change)="onEditStatus(item.orderId, $event)">
+                      <option selected value="processing">processing</option>
+                      <option value="dispatched">dispatched</option>
+                      <option value="out for delivery">out for delivery</option>
+                      <option value="delivered">delivered</option>
+                      <option value="cancelled">cancelled</option>
+                    </select>
+                  </td>
               </tr>
-            </ng-container> -->
-            <tr class="">
-              <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user" style="max-width: 80px;"></td>
-              <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>
-              <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid" style="max-width: 80px;height: 50px;"></td>
-              <td class="p-4"><h6 class="mb-0">3</h6></td>
-              <td class="p-4"><h6 class="mb-0">12/12/2023</h6></td>
-              <td class="p-4"><h6 class="mb-0">#54kldjfkjk45634fkdlfk</h6></td>
-              <td class="p-4"><h6 class="mb-0">$20</h6></td>
-            </tr>
-            <tr class="">
-              <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid user" style="max-width: 80px;"></td>
-              <td class="p-4"><h6 class="mb-0">Full T-shirt</h6></td>
-              <td class="px-4 py-2"><img src="/assets/images/banner.jpg" alt="no-img" class="img-fluid" style="max-width: 84px;height: 50px;"></td>
-              <td class="p-4"><h6 class="mb-0">3</h6></td>
-              <td class="p-4"><h6 class="mb-0">12/12/2023</h6></td>
-              <td class="p-4"><h6 class="mb-0">#54kldjfkjk45634fkdlfk</h6></td>
-              <td class="p-4"><h6 class="mb-0">$30</h6></td>
-            </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>

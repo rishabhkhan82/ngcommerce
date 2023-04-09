@@ -10,6 +10,8 @@
 .dropdown-toggle::after {display: none;}
 .dropdown-item.active, .dropdown-item:active {background-color: #cd2e34 !important;}
 
+.badge {position: absolute;transform: scale(0.8);top: -12px;left: 10px;}
+
 /* responsive starts here */
 
 @media (min-width: 992px) and (max-width: 1200px) {
