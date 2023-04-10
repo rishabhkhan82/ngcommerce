@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
       this.productArray = JSON.parse(dataTwo);
-      console.log(this.productArray);
+      // console.log(this.productArray);
       this.dataloading = false;
     })
   }

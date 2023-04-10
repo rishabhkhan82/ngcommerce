@@ -57,8 +57,8 @@ export class AdminProfileComponent implements OnInit {
                 name : res.displayName,
                 imageUrl: res.photoUrl
             });
-            console.log(this.adminProfile)
-            console.log(res);
+            // console.log(this.adminProfile)
+            // console.log(res);
         }
       )
 

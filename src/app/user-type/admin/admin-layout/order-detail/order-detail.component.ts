@@ -101,11 +101,11 @@ export class OrderDetailComponent implements OnInit {
 
   onEditStatus(item: any, selectedValue:any) {
 
-    console.log(item);
+    // console.log(item);
 
     this.orderService.getSingleOrder(item).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
 
         var obj:any = res;
 
@@ -113,7 +113,7 @@ export class OrderDetailComponent implements OnInit {
 
         this.orderService.onEditOrder(item, obj).subscribe(
           (res) => {
-            console.log(res);
+            // console.log(res);
             this.toastr.success('', 'Status updated successfully');
             this.editMode = false;
             this.getOrder();

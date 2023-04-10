@@ -52,7 +52,7 @@ export class ProductSearchComponent implements OnInit {
       const dataTwo = JSON.stringify(res);
       this.proListArray = JSON.parse(dataTwo);
       this.filteredArray  = [...this.proListArray];
-      console.log(this.proListArray);
+      // console.log(this.proListArray);
       this.filterLength = true;
     })
   }

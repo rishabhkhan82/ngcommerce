@@ -18,7 +18,7 @@ export class AdminLayoutComponent implements OnInit {
     this.auth.userProfile.subscribe(
       (res) => {
         this.singleUserDetails = res;
-        console.log(this.singleUserDetails)
+        // console.log(this.singleUserDetails)
       }
     )
   }

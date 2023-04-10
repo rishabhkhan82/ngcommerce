@@ -75,7 +75,7 @@ export class CartService {
         const userData: any = localStorage.getItem('userData');
         const userDataParse = JSON.parse(userData);
 
-        console.log(userDataParse.id);
+        // console.log(userDataParse.id);
 
         const cartArr: any = [];
 

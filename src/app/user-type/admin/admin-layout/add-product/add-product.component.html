@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label for="filing" class="pro-file rounded-0 text-center d-flex mb-5 mb-lg-0 justify-content-center align-items-center rounded shadow-sm border"><div class="fw-bold">Add Product Image</div></label>
-                                <input type="file" id="filing" class="d-none" formControlName="productimage" (change)="upload($event, addProduct?.get('productUrl')?.value)">
+                                <input type="file" id="filing" class="d-none" formControlName="productimage" (change)="upload($event, addProduct.get('productUrl')?.value)">
                                 <p class="form-error text-danger mt-2 pb-3" *ngIf="!addProduct?.get('productUrl')?.valid && addProduct?.get('productUrl')?.touched || submitted && addProduct?.get('productUrl')?.invalid">
                                   product image is required
                                 </p>
@@ -22,7 +22,7 @@
                               <div class="img-cont mb-5 position-relative">
                                 <!-- <img src="/assets/images/banner.jpg" alt="no-img" class="product-img img-fluid"> -->
                                 <img *ngIf="!addProduct?.get('productUrl')?.value" src="/assets/images/no-upload.png" alt="no-img" class="img-fluid user-pro-img">
-                                <img *ngIf="addProduct?.get('productUrl')?.value" [src]="addProduct?.get('productUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
+                                <img *ngIf="addProduct?.get('productUrl')?.value" [src]="addProduct.get('productUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
                                 <div class="loader position-absolute" *ngIf="imageLoading">
                                   <i class="fa fa-spinner fa-spin text-white" aria-hidden="true"></i>
                                 </div>

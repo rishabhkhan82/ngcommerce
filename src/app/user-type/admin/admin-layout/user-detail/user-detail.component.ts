@@ -46,7 +46,7 @@ export class UserDetailComponent implements OnInit {
     this.userLoader = this.genFake.generateFake(4);
 
     this.onGetUsers();
-    console.log(this.router.url)
+    // console.log(this.router.url)
 
     if(this.router.url === '/admin/users') {
       this.limitUserArray = false;

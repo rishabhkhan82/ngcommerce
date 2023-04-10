@@ -46,7 +46,7 @@ export class ProductIndividualComponent {
         // console.log(this.dynamicId);
         this.du.getSingleData(this.dynamicId).subscribe(
           (res) => {
-            console.log(res);
+            // console.log(res);  
             this.loader=false;
             this.item = res;
             this.sizeArray = this.item.size;
@@ -70,9 +70,24 @@ export class ProductIndividualComponent {
             if(prodId == item.productId) {
               this.removeItemMode = true;
               this.cartId = item.cartId;
+
+              // console.log( item.cartId);
             }
 
           }
+
+          // for(let item of  Object.keys(res)) {
+
+          //   if(prodId == res[item].productId) {
+          //     this.removeItemMode = true;
+          //     this.cartId = res[item].cartId;
+
+          //     console.log( res[item].cartId);
+          //   }
+
+          // }
+
+
         } 
       )
 
@@ -109,11 +124,11 @@ export class ProductIndividualComponent {
           productId : prodId
         }  
         // console.log(prodId);
-        console.log(this.cartData);
+        // console.log(this.cartData);
   
         const cartDetails = this.cartService.onAddToCart(this.cartData);
   
-        console.log(cartDetails);
+        // console.log(cartDetails);
   
       }
   
@@ -126,11 +141,11 @@ export class ProductIndividualComponent {
       
           this.confirmDialog.confirm(options).then((res: boolean) => {
             if(res) {
-              console.log('Okay');
+              // console.log('Okay');
               this.router.navigate(['/login']);
             }
             else {
-              console.log('Cancel');
+              // console.log('Cancel');
             }
           });
       }
@@ -140,7 +155,7 @@ export class ProductIndividualComponent {
     
       this.cartService.onRemoveToCart(this.cartId).subscribe(
         (res) => {
-          console.log(res);
+          // console.log(res);
           this.cartService.onGetCart();
           this.removeItemMode = false;
           this.toastr.success('', 'item deleted from cart');

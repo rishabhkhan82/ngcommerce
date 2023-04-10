@@ -10,10 +10,10 @@
 								<div class="row align-items-center">
 									<div class="col-md-3">
 										<div class="d-flex flex-row mt-0 align-items-center mb-4 mb-md-0">
-											<input type="file" class="d-none" id="adminprofile" formControlName="profileImage" (change)="upload($event, adminProfile?.get('imageUrl')?.value)">
+											<input type="file" class="d-none" id="adminprofile" formControlName="profileImage" (change)="upload($event, adminProfile.get('imageUrl')?.value)">
 											<label for="adminprofile" class="position-relative">
 												<img *ngIf="!adminProfile?.get('imageUrl')?.value" src="/assets/images/user.jpg" alt="no-img" class="img-fluid user-pro-img">
-												<img *ngIf="adminProfile?.get('imageUrl')?.value" [src]="adminProfile?.get('imageUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
+												<img *ngIf="adminProfile?.get('imageUrl')?.value" [src]="adminProfile.get('imageUrl')?.value" alt="no-img" class="img-fluid user-pro-img">
 												<div class="loader position-absolute" *ngIf="imageLoading">
 													<i class="fa fa-spinner fa-spin text-white" aria-hidden="true"></i>
 												</div>

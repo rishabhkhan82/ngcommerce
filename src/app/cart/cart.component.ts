@@ -19,6 +19,8 @@ export class CartComponent implements OnInit {
 
   cartArray : any = [];
 
+  cartArrayLength:any;
+
   error: string = '';
   
   errText = this.errService.errorMsg;
@@ -92,10 +94,17 @@ export class CartComponent implements OnInit {
 
         this.cartArray = res;
 
+        if(res) {
+          this.cartArrayLength = res.length;
+        }
+
         console.log(this.cartArray)
 
-        const prices = this.cartArray.map((product:any) => product.price*product.quantity);
-        this.price = prices.reduce((acc:any, curr:any) => acc + curr);
+        if(res) {
+          const prices = this.cartArray.map((product:any) => product.price*product.quantity);
+          this.price = prices.reduce((acc:'0', curr:'0') => acc + curr);
+        }
+
 
         let taxvalue :any;
 
@@ -149,7 +158,9 @@ export class CartComponent implements OnInit {
       this.cartService.cartArray.subscribe(
         (res) => {
           console.log(res);
+          // this.checkoutStatus = false;
           this.cartArray = [];
+
         }
       )
 

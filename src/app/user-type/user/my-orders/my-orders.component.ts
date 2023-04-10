@@ -87,6 +87,8 @@ export class MyOrdersComponent implements OnInit {
           this.myOrders = orderArray.filter((obj:any) => {
             return obj.userId === this.userId;
           });
+
+
           
           this.loader = false;
         },
@@ -115,15 +117,15 @@ export class MyOrdersComponent implements OnInit {
   
       this.orderService.getSingleOrder(item).subscribe(
         (res) => {
-          console.log(res);
+          // console.log(res);
   
           var obj:any = res;
   
-          obj.status = 'processing';
+          obj.status = 'cancelled';
   
           this.orderService.onEditOrder(item, obj).subscribe(
             (res) => {
-              console.log(res);
+              // console.log(res);
               this.getOrder();
               this.toastr.success('', 'order cancelled successfully');
             }

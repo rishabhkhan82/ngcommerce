@@ -23,7 +23,7 @@ export class CustomerQueriesComponent implements OnInit {
 
     this.query.getContact().subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.queryArray = res;
         this.queryLoader = [];
       },

@@ -56,8 +56,8 @@ export class UserProfileComponent implements OnInit {
                 name : res.displayName,
                 imageUrl: res.photoUrl
             });
-            console.log(this.userProfile)
-            console.log(res);
+            // console.log(this.userProfile)
+            // console.log(res);
         }
       )
 

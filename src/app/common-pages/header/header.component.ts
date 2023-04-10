@@ -81,7 +81,9 @@ export class HeaderComponent implements OnInit {
    getCartValue() {
     this.cartService.cartArray.subscribe(
       (res) => {
-        this.cartData = res.length;
+        if(res) {
+          this.cartData = res.length;
+        }
       }
     )
    }
