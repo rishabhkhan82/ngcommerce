@@ -3,8 +3,8 @@
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="/">NGcommerce</a>
             <div class="ms-auto box-header d-lg-none">
-              <a routerLink="/login" class="me-3 position-relative"><span class="material-symbols-outlined">shopping_cart</span><span *ngIf="cartData != '0'" class="badge rounded-pill bg-danger">{{cartData}}</span></a>
-              <a routerLink="/login" class="me-3"><span class="material-symbols-outlined">search</span></a>
+              <a routerLink="/cart" class="me-3 position-relative"><span class="material-symbols-outlined">shopping_cart</span><span *ngIf="cartData != '0'" class="badge rounded-pill bg-danger">{{cartData}}</span></a>
+              <a routerLink="/product/search" class="me-3"><span class="material-symbols-outlined">search</span></a>
             </div>
             <div *ngIf="isLoggedIn && userRole === 'admin'" ngbDropdown class="d-inline-block me-3 d-lg-none">
                 <button type="button" class="btn btn-outline-primary bg-transparent border-0 p-0" id="dropdownBasic1" ngbDropdownToggle>
