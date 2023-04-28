@@ -3,7 +3,7 @@
     <div class="col-sm-12">
         <div class="clearfix">
         <div class="float-start">
-            <h4 class="mb-4">My Orders <small>({{myOrders.length == '0'? '--' : myOrders.length}})</small></h4>
+            <h4 class="mb-4">My Orders <small>({{orderLength == '0'? '--' : orderLength}})</small></h4>
         </div>
         <div class="float-end" *ngIf="viewAllDisplay">
             <a routerLink="/user/orders" class="text-danger fw-bold">View All Orders</a>
@@ -30,20 +30,27 @@
             </ng-container>
             <ng-container *ngIf="!loader">
                 <tr class="" *ngFor="let item of myOrders;index as i">
-                    <td class="px-4 py-4"><h6 class="mb-0">{{i+1}}</h6></td>
-                    <td class="p-4">
-                      <h6 class="mb-0">
-                        <ng-container *ngFor="let product of item.products">
-                          <div>
-                            <a class="text-dark" [routerLink]="['/product', product.productId]">{{product.title}}</a>
-                            <span> ({{product.quantity}})</span>
-                          </div>
-                        </ng-container>
-                      </h6>
-                    </td>
-                    <td class="p-4"><h6 class="mb-0">{{item.date}}</h6></td>
-                    <td class="p-4"><h6 class="mb-0">{{item.orderPrice}}</h6></td>
-                    <td class="p-4"><h6 class="mb-0"><span class="badge bg-success pt-1 pb-2 px-2">{{item.status}}</span> <button *ngIf="item.status !== 'delivered' && item.status !== 'cancelled'" (click)="onCancelOrder(item.orderId)" class="btn btn-danger py-0 px-1 ms-2">cancel</button></h6></td>
+                  <td class="px-4 py-4"><h6 class="mb-0">{{i+1}}</h6></td>
+                  <td class="p-4">
+                    <h6 class="mb-0">
+                      <ng-container *ngFor="let product of item.products">
+                        <div>
+                          <a class="text-dark" [routerLink]="['/product', product.productId]">{{product.title}}</a>
+                          <span> ({{product.quantity}})</span>
+                        </div>
+                      </ng-container>
+                    </h6>
+                  </td>
+                  <td class="p-4"><h6 class="mb-0">{{item.date}}</h6></td>
+                  <td class="p-4"><h6 class="mb-0">{{item.orderPrice}}</h6></td>
+                  <td class="p-4">
+                    <h6 class="mb-0">
+                      <div class="d-flex align-items-center">
+                        <span class="badge bg-success pt-1 pb-2 px-2">{{item.status}}</span> 
+                        <button *ngIf="item.status !== 'delivered' && item.status !== 'cancelled'" (click)="onCancelOrder(item.orderId)" class="btn btn-danger py-0 px-1 ms-auto">cancel</button>
+                      </div>
+                    </h6>
+                  </td>
                 </tr>
             </ng-container>
           </tbody>

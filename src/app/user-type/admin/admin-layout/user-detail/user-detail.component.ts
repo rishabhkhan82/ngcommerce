@@ -66,14 +66,18 @@ export class UserDetailComponent implements OnInit {
     this.auth.onGetAddedDataBaseUser().subscribe((res) => {
       this.loading = false;
       this.userArrayLength = res.length;
-      const dataToDisplay = res?.slice(0, 4);
+
+      const reversedArray = res.reverse();
+
+      
+      const dataToDisplay = reversedArray?.slice(0, 4);
 
       if(this.limitUserArray) {
         this.userArray = dataToDisplay;
       }
 
       else {
-        this.userArray = res;
+        this.userArray = reversedArray;
       }
 
     })

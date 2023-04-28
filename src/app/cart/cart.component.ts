@@ -46,6 +46,7 @@ export class CartComponent implements OnInit {
   loader: boolean = true;
 
   orderLoader : any = [];
+  cartData: any;
   
 
   constructor(
@@ -78,6 +79,8 @@ export class CartComponent implements OnInit {
     if (mm < 10) mm = '0' + mm;
     
     this.currentDate = dd + '/' + mm + '/' + yyyy;
+
+    this.getCartValue();
 
   }
 
@@ -175,5 +178,18 @@ export class CartComponent implements OnInit {
     }
 
   }
+
+  getCartValue() {
+    this.cartService.cartArray.subscribe(
+      (res) => {
+        if(res) {
+          const DataLength = res.length
+          if(DataLength === 0) {
+            this.cartData = true;
+          }
+        }
+      }
+    )
+   }
 
 }

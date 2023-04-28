@@ -65,7 +65,7 @@ export class AdminProductsComponent implements OnInit{
       return userArrayTwo
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
-      this.productArray = JSON.parse(dataTwo);
+      this.productArray = JSON.parse(dataTwo).reverse();
       // console.log(this.productArray);
       this.dataloading = false;
     },

@@ -24,7 +24,7 @@ export class CustomerQueriesComponent implements OnInit {
     this.query.getContact().subscribe(
       (res) => {
         // console.log(res);
-        this.queryArray = res;
+        this.queryArray = res.reverse();
         this.queryLoader = [];
       },
       (err) => {

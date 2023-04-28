@@ -87,7 +87,7 @@
                     <button type="submit" class="btn btn-primary mt-2 w-100 rounded-0" style="height: 50px;">Order Now</button>
                   </form>
                 </ng-container>
-                <button type="button" (click)="onCheckClik()" class="btn btn-dark mt-2 w-100 rounded-0" style="height: 50px;">{{checkoutStatus? 'Cancel' : 'Checkout'}}</button>
+                <button [disabled]="cartData" type="button" (click)="onCheckClik()" class="btn btn-dark mt-2 w-100 rounded-0" style="height: 50px;">{{checkoutStatus? 'Cancel' : 'Checkout'}}</button>
               </div>
             </div>
           </div>

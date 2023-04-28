@@ -28,6 +28,10 @@ export class MyOrdersComponent implements OnInit {
 
   viewAllDisplay : boolean = true;
 
+  limitArray : boolean = true;
+
+  orderLength: any;
+
 
   constructor(
     private orderService : OrdersService,
@@ -45,6 +49,7 @@ export class MyOrdersComponent implements OnInit {
 
     if(url == '/user/orders') {
       this.viewAllDisplay = false;
+      this.limitArray = false;
     }
 
     this.orderLoader = this.genFake.generateFake(4);
@@ -84,13 +89,24 @@ export class MyOrdersComponent implements OnInit {
 
           this.userId = userDataParse.id;
 
-          this.myOrders = orderArray.filter((obj:any) => {
+          const getOrderData  = orderArray.filter((obj:any) => {
             return obj.userId === this.userId;
           });
 
+          const reverOrders = getOrderData.reverse();
 
+          this.orderLength = reverOrders.length;
+
+          if(this.limitArray) {
+            this.myOrders = reverOrders?.slice(0, 4);
+          }
+
+          else {
+            this.myOrders = reverOrders;
+          }
           
           this.loader = false;
+
         },
         (err:any) => {
   

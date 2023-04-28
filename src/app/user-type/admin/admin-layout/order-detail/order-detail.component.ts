@@ -31,6 +31,9 @@ export class OrderDetailComponent implements OnInit {
 
   editMode : boolean = false;
 
+  limitArray : boolean = false;
+  orderArrayLength: any;
+
   constructor(
     private router: Router,
     private fakeGen: CommonService,
@@ -51,6 +54,10 @@ export class OrderDetailComponent implements OnInit {
     }
     else {
       this.viewAll = true;
+    }
+
+    if(this.router.url === '/admin') {
+      this.limitArray = true;
     }
 
     this.getOrder();
@@ -75,8 +82,23 @@ export class OrderDetailComponent implements OnInit {
       return userArrayTwo
 
     })).subscribe((res:any) => {
-        this.orderArray = res;
+        // this.orderArray = res;
         this.loader = false;
+
+        this.orderArrayLength = res.length;
+
+        const reverseArray = res.reverse();
+
+        const dataToDisplay = reverseArray?.slice(0, 4);
+
+        if(this.limitArray) {
+          this.orderArray = dataToDisplay;
+        }
+  
+        else {
+          this.orderArray = reverseArray;
+        }
+
       },
       (err:any) => {
 

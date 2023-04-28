@@ -45,12 +45,12 @@ export class LoginComponent implements OnInit {
         if(res.id === 'IhXXaaDWdNSRhcBHZNPKunfHomd2') {
           this.userRole = 'admin';
           this.router.navigate(['/admin']);
-          this.toastr.error('', "You are all ready login");
+          // this.toastr.error('', "You are all ready login");
         }
         else {
           this.userRole = 'user';
           this.router.navigate(['/user']);
-          this.toastr.error('', "You are all ready login");
+          // this.toastr.error('', "You are all ready login");
         }
       }
       else {

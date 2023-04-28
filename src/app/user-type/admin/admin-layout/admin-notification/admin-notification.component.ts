@@ -49,7 +49,7 @@ export class AdminNotificationComponent implements OnInit {
       return userArrayTwo
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
-      this.notiArray = JSON.parse(dataTwo);
+      this.notiArray = JSON.parse(dataTwo).reverse();
       // console.log(this.notiArray);
       this.loading = false;
     });

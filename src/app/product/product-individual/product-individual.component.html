@@ -34,7 +34,7 @@
                 </div>
               </div>
               <div>
-                <button type="button" (click)="onAddtoCart(item)" class="btn btn-primary bg-secondary border-secondary position-relative" style="height: 50px;">{{!removeItemMode? 'Add to cart' : 'Remove to cart'}}</button>
+                <button [disabled]="addToCartDisabled" type="button" (click)="onAddtoCart(item)" class="btn btn-primary bg-secondary border-secondary position-relative" style="height: 50px;">{{!removeItemMode? 'Add to cart' : 'Remove to cart'}}</button>
                 <!-- <button (click)="onRemoveCart()" class="btn btn-primary bg-secondary border-secondary" style="height: 50px;">Remove to cart</button> -->
               </div>
               <div>

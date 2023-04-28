@@ -20,3 +20,13 @@
 .card-cont h2 {font-family: 'DM Serif Display', serif;}
 .card-cont .div-block-15 img {width: 20px;}
 .image-10 {max-height: 300px;object-fit: cover;}
+
+/* extra css for search */
+.search .image-10 {max-height: 300px;min-height: 300px; object-fit: cover;}
+.search .discount {font-size: 22px;}
+.resp-height {height: 63px;}
+
+@media (max-width: 575px) {
+  .search .image-10 {width: 100%;}
+}
+

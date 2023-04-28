@@ -10,6 +10,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class ProductCatalogComponent {
 
   @Input() productsChild : any = [];
+  @Input() productsSearchChild : any = [];
   @Input() key : any = '';
 
   newPick: OwlOptions = {

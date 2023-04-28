@@ -25,6 +25,7 @@ export class ProductIndividualComponent {
   removeItemMode: boolean = false;
   cartId : string = '';
   loaderSpin: boolean = false;
+  addToCartDisabled: boolean = false;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -91,7 +92,16 @@ export class ProductIndividualComponent {
         } 
       )
 
-      
+      this.auth.user.subscribe((res) => {
+        if(res) {
+          if(res.id === 'IhXXaaDWdNSRhcBHZNPKunfHomd2') {
+            this.addToCartDisabled = true;
+          }
+          else {
+            this.addToCartDisabled = false;
+          }
+        }
+      });
 
   }
 

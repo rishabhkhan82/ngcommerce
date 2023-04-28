@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ProductSearchComponent implements OnInit {
 
+  key : any = 'search';
+
   proListArray : any = [];
 
   searchText: string = '';
@@ -51,7 +53,7 @@ export class ProductSearchComponent implements OnInit {
     })).subscribe((res) => {
       const dataTwo = JSON.stringify(res);
       this.proListArray = JSON.parse(dataTwo);
-      this.filteredArray  = [...this.proListArray];
+      this.filteredArray  = [...this.proListArray].reverse();
       // console.log(this.proListArray);
       this.filterLength = true;
     })
